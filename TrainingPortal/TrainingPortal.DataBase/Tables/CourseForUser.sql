@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[CourseForUser]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [UserId] INT NOT NULL FOREIGN KEY REFERENCES [User] (Id), 
+    [CourseId] INT NOT NULL FOREIGN KEY REFERENCES [Course] (Id),
+)
