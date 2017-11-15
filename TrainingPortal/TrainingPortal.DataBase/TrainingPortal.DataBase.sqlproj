@@ -58,11 +58,13 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Course.sql" />
     <Build Include="Tables\CourseForUser.sql" />
     <Build Include="Tables\User.sql" />
+    <Build Include="StoredProcedures\AddUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />
