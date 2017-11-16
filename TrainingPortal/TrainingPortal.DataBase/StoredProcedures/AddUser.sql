@@ -1,8 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[AddUser]
-	@name nvarchar(50),
-	@email nvarchar(50),
-	@passwordHash nvarchar(50),
-	@token nvarchar(50)
+	@id INT OUTPUT,
+	@name NVARCHAR(50),
+	@email NVARCHAR(50),
+	@passwordHash NVARCHAR(MAX)
 AS
-	INSERT INTO [User] VALUES(@name, @email, @passwordHash, @token)
+	INSERT INTO [User] VALUES(@name, @email, @passwordHash)
+	SELECT @id = SCOPE_IDENTITY()
 RETURN 0

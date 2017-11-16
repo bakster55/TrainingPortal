@@ -65,6 +65,8 @@
     <Build Include="Tables\CourseForUser.sql" />
     <Build Include="Tables\User.sql" />
     <Build Include="StoredProcedures\AddUser.sql" />
+    <Build Include="StoredProcedures\GetUser.sql" />
+    <Build Include="StoredProcedures\UpdateUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />
