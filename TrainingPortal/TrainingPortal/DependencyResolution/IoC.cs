@@ -27,8 +27,8 @@ namespace TrainingPortal.DependencyResolution
 		{
 			return new Container(c =>
 			{
-				c.AddRegistry<DefaultRegistry>();
-				c.For<IApiService>().Use<ApiService>();
+				//c.AddRegistry<DefaultRegistry>();
+				//c.For<IApiService>().Use<ApiService>();
 			});
 		}
 	}

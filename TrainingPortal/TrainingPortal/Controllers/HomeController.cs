@@ -11,11 +11,11 @@ namespace WebApplication1.Controllers
 	public class HomeController : Controller
 	{
 		private readonly ILog log = LogManager.GetLogger("Logger");
-		private readonly IApiService _apiService;
+		private readonly IApiService _apiService = new ApiService();
 
-		public HomeController(IApiService apiService)
+		public HomeController()
 		{
-			_apiService = apiService;
+			
 		}
 
 		public ActionResult Index()

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[UserRole]
+(
+	[UserId] INT NOT NULL FOREIGN KEY REFERENCES [User] (Id),
+	[RoleId] INT NOT NULL FOREIGN KEY REFERENCES [Role] (Id),
+	PRIMARY KEY (UserId, RoleId)
+)

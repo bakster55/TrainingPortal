@@ -5,9 +5,6 @@
     @passwordHash nvarchar(MAX) = NULL
 AS
 BEGIN
-    UPDATE [User]
-    SET Email=ISNULL(@email,Email), 
-        Name=ISNULL(@name,Name), 
-        PasswordHash=ISNULL(@passwordHash, PasswordHash)
-    WHERE id=@id
+    UPDATE [User] SET Email=ISNULL(@email,Email), Name=ISNULL(@name,Name), PasswordHash=ISNULL(@passwordHash, PasswordHash)
+	WHERE id=@id
 END

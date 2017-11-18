@@ -59,6 +59,8 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="StoredProcedures" />
+    <Folder Include="StoredProcedures\Role" />
+    <Folder Include="StoredProcedures\UserRole" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Course.sql" />
@@ -67,6 +69,17 @@
     <Build Include="StoredProcedures\AddUser.sql" />
     <Build Include="StoredProcedures\GetUser.sql" />
     <Build Include="StoredProcedures\UpdateUser.sql" />
+    <Build Include="Tables\Role.sql" />
+    <Build Include="Tables\UserRole.sql" />
+    <Build Include="StoredProcedures\Role\AddRole.sql" />
+    <Build Include="StoredProcedures\Role\GetRole.sql" />
+    <Build Include="StoredProcedures\UserRole\AddUserToRole.sql" />
+    <Build Include="StoredProcedures\UserRole\DeleteUserFromRole.sql" />
+    <Build Include="StoredProcedures\UserRole\GetUserRoles.sql" />
+    <Build Include="StoredProcedures\UserRole\IsUserInRole.sql" />
+    <Build Include="StoredProcedures\DeleteUser.sql" />
+    <Build Include="StoredProcedures\Role\DeleteRole.sql" />
+    <Build Include="StoredProcedures\Role\UpdateRole.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />

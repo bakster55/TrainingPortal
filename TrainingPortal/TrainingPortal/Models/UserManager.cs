@@ -17,6 +17,7 @@ namespace TrainingPortal.Models
 		public ApplicationUserManager(IUserStore<ApplicationUser> store)
 				: base(store)
 		{
+
 		}
 
 		public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
@@ -50,7 +51,27 @@ namespace TrainingPortal.Models
 				manager.UserTokenProvider =
 						new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
 			}
+
+			InitializeDataBase(manager);
+
 			return manager;
+		}
+
+		public static void InitializeDataBase(ApplicationUserManager manager)
+		{
+			//try
+			//{
+			//	RoleManager<Role> roleManager = new RoleManager<Role>(new RoleStore());
+			//	roleManager.Create(new Role() { Name = "admin" });
+
+			//	ApplicationUser user = new ApplicationUser() { Email = "a@a.com", UserName = "admin" };
+			//	manager.CreateAsync(user, "admin123").Wait();
+			//	manager.AddToRole(user.Id, "admin");
+			//}
+			//catch (Exception e)
+			//{
+
+			//}
 		}
 	}
 

@@ -1,0 +1,7 @@
+﻿CREATE PROCEDURE [dbo].[AddRole]
+	@id INT OUTPUT,
+	@name NVARCHAR(50)
+AS
+	INSERT INTO [Role] VALUES(@name)
+	SELECT @id = SCOPE_IDENTITY()
+RETURN 0
