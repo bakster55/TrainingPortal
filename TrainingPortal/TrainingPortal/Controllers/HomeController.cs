@@ -11,7 +11,6 @@ namespace WebApplication1.Controllers
 	public class HomeController : Controller
 	{
 		private readonly ILog log = LogManager.GetLogger("Logger");
-		private readonly IApiService _apiService = new ApiService();
 
 		public HomeController()
 		{
@@ -20,17 +19,6 @@ namespace WebApplication1.Controllers
 
 		public ActionResult Index()
 		{
-			string message = _apiService.GetMessage();
-
-			try
-			{
-				string errorMessage = _apiService.GetMessageException();
-			}
-			catch (Exception e)
-			{
-				log.Error(e.Message);
-			}
-
 			return View();
 		}
 

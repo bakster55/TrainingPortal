@@ -61,14 +61,13 @@
     <Folder Include="StoredProcedures" />
     <Folder Include="StoredProcedures\Role" />
     <Folder Include="StoredProcedures\UserRole" />
+    <Folder Include="StoredProcedures\User" />
+    <Folder Include="StoredProcedures\Course" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Course.sql" />
     <Build Include="Tables\CourseForUser.sql" />
     <Build Include="Tables\User.sql" />
-    <Build Include="StoredProcedures\AddUser.sql" />
-    <Build Include="StoredProcedures\GetUser.sql" />
-    <Build Include="StoredProcedures\UpdateUser.sql" />
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\UserRole.sql" />
     <Build Include="StoredProcedures\Role\AddRole.sql" />
@@ -77,9 +76,17 @@
     <Build Include="StoredProcedures\UserRole\DeleteUserFromRole.sql" />
     <Build Include="StoredProcedures\UserRole\GetUserRoles.sql" />
     <Build Include="StoredProcedures\UserRole\IsUserInRole.sql" />
-    <Build Include="StoredProcedures\DeleteUser.sql" />
     <Build Include="StoredProcedures\Role\DeleteRole.sql" />
     <Build Include="StoredProcedures\Role\UpdateRole.sql" />
+    <Build Include="StoredProcedures\User\AddUser.sql" />
+    <Build Include="StoredProcedures\User\DeleteUser.sql" />
+    <Build Include="StoredProcedures\User\GetUser.sql" />
+    <Build Include="StoredProcedures\User\UpdateUser.sql" />
+    <Build Include="StoredProcedures\Course\AddCourse.sql" />
+    <Build Include="StoredProcedures\Course\DeleteCourse.sql" />
+    <Build Include="StoredProcedures\Course\GetCourse.sql" />
+    <Build Include="StoredProcedures\Course\UpdateCourse.sql" />
+    <Build Include="StoredProcedures\Course\GetCourses.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />
