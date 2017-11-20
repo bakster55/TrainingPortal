@@ -48,7 +48,7 @@ namespace TrainingPortal.Models
 
 		public Task UpdateAsync(ApplicationUser user)
 		{
-			string id = UserRepository.UpdateUser(user);
+			UserRepository.UpdateUser(user);
 
 			return Task.FromResult(0);
 		}

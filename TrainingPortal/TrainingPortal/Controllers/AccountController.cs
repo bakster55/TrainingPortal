@@ -142,6 +142,79 @@ namespace CodeSystem.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 
+		//
+		// GET: /Account/Index
+		public async Task<ActionResult> Index()
+		{
+			ApplicationUser applicationUser = await ApplicationUserManager.FindByIdAsync(User.Identity.GetUserId());
+			ViewBag.Roles = String.Join(",", ApplicationUserManager.GetRoles(User.Identity.GetUserId()));
+
+			return View(applicationUser);
+		}
+
+		//
+		// GET: /Account/ChangeProfile
+		public async Task<ActionResult> ChangeProfile()
+		{
+			ApplicationUser applicationUser = await ApplicationUserManager.FindByIdAsync(User.Identity.GetUserId());
+
+			return View(applicationUser);
+		}
+
+		//
+		// POST: /Account/ChangeProfile
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> ChangeProfile(ApplicationUser user)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(user);
+			}
+			var result = await ApplicationUserManager.UpdateAsync(user);
+			if (result.Succeeded)
+			{
+				if (user != null)
+				{
+					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+				}
+				return RedirectToAction("Index");
+			}
+			AddErrors(result);
+			return View(user);
+		}
+
+		//
+		// GET: /Account/ChangePassword
+		public ActionResult ChangePassword()
+		{
+			return View();
+		}
+
+		//
+		// POST: /Account/ChangePassword
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+			var result = await ApplicationUserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+			if (result.Succeeded)
+			{
+				var user = await ApplicationUserManager.FindByIdAsync(User.Identity.GetUserId());
+				if (user != null)
+				{
+					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+				}
+				return RedirectToAction("Index");
+			}
+			AddErrors(result);
+			return View(model);
+		}
+
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)

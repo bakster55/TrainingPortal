@@ -71,9 +71,23 @@ namespace TrainingPortal.Models
 			}
 		}
 
-		internal static string UpdateUser(ApplicationUser user)
+		internal static void UpdateUser(ApplicationUser user)
 		{
-			throw new NotImplementedException();
+			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+			{
+				using (SqlCommand sqlCommand = new SqlCommand("UpdateUser", sqlConnection))
+				{
+					sqlCommand.CommandType = CommandType.StoredProcedure;
+
+					sqlCommand.Parameters.Add("@id", SqlDbType.Int).Value = user.Id;
+					sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 50).Value = user.UserName;
+					sqlCommand.Parameters.Add("@email", SqlDbType.NVarChar, 50).Value = user.Email;
+					sqlCommand.Parameters.Add("@passwordHash", SqlDbType.NVarChar, -1).Value = user.PasswordHash;
+
+					sqlConnection.Open();
+					sqlCommand.ExecuteNonQuery();
+				}
+			}
 		}
 
 		public static string CreateUser(string email, string name, string passwordHash)
