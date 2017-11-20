@@ -1,0 +1,4 @@
+﻿CREATE PROCEDURE [dbo].[GetRoles]
+AS
+	SELECT * FROM [Role]
+RETURN 0

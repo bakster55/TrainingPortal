@@ -12,7 +12,7 @@ namespace TrainingPortal.Models
 {
 	public partial class UserStore : IUserStore<ApplicationUser>
 	{
-		private string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
+		private static string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
 
 		public Task CreateAsync(ApplicationUser user)
 		{
@@ -24,7 +24,9 @@ namespace TrainingPortal.Models
 
 		public Task DeleteAsync(ApplicationUser user)
 		{
-			throw new NotImplementedException();
+			UserRepository.DeleteUser(user.Id);
+
+			return Task.FromResult(0);
 		}
 
 		public void Dispose()
@@ -51,6 +53,16 @@ namespace TrainingPortal.Models
 			UserRepository.UpdateUser(user);
 
 			return Task.FromResult(0);
+		}
+	}
+
+	public partial class UserStore : IQueryableUserStore<ApplicationUser>
+	{
+		public IQueryable<ApplicationUser> Users
+		{
+			get {
+				return UserRepository.GetUsers().AsQueryable();
+			}
 		}
 	}
 

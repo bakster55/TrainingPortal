@@ -13,6 +13,38 @@ namespace TrainingPortal.Models
 	{
 		private static string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
 
+		internal static IList<ApplicationUser> GetUsers()
+		{
+			List<ApplicationUser> users = new List<ApplicationUser>();
+
+			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+			{
+				using (SqlCommand sqlCommand = new SqlCommand("GetUsers", sqlConnection))
+				{
+					sqlCommand.CommandType = CommandType.StoredProcedure;
+
+					sqlConnection.Open();
+
+					using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader(CommandBehavior.CloseConnection))
+					{
+						while (sqlDataReader.Read())
+						{
+							string id = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Id")).ToString();
+							string email = sqlDataReader.GetString(sqlDataReader.GetOrdinal("Email"));
+							string passwordHash = sqlDataReader.GetString(sqlDataReader.GetOrdinal("PasswordHash"));
+							string userName = sqlDataReader.GetString(sqlDataReader.GetOrdinal("Name"));
+
+							users.Add(new ApplicationUser() { Id = id, Email = email, PasswordHash = passwordHash, UserName = userName });
+						}
+
+						sqlDataReader.Close();
+					}
+				}
+			}
+
+			return users;
+		}
+
 		public static ApplicationUser GetUser(string id = null, string email = null, string name = null)
 		{
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
@@ -114,6 +146,22 @@ namespace TrainingPortal.Models
 					string id = sqlCommand.Parameters["@id"].Value.ToString();
 
 					return id;
+				}
+			}
+		}
+
+		public static void DeleteUser(string id)
+		{
+			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+			{
+				using (SqlCommand sqlCommand = new SqlCommand("DeleteUser", sqlConnection))
+				{
+					sqlCommand.CommandType = CommandType.StoredProcedure;
+
+					sqlCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+					sqlConnection.Open();
+					sqlCommand.ExecuteNonQuery();
 				}
 			}
 		}

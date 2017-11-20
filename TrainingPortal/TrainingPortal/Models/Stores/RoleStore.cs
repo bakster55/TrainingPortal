@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity;
 
 namespace TrainingPortal.Models
 {
-	public class RoleStore : IRoleStore<Role, string>
+	public partial class RoleStore : IRoleStore<Role, string>
 	{
 		public Task CreateAsync(Role role)
 		{
@@ -48,6 +48,14 @@ namespace TrainingPortal.Models
 			RoleRepository.UpdateAsync(role);
 
 			return Task.FromResult(0);
+		}
+	}
+
+	public partial class RoleStore : IQueryableRoleStore<Role>
+	{
+		public IQueryable<Role> Roles
+		{
+			get { return RoleRepository.GetRoles().AsQueryable(); }
 		}
 	}
 }

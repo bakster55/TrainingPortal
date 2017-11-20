@@ -41,6 +41,36 @@ namespace TrainingPortal.Models
 
 		}
 
+		internal static IList<Role> GetRoles()
+		{
+			List<Role> roles = new List<Role>();
+
+			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+			{
+				using (SqlCommand sqlCommand = new SqlCommand("GetRoles", sqlConnection))
+				{
+					sqlCommand.CommandType = CommandType.StoredProcedure;
+
+					sqlConnection.Open();
+
+					using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader(CommandBehavior.CloseConnection))
+					{
+						while (sqlDataReader.Read())
+						{
+							string id = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Id")).ToString();
+							string roleName = sqlDataReader.GetString(sqlDataReader.GetOrdinal("Name"));
+
+							roles.Add(new Role() { Id = id, Name = roleName });
+						}
+
+						sqlDataReader.Close();
+					}
+				}
+			}
+
+			return roles;
+		}
+
 		internal static Role GetRole(string id = null, string name = null)
 		{
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))

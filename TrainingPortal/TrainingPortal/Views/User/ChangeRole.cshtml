@@ -1,0 +1,72 @@
+﻿@model TrainingPortal.Models.ApplicationUser
+
+@{
+	ViewBag.Title = "ChangeRole";
+}
+
+<h2>ChangeRole</h2>
+
+<div class="form-horizontal">
+	<h4>ApplicationUser</h4>
+	<hr />
+
+	<div class="form-group">
+		@Html.Label("Role", htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownList("roleName", new SelectList(ViewBag.Roles), new { @class = "form-control", @style = "display:inline-block;" })
+
+			<button class="btn btn-success" onclick="onAddClicked()">Add</button>
+			<button class="btn btn-danger" onclick="onRemoveClicked()">Remove</button>
+		</div>
+	</div>
+
+	<div class="row">
+		@Html.Label("User roles", htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			<ol>
+				@foreach (string role in ViewBag.UserRoles)
+			{
+					<li>@role</li>
+			}
+			</ol>
+		</div>
+	</div>
+</div>
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+	var onAddClicked = function () {
+		$.ajax({
+			url: "/User/AddToRole",
+			type: "POST",
+			data: {
+				id: @Model.Id,
+				roleName: $("#roleName").val()
+			},
+			success: function (res) {
+				location.reload();
+			}
+		})
+	}
+
+		var onRemoveClicked = function () {
+		$.ajax({
+			url: "/User/RemoveFromRole",
+			type: "POST",
+			data: {
+				id: @Model.Id,
+				roleName: $("#roleName").val()
+			},
+			success: function (res) {
+				location.reload();
+			}
+		})
+	}
+</script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -87,6 +87,8 @@
     <Build Include="StoredProcedures\Course\GetCourse.sql" />
     <Build Include="StoredProcedures\Course\UpdateCourse.sql" />
     <Build Include="StoredProcedures\Course\GetCourses.sql" />
+    <Build Include="StoredProcedures\User\GetUsers.sql" />
+    <Build Include="StoredProcedures\Role\GetRoles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />

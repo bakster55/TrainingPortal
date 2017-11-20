@@ -52,26 +52,27 @@ namespace TrainingPortal.Models
 						new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
 			}
 
-			InitializeDataBase(manager);
+			//InitializeDataBase(manager);
 
 			return manager;
 		}
 
 		public static void InitializeDataBase(ApplicationUserManager manager)
 		{
-			//try
-			//{
-			//	RoleManager<Role> roleManager = new RoleManager<Role>(new RoleStore());
-			//	roleManager.Create(new Role() { Name = "admin" });
+			try
+			{
+				RoleManager<Role> roleManager = new RoleManager<Role>(new RoleStore());
+				roleManager.Create(new Role() { Name = "admin" });
+				roleManager.Create(new Role() { Name = "editor" });
 
-			//	ApplicationUser user = new ApplicationUser() { Email = "a@a.com", UserName = "admin" };
-			//	manager.CreateAsync(user, "admin123").Wait();
-			//	manager.AddToRole(user.Id, "admin");
-			//}
-			//catch (Exception e)
-			//{
+				ApplicationUser user = new ApplicationUser() { Email = "a@a.com", UserName = "admin" };
+				manager.CreateAsync(user, "admin123").Wait();
+				manager.AddToRole(user.Id, "admin");
+			}
+			catch (Exception e)
+			{
 
-			//}
+			}
 		}
 	}
 

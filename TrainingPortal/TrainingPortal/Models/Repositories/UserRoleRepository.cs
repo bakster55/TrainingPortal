@@ -79,7 +79,7 @@ namespace TrainingPortal.Models
 
 		internal static bool IsInRoleAsync(ApplicationUser user, string roleName)
 		{
-			string returnValue = "";
+			bool isInRole = false;
 
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
 			{
@@ -106,11 +106,11 @@ namespace TrainingPortal.Models
 
 					sqlConnection.Open();
 
-					returnValue = sqlCommand.ExecuteScalar().ToString();
+					isInRole = sqlCommand.ExecuteReader().HasRows;
 				}
 			}
 
-			return returnValue == "1";
+			return isInRole;
 		}
 
 		internal static void RemoveFromRoleAsync(ApplicationUser user, string roleName)

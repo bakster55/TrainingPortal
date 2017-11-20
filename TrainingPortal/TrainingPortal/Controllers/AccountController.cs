@@ -80,7 +80,7 @@ namespace CodeSystem.Controllers
 			switch (result)
 			{
 				case SignInStatus.Success:
-					return RedirectToLocal(returnUrl);
+					return RedirectToAction("Index", "Course");
 				case SignInStatus.LockedOut:
 					return View("Lockout");
 				case SignInStatus.RequiresVerification:
@@ -123,7 +123,7 @@ namespace CodeSystem.Controllers
 					// var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 					// await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-					return RedirectToAction("Index", "Home");
+					return RedirectToAction("Index", "Course");
 				}
 				AddErrors(result);
 			}
@@ -139,7 +139,7 @@ namespace CodeSystem.Controllers
 		public ActionResult LogOff()
 		{
 			AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("Index", "Course");
 		}
 
 		//
@@ -253,15 +253,6 @@ namespace CodeSystem.Controllers
 			{
 				ModelState.AddModelError("", error);
 			}
-		}
-
-		private ActionResult RedirectToLocal(string returnUrl)
-		{
-			if (Url.IsLocalUrl(returnUrl))
-			{
-				return Redirect(returnUrl);
-			}
-			return RedirectToAction("Index", "Home");
 		}
 
 		internal class ChallengeResult : HttpUnauthorizedResult
