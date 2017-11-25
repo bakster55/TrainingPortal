@@ -47,14 +47,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\CourseService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\RoleService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserRoleService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\CourseRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\UserRoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -76,6 +94,42 @@
     <None Include="Connected Services\CategoryService\TrainingPortal.Client.CategoryService.CategoryDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\CourseService\CourseService.wsdl" />
+    <None Include="Connected Services\CourseService\CourseService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CourseService\CourseService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CourseService\CourseService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CourseService\TrainingPortal.Client.CourseService.CourseDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RoleService\RoleService.wsdl" />
+    <None Include="Connected Services\RoleService\RoleService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RoleService\RoleService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RoleService\RoleService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RoleService\TrainingPortal.Client.RoleService.RoleDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserRoleService\UserRoleService.wsdl" />
+    <None Include="Connected Services\UserRoleService\UserRoleService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserRoleService\UserRoleService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserRoleService\UserRoleService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\UserService\TrainingPortal.Client.UserService.UserDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -92,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\CategoryService\" />
+    <WCFMetadataStorage Include="Connected Services\CourseService\" />
+    <WCFMetadataStorage Include="Connected Services\RoleService\" />
+    <WCFMetadataStorage Include="Connected Services\UserRoleService\" />
     <WCFMetadataStorage Include="Connected Services\UserService\" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +180,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\UserService\UserService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CourseService\CourseService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CourseService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CourseService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CourseService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RoleService\RoleService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RoleService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RoleService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RoleService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserRoleService\UserRoleService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserRoleService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserRoleService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserRoleService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

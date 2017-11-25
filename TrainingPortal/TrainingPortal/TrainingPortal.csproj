@@ -173,10 +173,6 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ManageViewModel.cs" />
-    <Compile Include="Models\Repositories\CourseRepository.cs" />
-    <Compile Include="Models\Repositories\RoleRepository.cs" />
-    <Compile Include="Models\Repositories\UserRoleRepository.cs" />
-    <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Stores\RoleStore.cs" />
     <Compile Include="Models\Stores\UserRoleStore.cs" />

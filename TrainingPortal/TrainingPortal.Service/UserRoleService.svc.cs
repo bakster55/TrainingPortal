@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using TrainingPortal.Service.Dto;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Service
 {
-	public class UserRoleRepository
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "UserRoleService" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select UserRoleService.svc or UserRoleService.svc.cs at the Solution Explorer and start debugging.
+	public class UserRoleService : IUserRoleService
 	{
-		private static string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
+		private string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
 
-		internal static void AddToRoleAsync(ApplicationUser user, string roleName)
+		public void Create(string userId, string roleName)
 		{
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
 			{
@@ -23,7 +26,7 @@ namespace TrainingPortal.Models
 						Direction = ParameterDirection.Input,
 						DbType = DbType.Int32,
 						ParameterName = "@userId",
-						Value = user.Id,
+						Value = userId,
 					});
 
 					sqlCommand.Parameters.Add(new SqlParameter()
@@ -41,7 +44,74 @@ namespace TrainingPortal.Models
 			}
 		}
 
-		internal static IList<string> GetRolesAsync(ApplicationUser user)
+		public void Delete(string userId, string roleName)
+		{
+			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+			{
+				using (SqlCommand sqlCommand = new SqlCommand("DeleteUserFromRole", sqlConnection))
+				{
+					sqlCommand.CommandType = CommandType.StoredProcedure;
+
+					sqlCommand.Parameters.Add(new SqlParameter()
+					{
+						Direction = ParameterDirection.Input,
+						DbType = DbType.Int32,
+						ParameterName = "@userId",
+						Value = userId,
+					});
+
+					sqlCommand.Parameters.Add(new SqlParameter()
+					{
+						Direction = ParameterDirection.Input,
+						DbType = DbType.String,
+						ParameterName = "@roleName",
+						Size = 50,
+						Value = roleName,
+					});
+
+					sqlConnection.Open();
+					sqlCommand.ExecuteNonQuery();
+				}
+			}
+		}
+
+		public bool Exist(string userId, string roleName)
+		{
+			bool exist = false;
+
+			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+			{
+				using (SqlCommand sqlCommand = new SqlCommand("IsUserInRole", sqlConnection))
+				{
+					sqlCommand.CommandType = CommandType.StoredProcedure;
+
+					sqlCommand.Parameters.Add(new SqlParameter()
+					{
+						Direction = ParameterDirection.Input,
+						DbType = DbType.Int32,
+						ParameterName = "@userId",
+						Value = userId,
+					});
+
+					sqlCommand.Parameters.Add(new SqlParameter()
+					{
+						Direction = ParameterDirection.Input,
+						DbType = DbType.String,
+						ParameterName = "@roleName",
+						Size = 50,
+						Value = roleName,
+					});
+
+					sqlConnection.Open();
+
+					exist = sqlCommand.ExecuteReader().HasRows;
+				}
+			}
+
+			return exist;
+		}
+
+		public IList<string> GetList(string userId)
 		{
 			List<string> roleNames = new List<string>();
 
@@ -56,7 +126,7 @@ namespace TrainingPortal.Models
 						Direction = ParameterDirection.Input,
 						DbType = DbType.Int32,
 						ParameterName = "@userId",
-						Value = user.Id,
+						Value = userId,
 					});
 
 					sqlConnection.Open();
@@ -75,73 +145,6 @@ namespace TrainingPortal.Models
 			}
 
 			return roleNames;
-		}
-
-		internal static bool IsInRoleAsync(ApplicationUser user, string roleName)
-		{
-			bool isInRole = false;
-
-			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
-			{
-				using (SqlCommand sqlCommand = new SqlCommand("IsUserInRole", sqlConnection))
-				{
-					sqlCommand.CommandType = CommandType.StoredProcedure;
-
-					sqlCommand.Parameters.Add(new SqlParameter()
-					{
-						Direction = ParameterDirection.Input,
-						DbType = DbType.Int32,
-						ParameterName = "@userId",
-						Value = user.Id,
-					});
-
-					sqlCommand.Parameters.Add(new SqlParameter()
-					{
-						Direction = ParameterDirection.Input,
-						DbType = DbType.String,
-						ParameterName = "@roleName",
-						Size = 50,
-						Value = roleName,
-					});
-
-					sqlConnection.Open();
-
-					isInRole = sqlCommand.ExecuteReader().HasRows;
-				}
-			}
-
-			return isInRole;
-		}
-
-		internal static void RemoveFromRoleAsync(ApplicationUser user, string roleName)
-		{
-			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
-			{
-				using (SqlCommand sqlCommand = new SqlCommand("DeleteUserFromRole", sqlConnection))
-				{
-					sqlCommand.CommandType = CommandType.StoredProcedure;
-
-					sqlCommand.Parameters.Add(new SqlParameter()
-					{
-						Direction = ParameterDirection.Input,
-						DbType = DbType.Int32,
-						ParameterName = "@userId",
-						Value = user.Id,
-					});
-
-					sqlCommand.Parameters.Add(new SqlParameter()
-					{
-						Direction = ParameterDirection.Input,
-						DbType = DbType.String,
-						ParameterName = "@roleName",
-						Size = 50,
-						Value = roleName,
-					});
-
-					sqlConnection.Open();
-					sqlCommand.ExecuteNonQuery();
-				}
-			}
 		}
 	}
 }

@@ -20,6 +20,7 @@ namespace TrainingPortal.Models
 		public UserStore()
 		{
 			userRepository = new UserRepository();
+			userRoleRepository = new UserRoleRepository();
 		}
 
 		public Task CreateAsync(ApplicationUser user)

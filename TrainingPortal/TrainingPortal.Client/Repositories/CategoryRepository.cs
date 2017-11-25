@@ -1,57 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-using TrainingPortal.Client.UserService;
+﻿using TrainingPortal.Client.CategoryService;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class UserRepository : IUserService
+	public class CategoryRepository : ICategoryService
 	{
-		private UserServiceClient userServiceClient;
+		private CategoryServiceClient categoryServiceClient;
 
-		public UserRepository()
+		public CategoryRepository()
 		{
-			userServiceClient = new UserServiceClient();
-			userServiceClient.Open();
+			categoryServiceClient = new CategoryServiceClient();
+			categoryServiceClient.Open();
 		}
 
-		~UserRepository()
+		~CategoryRepository()
 		{
-			userServiceClient.Close();
+			categoryServiceClient.Close();
 		}
 
-		public string Create(UserDto user)
+		public void Create(CategoryDto category)
 		{
-			string id = userServiceClient.Create(user);
-
-			return id;
+			categoryServiceClient.Create(category);
 		}
 
 		public void Delete(string id)
 		{
-			userServiceClient.Delete(id);
+			categoryServiceClient.Delete(id);
 		}
 
-		public UserDto Get(string id = null, string email = null, string name = null)
+		public CategoryDto Get(string id)
 		{
-			UserDto user = userServiceClient.Get(id, email, name);
+			CategoryDto category = categoryServiceClient.Get(id);
 
-			return user;
+			return category;
 		}
 
-		public UserDto[] GetList()
+		public CategoryDto[] GetList()
 		{
-			UserDto[] users = userServiceClient.GetList();
+			CategoryDto[] categories = categoryServiceClient.GetList();
 
-			return users;
+			return categories;
 		}
 
-		public void Update(UserDto user)
+		public void Update(CategoryDto category)
 		{
-			userServiceClient.Update(user);
+			categoryServiceClient.Update(category);
 		}
 	}
 }

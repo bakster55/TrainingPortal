@@ -1,4 +1,4 @@
-﻿using TrainingPortal.Client.CategoryService;
+﻿using TrainingPortal.Client.CourseService;
 
 namespace TrainingPortal.Models
 {
@@ -8,7 +8,8 @@ namespace TrainingPortal.Models
 
 		public string Name { get; set; }
 
-		public static implicit operator Category(CategoryDto category)
+		//From CourseService
+		public static implicit operator Category(TrainingPortal.Client.CourseService.CategoryDto category)
 		{
 			if (category != null)
 			{
@@ -22,11 +23,40 @@ namespace TrainingPortal.Models
 			return null;
 		}
 
-		public static implicit operator CategoryDto(Category category)
+		public static implicit operator TrainingPortal.Client.CourseService.CategoryDto(Category category)
 		{
 			if (category != null)
 			{
-				return new CategoryDto()
+				return new TrainingPortal.Client.CourseService.CategoryDto()
+				{
+					Id = category.Id,
+					Name = category.Name,
+				};
+			}
+
+			return null;
+		}
+
+		//From CategoryService
+		public static implicit operator Category(TrainingPortal.Client.CategoryService.CategoryDto category)
+		{
+			if (category != null)
+			{
+				return new Category()
+				{
+					Id = category.Id,
+					Name = category.Name,
+				};
+			}
+
+			return null;
+		}
+
+		public static implicit operator TrainingPortal.Client.CategoryService.CategoryDto(Category category)
+		{
+			if (category != null)
+			{
+				return new TrainingPortal.Client.CategoryService.CategoryDto()
 				{
 					Id = category.Id,
 					Name = category.Name,

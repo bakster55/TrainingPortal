@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using TrainingPortal.Client.CourseService;
 
 namespace TrainingPortal.Models
 {
@@ -7,6 +7,38 @@ namespace TrainingPortal.Models
 		public string Id { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }
-		public List<Category> Categories { get; set; }
+		public Category Category { get; set; }
+
+		public static implicit operator Course(CourseDto course)
+		{
+			if (course != null)
+			{
+				return new Course()
+				{
+					Id = course.Id,
+					Name = course.Name,
+					Description = course.Description,
+					Category= course.Category
+				};
+			}
+
+			return null;
+		}
+
+		public static implicit operator CourseDto(Course course)
+		{
+			if (course != null)
+			{
+				return new CourseDto()
+				{
+					Id = course.Id,
+					Name = course.Name,
+					Description = course.Description,
+					Category = course.Category
+				};
+			}
+
+			return null;
+		}
 	}
 }

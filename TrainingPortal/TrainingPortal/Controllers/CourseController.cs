@@ -1,30 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using TrainingPortal.Data.Repositories;
 using TrainingPortal.Models;
 
 namespace TrainingPortal.Controllers
 {
 	public class CourseController : Controller
 	{
-		public ActionResult Index()
+		private CourseRepository courseRepository;
+		private CategoryRepository categoryRepository;
+
+		public CourseController()
 		{
-			List<Course> courses = CourseRepository.GetCourses();
+			courseRepository = new CourseRepository();
+			categoryRepository = new CategoryRepository();
+		}
+
+		public ActionResult Index(string categoryId)
+		{
+			List<Course> courses = courseRepository.GetList().Select(course => (Course)course).ToList();
+
+			if (!string.IsNullOrEmpty(categoryId))
+			{
+				courses = courses.Where(c => c.Category.Id == categoryId).ToList(); ;
+			}
+
+			List<Category> categories = categoryRepository.GetList().Select(course => (Category)course).ToList();
+			ViewBag.Categories = categories;
 
 			return View(courses);
 		}
 
 		public ActionResult Details(int id)
 		{
-			Course course = CourseRepository.GetCourse(id);
+			Course course = courseRepository.Get(id.ToString());
 
 			return View(course);
 		}
 
 		public ActionResult Create()
 		{
+			CategoryRepository categoryRepository = new CategoryRepository();
+
+			var categories = categoryRepository.GetList().Select(category => (Category)category);
+			ViewBag.Categories = categories;
+
 			return View();
 		}
 
@@ -33,7 +54,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				CourseRepository.CreateCourse(course);
+				courseRepository.Create(course);
 
 				return RedirectToAction("Index");
 			}
@@ -45,7 +66,12 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Edit(int id)
 		{
-			Course course = CourseRepository.GetCourse(id);
+			CategoryRepository categoryRepository = new CategoryRepository();
+
+			var categories = categoryRepository.GetList().Select(category => (Category)category);
+			ViewBag.Categories = categories;
+
+			Course course = courseRepository.Get(id.ToString());
 
 			return View(course);
 		}
@@ -55,7 +81,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				CourseRepository.UpdateCourse(id, course);
+				courseRepository.Update(course);
 
 				return RedirectToAction("Index");
 			}
@@ -67,7 +93,7 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Delete(int id)
 		{
-			Course course = CourseRepository.GetCourse(id);
+			Course course = courseRepository.Get(id.ToString());
 
 			return View(course);
 		}
@@ -77,7 +103,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				CourseRepository.DeleteCourse(id);
+				courseRepository.Delete(id.ToString());
 
 				return RedirectToAction("Index");
 			}

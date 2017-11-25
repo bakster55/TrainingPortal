@@ -3,5 +3,5 @@
 	@name NVARCHAR(50) = NULL,
 	@description NVARCHAR(MAX) = NULL
 AS
-	SELECT * FROM [Course]
+	SELECT * FROM [Course] INNER JOIN Category ON Course.CategoryId = Category.Id
 RETURN 0
