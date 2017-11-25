@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="CategoryService.svc" />
     <Content Include="CourseService.svc" />
+    <Content Include="LessonService.svc" />
     <Content Include="RoleService.svc" />
     <Content Include="UserRoleService.svc" />
     <Content Include="UserService.svc" />
@@ -77,15 +78,20 @@
     <Compile Include="CourseService.svc.cs">
       <DependentUpon>CourseService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dto\LessonDto.cs" />
     <Compile Include="Dto\CourseDto.cs" />
     <Compile Include="Dto\CategoryDto.cs" />
     <Compile Include="Dto\RoleDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
+    <Compile Include="Interfaces\ILessonService.cs" />
     <Compile Include="Interfaces\ICourseService.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IRoleService.cs" />
     <Compile Include="Interfaces\IUserRoleService.cs" />
+    <Compile Include="LessonService.svc.cs">
+      <DependentUpon>LessonService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleService.svc.cs">
       <DependentUpon>RoleService.svc</DependentUpon>

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
-using TrainingPortal.Client.CategoryService;
 using TrainingPortal.Models;
 
 namespace TrainingPortal.Controllers
@@ -20,11 +17,7 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Index()
 		{
-			List<Category> categories = categoryRepository.GetList().Select(category => new Category()
-			{
-				Id = category.Id,
-				Name = category.Name,
-			}).ToList();
+			List<Category> categories = categoryRepository.GetList().Select(category => (Category)category).ToList();
 
 			return View(categories);
 		}

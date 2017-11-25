@@ -52,6 +52,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\LessonService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\RoleService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,6 +73,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\LessonRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
@@ -105,6 +111,19 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\CourseService\TrainingPortal.Client.CourseService.CourseDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\LessonService\LessonService.wsdl" />
+    <None Include="Connected Services\LessonService\LessonService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LessonService\LessonService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LessonService\LessonService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LessonService\TrainingPortal.Client.LessonService.LessonDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RoleService\RoleService.wsdl" />
@@ -147,6 +166,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\CategoryService\" />
     <WCFMetadataStorage Include="Connected Services\CourseService\" />
+    <WCFMetadataStorage Include="Connected Services\LessonService\" />
     <WCFMetadataStorage Include="Connected Services\RoleService\" />
     <WCFMetadataStorage Include="Connected Services\UserRoleService\" />
     <WCFMetadataStorage Include="Connected Services\UserService\" />
@@ -222,6 +242,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\UserRoleService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LessonService\LessonService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LessonService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LessonService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LessonService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

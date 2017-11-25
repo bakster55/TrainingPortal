@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="766281f2-ca66-4c93-92fb-04a81661ae83" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:51750/LessonService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LessonService.wsdl" MetadataType="Wsdl" ID="91c40838-4416-4aee-989d-ad95c05a11ee" SourceId="1" SourceUrl="http://localhost:51750/LessonService.svc?wsdl" />
+    <MetadataFile FileName="LessonService.disco" MetadataType="Disco" ID="26a547fd-6083-4781-b342-9f79d1f46033" SourceId="1" SourceUrl="http://localhost:51750/LessonService.svc?disco" />
+    <MetadataFile FileName="LessonService.xsd" MetadataType="Schema" ID="d89409f8-30ac-4a54-bf75-3f0c55761f6f" SourceId="1" SourceUrl="http://localhost:51750/LessonService.svc?xsd=xsd0" />
+    <MetadataFile FileName="LessonService1.xsd" MetadataType="Schema" ID="af33ee94-067f-45ef-94f1-c6de479e8c4c" SourceId="1" SourceUrl="http://localhost:51750/LessonService.svc?xsd=xsd2" />
+    <MetadataFile FileName="LessonService2.xsd" MetadataType="Schema" ID="6ac59bea-c3f7-4048-b9bc-4443aec22abd" SourceId="1" SourceUrl="http://localhost:51750/LessonService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

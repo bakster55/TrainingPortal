@@ -31,6 +31,12 @@
 			@Html.DisplayFor(model => model.Category.Name)
 		</dd>
 
+		<hr />
+
+		<dt>Lessons:</dt>
+		<dd>
+			[@Html.ActionLink("Change lessons", "Index", "Lesson",new { courseId = Model.Id }, null)]
+		</dd>
 	</dl>
 </div>
 <p>
