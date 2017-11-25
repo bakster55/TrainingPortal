@@ -9,7 +9,6 @@ namespace TrainingPortal.Controllers
 {
 	public class CourseController : Controller
 	{
-		// GET: Course
 		public ActionResult Index()
 		{
 			List<Course> courses = CourseRepository.GetCourses();
@@ -17,7 +16,6 @@ namespace TrainingPortal.Controllers
 			return View(courses);
 		}
 
-		// GET: Course/Details/5
 		public ActionResult Details(int id)
 		{
 			Course course = CourseRepository.GetCourse(id);
@@ -25,13 +23,11 @@ namespace TrainingPortal.Controllers
 			return View(course);
 		}
 
-		// GET: Course/Create
 		public ActionResult Create()
 		{
 			return View();
 		}
 
-		// POST: Course/Create
 		[HttpPost]
 		public ActionResult Create(Course course)
 		{
@@ -47,7 +43,6 @@ namespace TrainingPortal.Controllers
 			}
 		}
 
-		// GET: Course/Edit/5
 		public ActionResult Edit(int id)
 		{
 			Course course = CourseRepository.GetCourse(id);
@@ -55,7 +50,6 @@ namespace TrainingPortal.Controllers
 			return View(course);
 		}
 
-		// POST: Course/Edit/5
 		[HttpPost]
 		public ActionResult Edit(int id, Course course)
 		{
@@ -67,11 +61,10 @@ namespace TrainingPortal.Controllers
 			}
 			catch
 			{
-				return View();
+				return View(course);
 			}
 		}
 
-		// GET: Course/Delete/5
 		public ActionResult Delete(int id)
 		{
 			Course course = CourseRepository.GetCourse(id);
@@ -79,9 +72,8 @@ namespace TrainingPortal.Controllers
 			return View(course);
 		}
 
-		// POST: Course/Delete/5
 		[HttpPost]
-		public ActionResult Delete(int id, FormCollection collection)
+		public ActionResult Delete(int id, Course course)
 		{
 			try
 			{
@@ -91,7 +83,7 @@ namespace TrainingPortal.Controllers
 			}
 			catch
 			{
-				return View();
+				return View(course);
 			}
 		}
 	}

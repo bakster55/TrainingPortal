@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using TrainingPortal.Models;
+using TrainingPortal.Service.Dto;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Service
 {
-	public static class UserRepository
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "UserService" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select UserService.svc or UserService.svc.cs at the Solution Explorer and start debugging.
+	public class UserService : IUserService
 	{
-		private static string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
+		private string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
 
-		internal static IList<ApplicationUser> GetUsers()
+		public IList<UserDto> GetList()
 		{
-			List<ApplicationUser> users = new List<ApplicationUser>();
+			List<UserDto> users = new List<UserDto>();
 
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
 			{
@@ -34,7 +34,7 @@ namespace TrainingPortal.Models
 							string passwordHash = sqlDataReader.GetString(sqlDataReader.GetOrdinal("PasswordHash"));
 							string userName = sqlDataReader.GetString(sqlDataReader.GetOrdinal("Name"));
 
-							users.Add(new ApplicationUser() { Id = id, Email = email, PasswordHash = passwordHash, UserName = userName });
+							users.Add(new UserDto() { Id = id, Email = email, PasswordHash = passwordHash, UserName = userName });
 						}
 
 						sqlDataReader.Close();
@@ -45,7 +45,7 @@ namespace TrainingPortal.Models
 			return users;
 		}
 
-		public static ApplicationUser GetUser(string id = null, string email = null, string name = null)
+		public UserDto Get(string id = null, string email = null, string name = null)
 		{
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
 			{
@@ -90,7 +90,7 @@ namespace TrainingPortal.Models
 					sqlConnection.Open();
 					sqlCommand.ExecuteNonQuery();
 
-					ApplicationUser applicationUser = new ApplicationUser()
+					UserDto user = new UserDto()
 					{
 						Id = sqlCommand.Parameters["@id"].Value.ToString(),
 						UserName = sqlCommand.Parameters["@name"].Value.ToString(),
@@ -98,12 +98,12 @@ namespace TrainingPortal.Models
 						PasswordHash = sqlCommand.Parameters["@passwordHash"].Value.ToString()
 					};
 
-					return String.IsNullOrEmpty(applicationUser.Id) ? null : applicationUser;
+					return String.IsNullOrEmpty(user.Id) ? null : user;
 				}
 			}
 		}
 
-		internal static void UpdateUser(ApplicationUser user)
+		public void Update(UserDto user)
 		{
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
 			{
@@ -122,7 +122,7 @@ namespace TrainingPortal.Models
 			}
 		}
 
-		public static string CreateUser(string email, string name, string passwordHash)
+		public string Create(UserDto user)
 		{
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
 			{
@@ -136,9 +136,9 @@ namespace TrainingPortal.Models
 						DbType = DbType.Int32,
 						ParameterName = "@id",
 					});
-					sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 50).Value = name;
-					sqlCommand.Parameters.Add("@email", SqlDbType.NVarChar, 50).Value = email;
-					sqlCommand.Parameters.Add("@passwordHash", SqlDbType.NVarChar, -1).Value = passwordHash;
+					sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 50).Value = user.UserName;
+					sqlCommand.Parameters.Add("@email", SqlDbType.NVarChar, 50).Value = user.Email;
+					sqlCommand.Parameters.Add("@passwordHash", SqlDbType.NVarChar, -1).Value = user.PasswordHash;
 
 					sqlConnection.Open();
 					sqlCommand.ExecuteNonQuery();
@@ -150,7 +150,7 @@ namespace TrainingPortal.Models
 			}
 		}
 
-		public static void DeleteUser(string id)
+		public void Delete(string id)
 		{
 			using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
 			{

@@ -63,6 +63,7 @@
     <Folder Include="StoredProcedures\UserRole" />
     <Folder Include="StoredProcedures\User" />
     <Folder Include="StoredProcedures\Course" />
+    <Folder Include="StoredProcedures\Category" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Course.sql" />
@@ -89,6 +90,12 @@
     <Build Include="StoredProcedures\Course\GetCourses.sql" />
     <Build Include="StoredProcedures\User\GetUsers.sql" />
     <Build Include="StoredProcedures\Role\GetRoles.sql" />
+    <Build Include="StoredProcedures\Category\AddCategory.sql" />
+    <Build Include="StoredProcedures\Category\DeleteCategory.sql" />
+    <Build Include="StoredProcedures\Category\GetCategory.sql" />
+    <Build Include="StoredProcedures\Category\GetCategories.sql" />
+    <Build Include="StoredProcedures\Category\UpdateCategory.sql" />
+    <Build Include="Tables\Category.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />

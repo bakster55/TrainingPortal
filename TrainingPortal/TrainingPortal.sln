@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal", "TrainingPortal\TrainingPortal.csproj", "{1DA6D227-7952-4ED2-91E7-A9D119DB2A1D}"
 EndProject
@@ -9,7 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Tests", "Tra
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TrainingPortal.DataBase", "TrainingPortal.DataBase\TrainingPortal.DataBase.sqlproj", "{AEB1B41D-B559-45C8-A1EC-A4C57D4428B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Api", "TrainingPortal.Api\TrainingPortal.Api.csproj", "{18F3B9B9-0C59-443E-BF2C-82663D1C58AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Service", "TrainingPortal.Service\TrainingPortal.Service.csproj", "{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Data", "TrainingPortal.Client\TrainingPortal.Data.csproj", "{A6B5C4EE-E435-4573-8C14-50F4088CC871}"
+	ProjectSection(ProjectDependencies) = postProject
+		{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9} = {729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Business", "TrainingPortal.Business\TrainingPortal.Business.csproj", "{9AC9A607-D9A6-4E91-BA6F-6EB53FAC601F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +38,18 @@ Global
 		{AEB1B41D-B559-45C8-A1EC-A4C57D4428B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEB1B41D-B559-45C8-A1EC-A4C57D4428B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AEB1B41D-B559-45C8-A1EC-A4C57D4428B3}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{18F3B9B9-0C59-443E-BF2C-82663D1C58AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18F3B9B9-0C59-443E-BF2C-82663D1C58AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18F3B9B9-0C59-443E-BF2C-82663D1C58AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18F3B9B9-0C59-443E-BF2C-82663D1C58AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B5C4EE-E435-4573-8C14-50F4088CC871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B5C4EE-E435-4573-8C14-50F4088CC871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B5C4EE-E435-4573-8C14-50F4088CC871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B5C4EE-E435-4573-8C14-50F4088CC871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AC9A607-D9A6-4E91-BA6F-6EB53FAC601F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AC9A607-D9A6-4E91-BA6F-6EB53FAC601F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AC9A607-D9A6-4E91-BA6F-6EB53FAC601F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AC9A607-D9A6-4E91-BA6F-6EB53FAC601F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,16 +7,24 @@ using Microsoft.AspNet.Identity;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using TrainingPortal.Data.Repositories;
+using TrainingPortal.Client.UserService;
 
 namespace TrainingPortal.Models
 {
 	public partial class UserStore : IUserStore<ApplicationUser>
 	{
 		private static string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
+		private UserRepository userRepository;
+
+		public UserStore()
+		{
+			userRepository = new UserRepository();
+		}
 
 		public Task CreateAsync(ApplicationUser user)
 		{
-			string id = UserRepository.CreateUser(user.Email, user.UserName, user.PasswordHash);
+			string id = userRepository.Create(user);
 			user.Id = id;
 
 			return Task.FromResult(0);
@@ -24,7 +32,7 @@ namespace TrainingPortal.Models
 
 		public Task DeleteAsync(ApplicationUser user)
 		{
-			UserRepository.DeleteUser(user.Id);
+			userRepository.Delete(user.Id);
 
 			return Task.FromResult(0);
 		}
@@ -36,21 +44,21 @@ namespace TrainingPortal.Models
 
 		public Task<ApplicationUser> FindByIdAsync(string userId)
 		{
-			ApplicationUser applicationUser = UserRepository.GetUser(userId);
+			ApplicationUser applicationUser = userRepository.Get(userId);
 
 			return Task.FromResult(applicationUser);
 		}
 
 		public Task<ApplicationUser> FindByNameAsync(string userName)
 		{
-			ApplicationUser applicationUser = UserRepository.GetUser(name: userName);
+			ApplicationUser applicationUser = userRepository.Get(name: userName);
 
 			return Task.FromResult(applicationUser);
 		}
 
 		public Task UpdateAsync(ApplicationUser user)
 		{
-			UserRepository.UpdateUser(user);
+			userRepository.Update(user);
 
 			return Task.FromResult(0);
 		}
@@ -60,8 +68,9 @@ namespace TrainingPortal.Models
 	{
 		public IQueryable<ApplicationUser> Users
 		{
-			get {
-				return UserRepository.GetUsers().AsQueryable();
+			get
+			{
+				return userRepository.GetList().Select(u => (ApplicationUser)u).AsQueryable();
 			}
 		}
 	}

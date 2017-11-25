@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
-using System.Data.SqlClient;
-using System.Data;
-using System.Configuration;
+using TrainingPortal.Data.Repositories;
 
 namespace TrainingPortal.Models
 {
@@ -14,7 +9,7 @@ namespace TrainingPortal.Models
 	{
 		public Task<ApplicationUser> FindByEmailAsync(string email)
 		{
-			ApplicationUser applicationUser = UserRepository.GetUser(email: email);
+			ApplicationUser applicationUser = userRepository.Get(email: email);
 
 			return Task.FromResult(applicationUser);
 		}
