@@ -1,0 +1,63 @@
+﻿@model TrainingPortal.Models.Test
+
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm(new { courseId = Request.Params["courseId"] }))
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<h4>Test</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		@*<div class="form-group">
+			@Html.LabelFor(model => model.Options, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				<div class="add-option-button">
+					<a onclick="onAddClicked()" class="btn btn-default">Add option</a>
+				</div>
+			</div>
+		</div>*@
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index", new { courseId = Request.Params["courseId"] })
+</div>
+
+@*<script>
+	var count = 0;
+
+	var onAddClicked = function () {
+		var checkbox = `<input class="form-check-input" id="Options_` + count + `__IsChecked" name="Options[` + count + `].IsChecked" type="checkbox" value="true">`;
+		var textbox = `<input class="form-control text-box single-line" id="Options_` + count + `__Name" name="Options[` + count + `].Name" type="text" value="">`;
+		var option = `<div class="checkbox">` + checkbox + textbox + `</div>`;
+
+		$(".add-option-button").before(option);
+
+		count = count + 1;
+	}
+</script>*@
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

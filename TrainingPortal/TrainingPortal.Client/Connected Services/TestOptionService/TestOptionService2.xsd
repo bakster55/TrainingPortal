@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TrainingPortal.Service.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TrainingPortal.Service.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfTestOptionDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TestOptionDto" nillable="true" type="tns:TestOptionDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTestOptionDto" nillable="true" type="tns:ArrayOfTestOptionDto" />
+  <xs:complexType name="TestOptionDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsChecked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TestOptionDto" nillable="true" type="tns:TestOptionDto" />
+</xs:schema>

@@ -44,3 +44,7 @@ input[type="checkbox"].input-validation-error {
 .navigation {
 	border-right: 1px solid lightgray;
 }
+
+.add-option-button:last-child:not(:first-child) {
+	margin-top: 15px;
+}

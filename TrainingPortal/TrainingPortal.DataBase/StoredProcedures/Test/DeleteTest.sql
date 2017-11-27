@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE [dbo].[DeleteTest]
+	@id INT
+AS
+	DELETE FROM Test WHERE Id = @id
+RETURN 0

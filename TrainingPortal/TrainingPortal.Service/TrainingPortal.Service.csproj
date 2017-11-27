@@ -65,6 +65,8 @@
     <Content Include="CourseService.svc" />
     <Content Include="LessonService.svc" />
     <Content Include="RoleService.svc" />
+    <Content Include="TestOptionService.svc" />
+    <Content Include="TestService.svc" />
     <Content Include="UserRoleService.svc" />
     <Content Include="UserService.svc" />
     <Content Include="Web.config">
@@ -78,6 +80,8 @@
     <Compile Include="CourseService.svc.cs">
       <DependentUpon>CourseService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dto\TestOptionDto.cs" />
+    <Compile Include="Dto\TestDto.cs" />
     <Compile Include="Dto\LessonDto.cs" />
     <Compile Include="Dto\CourseDto.cs" />
     <Compile Include="Dto\CategoryDto.cs" />
@@ -89,12 +93,20 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IRoleService.cs" />
     <Compile Include="Interfaces\IUserRoleService.cs" />
+    <Compile Include="Interfaces\ITestService.cs" />
+    <Compile Include="Interfaces\ITestOptionService.cs" />
     <Compile Include="LessonService.svc.cs">
       <DependentUpon>LessonService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleService.svc.cs">
       <DependentUpon>RoleService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="TestOptionService.svc.cs">
+      <DependentUpon>TestOptionService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="TestService.svc.cs">
+      <DependentUpon>TestService.svc</DependentUpon>
     </Compile>
     <Compile Include="UserRoleService.svc.cs">
       <DependentUpon>UserRoleService.svc</DependentUpon>

@@ -65,6 +65,8 @@
     <Folder Include="StoredProcedures\Course" />
     <Folder Include="StoredProcedures\Category" />
     <Folder Include="StoredProcedures\Lesson" />
+    <Folder Include="StoredProcedures\Test" />
+    <Folder Include="StoredProcedures\TestOption" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Course.sql" />
@@ -103,8 +105,23 @@
     <Build Include="StoredProcedures\Lesson\GetLessons.sql" />
     <Build Include="StoredProcedures\Lesson\GetLesson.sql" />
     <Build Include="StoredProcedures\Lesson\UpdateLesson.sql" />
+    <Build Include="Tables\Test.sql" />
+    <Build Include="StoredProcedures\Test\AddTest.sql" />
+    <Build Include="StoredProcedures\Test\DeleteTest.sql" />
+    <Build Include="StoredProcedures\Test\GetTest.sql" />
+    <Build Include="StoredProcedures\Test\GetTests.sql" />
+    <Build Include="StoredProcedures\Test\UpdateTest.sql" />
+    <Build Include="Tables\TestOption.sql" />
+    <Build Include="StoredProcedures\TestOption\AddTestOption.sql" />
+    <Build Include="StoredProcedures\TestOption\DeleteTestOption.sql" />
+    <Build Include="StoredProcedures\TestOption\GetTestOptions.sql" />
+    <Build Include="StoredProcedures\TestOption\UpdateTest.sql" />
+    <Build Include="StoredProcedures\TestOption\GetTestOption.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="TrainingPortal.DataBase.refactorlog" />
   </ItemGroup>
 </Project>
