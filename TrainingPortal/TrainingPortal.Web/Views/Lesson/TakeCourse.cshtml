@@ -1,0 +1,42 @@
+﻿@model TrainingPortal.Models.Lesson
+
+@{
+	ViewBag.Title = "Lessons";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+	<div class="col-md-3 navigation">
+		<ul class="nav nav-pills nav-stacked">
+			@foreach (var item in ViewBag.Lessons)
+			{
+				string lessonId = Request.Params["lessonId"] != null ? Request.Params["lessonId"]: ViewBag.Lessons[0].Id;
+				<li class="@(lessonId == item.Id ? "active" : "")">
+					@Html.ActionLink((string)item.Name, "TakeCourse", new { courseId = Request.Params["courseId"], lessonId = item.Id })
+				</li>
+			}
+			<li class="active">
+				@Html.ActionLink("Write test", "WriteTest", "Test",new { courseId = Request.Params["courseId"] }, new { @class = "btn" })
+			</li>
+		</ul>
+	</div>
+
+	<div class="col-md-8">
+		@if (Model != null)
+		{
+		<div>
+			<h4>@Model.Name</h4>
+			<hr />
+
+			<pre>@Model.Content</pre>
+		</div>
+		}
+		else
+		{
+			<div>
+				Lesson not found.
+			</div>
+		}
+	</div>
+</div>

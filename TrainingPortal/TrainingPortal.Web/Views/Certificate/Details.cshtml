@@ -1,0 +1,33 @@
+﻿@model TrainingPortal.Models.Certificate
+
+@{
+	ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>Certificate</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.UserId)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.UserId)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Result)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Result)
+		</dd>
+
+	</dl>
+	<div class="col-md-offset-1">
+		<img src="~/Content/certificate.jpg" width="600" height="400" />
+	</div>
+</div>

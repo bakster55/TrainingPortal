@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="697496e8-1927-4391-925a-42652604cc0a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:51750/CertificateService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CertificateService.disco" MetadataType="Disco" ID="5829c678-62aa-41e4-ad68-16f315a923ca" SourceId="1" SourceUrl="http://localhost:51750/CertificateService.svc?disco" />
+    <MetadataFile FileName="CertificateService.xsd" MetadataType="Schema" ID="3b2877b9-50c9-4f9a-bc18-5d14dedd0feb" SourceId="1" SourceUrl="http://localhost:51750/CertificateService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CertificateService.wsdl" MetadataType="Wsdl" ID="7e1e02a4-fd4d-449d-8c91-b56a39af79db" SourceId="1" SourceUrl="http://localhost:51750/CertificateService.svc?wsdl" />
+    <MetadataFile FileName="CertificateService1.xsd" MetadataType="Schema" ID="6a50ca6a-d2ed-499d-9cb9-3d7b5fc6adaa" SourceId="1" SourceUrl="http://localhost:51750/CertificateService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CertificateService2.xsd" MetadataType="Schema" ID="f9005e32-8e67-471e-8c87-27706dfa8cec" SourceId="1" SourceUrl="http://localhost:51750/CertificateService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

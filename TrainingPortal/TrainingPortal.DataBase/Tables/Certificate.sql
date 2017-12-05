@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Certificate]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [UserId] INT NOT NULL FOREIGN KEY REFERENCES [User] (Id),
+	[Result] INT NOT NULL, 
+    [CourseId] INT NOT NULL FOREIGN KEY REFERENCES [Course] (Id),
+)

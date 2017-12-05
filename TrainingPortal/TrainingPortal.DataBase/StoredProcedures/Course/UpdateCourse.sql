@@ -2,9 +2,14 @@
     @id INT,
     @name NVARCHAR(50) = NULL,
     @description NVARCHAR(MAX) = NULL,
-	@categoryId INT
+	@categoryId INT,
+	@audienceId INT
 AS
 BEGIN
-    UPDATE [Course] SET CategoryId = @categoryId, Description=ISNULL(@description,Description), Name=ISNULL(@name,Name)
-	WHERE id=@id
+    UPDATE [Course] SET 
+	AudienceId = @audienceId, 
+	CategoryId = @categoryId, 
+	Description = ISNULL(@description, Description), 
+	Name = ISNULL(@name , Name)
+	WHERE id = @id
 END

@@ -67,6 +67,8 @@
     <Folder Include="StoredProcedures\Lesson" />
     <Folder Include="StoredProcedures\Test" />
     <Folder Include="StoredProcedures\TestOption" />
+    <Folder Include="StoredProcedures\Certificate" />
+    <Folder Include="StoredProcedures\Audience" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Course.sql" />
@@ -117,9 +119,20 @@
     <Build Include="StoredProcedures\TestOption\GetTestOptions.sql" />
     <Build Include="StoredProcedures\TestOption\UpdateTest.sql" />
     <Build Include="StoredProcedures\TestOption\GetTestOption.sql" />
+    <Build Include="Tables\Certificate.sql" />
+    <Build Include="StoredProcedures\Certificate\AddCertificate.sql" />
+    <Build Include="StoredProcedures\Certificate\DeleteCertificate.sql" />
+    <Build Include="StoredProcedures\Certificate\GetCertificate.sql" />
+    <Build Include="Tables\Audience.sql" />
+    <Build Include="StoredProcedures\Audience\AddAudience.sql" />
+    <Build Include="StoredProcedures\Audience\DeleteAudience.sql" />
+    <Build Include="StoredProcedures\Audience\GetAudienceList.sql" />
+    <Build Include="StoredProcedures\Audience\GetAudience.sql" />
+    <Build Include="StoredProcedures\Audience\UpdateAudience.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />
+    <None Include="Initialization.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TrainingPortal.DataBase.refactorlog" />

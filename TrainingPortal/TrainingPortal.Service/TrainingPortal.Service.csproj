@@ -61,7 +61,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AudienceService.svc" />
     <Content Include="CategoryService.svc" />
+    <Content Include="CertificateService.svc" />
     <Content Include="CourseService.svc" />
     <Content Include="LessonService.svc" />
     <Content Include="RoleService.svc" />
@@ -74,12 +76,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudienceService.svc.cs">
+      <DependentUpon>AudienceService.svc</DependentUpon>
+    </Compile>
     <Compile Include="CategoryService.svc.cs">
       <DependentUpon>CategoryService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="CertificateService.svc.cs">
+      <DependentUpon>CertificateService.svc</DependentUpon>
     </Compile>
     <Compile Include="CourseService.svc.cs">
       <DependentUpon>CourseService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dto\AudienceDto.cs" />
+    <Compile Include="Dto\CertificateDto.cs" />
     <Compile Include="Dto\TestOptionDto.cs" />
     <Compile Include="Dto\TestDto.cs" />
     <Compile Include="Dto\LessonDto.cs" />
@@ -87,6 +97,8 @@
     <Compile Include="Dto\CategoryDto.cs" />
     <Compile Include="Dto\RoleDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
+    <Compile Include="Interfaces\IAudienceService.cs" />
+    <Compile Include="Interfaces\ICertificateService.cs" />
     <Compile Include="Interfaces\ILessonService.cs" />
     <Compile Include="Interfaces\ICourseService.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />

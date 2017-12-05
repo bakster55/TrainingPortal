@@ -3,5 +3,7 @@
 	@name NVARCHAR(50) = NULL,
 	@description NVARCHAR(MAX) = NULL
 AS
-	SELECT * FROM [Course] INNER JOIN Category ON Course.CategoryId = Category.Id
+	SELECT * FROM [Course] 
+		LEFT JOIN Category ON Course.CategoryId = Category.Id 
+		LEFT JOIN Audience ON Course.AudienceId = Audience.Id
 RETURN 0

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal", "TrainingPortal\TrainingPortal.csproj", "{1DA6D227-7952-4ED2-91E7-A9D119DB2A1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Web", "TrainingPortal.Web\TrainingPortal.Web.csproj", "{1DA6D227-7952-4ED2-91E7-A9D119DB2A1D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Tests", "TrainingPortal.Tests\TrainingPortal.Tests.csproj", "{E0315609-9822-43D1-9F57-C25A61FB639C}"
 EndProject
@@ -11,7 +11,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TrainingPortal.DataBase", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Service", "TrainingPortal.Service\TrainingPortal.Service.csproj", "{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Data", "TrainingPortal.Client\TrainingPortal.Data.csproj", "{A6B5C4EE-E435-4573-8C14-50F4088CC871}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Web.Data", "TrainingPortal.Web.Data\TrainingPortal.Web.Data.csproj", "{A6B5C4EE-E435-4573-8C14-50F4088CC871}"
 	ProjectSection(ProjectDependencies) = postProject
 		{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9} = {729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}
 	EndProjectSection

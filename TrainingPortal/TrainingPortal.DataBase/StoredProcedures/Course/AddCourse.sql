@@ -1,7 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[AddCourse]
 	@name NVARCHAR(50),
 	@description NVARCHAR(MAX),
-	@categoryId INT
+	@categoryId INT,
+	@audienceId INT
 AS
-	INSERT INTO [Course] VALUES(@name, @description, @categoryId)
+	INSERT INTO [Course] VALUES(@name, @description, @categoryId, @audienceId)
 RETURN 0

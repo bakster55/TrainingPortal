@@ -3,5 +3,6 @@
 	[Id] INT NOT NULL IDENTITY PRIMARY KEY, 
     [Name] NVARCHAR(50) NOT NULL, 
     [Description] NVARCHAR(MAX) NULL,
-	[CategoryId] INT NOT NULL FOREIGN KEY REFERENCES Category(Id)
+	[CategoryId] INT NULL FOREIGN KEY REFERENCES Category(Id), 
+    [AudienceId] INT NULL FOREIGN KEY REFERENCES Audience(Id), 
 )
