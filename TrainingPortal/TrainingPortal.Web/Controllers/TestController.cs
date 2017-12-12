@@ -21,6 +21,7 @@ namespace TrainingPortal.Controllers
 			certificateRepository = new CertificateRepository();
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Index(string courseId)
 		{
 			List<Test> tests = testRepository.GetList(courseId).Select(test => (Test)test).ToList();
@@ -99,6 +100,7 @@ namespace TrainingPortal.Controllers
 			});
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Details(string id)
 		{
 			Test test = testRepository.Get(id);
@@ -106,11 +108,13 @@ namespace TrainingPortal.Controllers
 			return View(test);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Create()
 		{
 			return View();
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Create(Test test, string courseId)
 		{
@@ -126,6 +130,7 @@ namespace TrainingPortal.Controllers
 			}
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Edit(string id)
 		{
 			Test test = testRepository.Get(id);
@@ -133,6 +138,7 @@ namespace TrainingPortal.Controllers
 			return View(test);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Edit(Test test, string courseId)
 		{
@@ -148,6 +154,7 @@ namespace TrainingPortal.Controllers
 			}
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Delete(string id)
 		{
 			Test test = testRepository.Get(id);
@@ -155,6 +162,7 @@ namespace TrainingPortal.Controllers
 			return View(test);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Delete(Test test, string courseId)
 		{

@@ -15,6 +15,7 @@ namespace TrainingPortal.Controllers
 			lessonRepository = new LessonRepository();
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Index(string courseId)
 		{
 			List<Lesson> lessons = lessonRepository.GetList(courseId).Select(lesson => (Lesson)lesson).ToList();
@@ -46,6 +47,7 @@ namespace TrainingPortal.Controllers
 			
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Details(string id)
 		{
 			Lesson lesson = lessonRepository.Get(id);
@@ -53,11 +55,13 @@ namespace TrainingPortal.Controllers
 			return View(lesson);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Create()
 		{
 			return View();
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Create(Lesson lesson, string courseId)
 		{
@@ -73,6 +77,7 @@ namespace TrainingPortal.Controllers
 			}
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Edit(string id)
 		{
 			Lesson lesson = lessonRepository.Get(id);
@@ -80,6 +85,7 @@ namespace TrainingPortal.Controllers
 			return View(lesson);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Edit(Lesson lesson, string courseId)
 		{
@@ -95,6 +101,7 @@ namespace TrainingPortal.Controllers
 			}
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Delete(string id)
 		{
 			Lesson lesson = lessonRepository.Get(id);
@@ -102,6 +109,7 @@ namespace TrainingPortal.Controllers
 			return View(lesson);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Delete(Lesson lesson, string courseId)
 		{

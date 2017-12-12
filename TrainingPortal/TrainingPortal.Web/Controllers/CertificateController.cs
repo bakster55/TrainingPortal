@@ -7,6 +7,7 @@ using TrainingPortal.Models;
 
 namespace TrainingPortal.Controllers
 {
+	[Authorize]
 	public class CertificateController : Controller
 	{
 		private CertificateRepository certificateRepository;

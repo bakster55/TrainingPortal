@@ -7,6 +7,7 @@ using TrainingPortal.Models;
 
 namespace TrainingPortal.Controllers
 {
+	[Authorize(Roles = "admin, editor")]
 	public class TestOptionController : Controller
 	{
 		private TestOptionRepository testOptionRepository;

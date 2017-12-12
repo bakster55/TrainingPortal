@@ -56,18 +56,25 @@
 
 		<hr />
 
-		<dt>Lessons:</dt>
-		<dd>
-			[@Html.ActionLink("Change lessons", "Index", "Lesson", new { courseId = Model.Id }, null)]
-		</dd>
+		@if (User.IsInRole("admin") || User.IsInRole("editor"))
+		{
+			<dt>Lessons:</dt>
+			<dd>
+				[@Html.ActionLink("Change lessons", "Index", "Lesson", new { courseId = Model.Id }, null)]
+			</dd>
 
-		<dt>Tests:</dt>
-		<dd>
-			[@Html.ActionLink("Change tests", "Index", "Test", new { courseId = Model.Id }, null)]
-		</dd>
+			<dt>Tests:</dt>
+			<dd>
+				[@Html.ActionLink("Change tests", "Index", "Test", new { courseId = Model.Id }, null)]
+			</dd>
+		}
 	</dl>
 </div>
 <p>
-	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+	@if (User.IsInRole("admin") || User.IsInRole("editor"))
+	{
+		@Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+		@:|
+	}
 	@Html.ActionLink("Back to List", "Index")
 </p>

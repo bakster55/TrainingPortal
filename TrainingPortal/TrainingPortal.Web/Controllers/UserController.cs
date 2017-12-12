@@ -10,6 +10,7 @@ using TrainingPortal.Models;
 
 namespace TrainingPortal.Controllers
 {
+	[Authorize(Roles = "admin")]
 	public class UserController : Controller
 	{
 		private ApplicationSignInManager _signInManager;
@@ -49,7 +50,6 @@ namespace TrainingPortal.Controllers
 			}
 		}
 
-		// GET: User
 		public ActionResult Index()
 		{
 			List<ApplicationUser> users = ApplicationUserManager.Users.ToList();
@@ -57,7 +57,6 @@ namespace TrainingPortal.Controllers
 			return View(users);
 		}
 
-		// GET: User/Details/5
 		public async Task<ActionResult> Details(int id)
 		{
 			ApplicationUser user = await ApplicationUserManager.FindByIdAsync(id.ToString());
@@ -65,13 +64,11 @@ namespace TrainingPortal.Controllers
 			return View(user);
 		}
 
-		// GET: User/ChangePassword/5
 		public ActionResult ChangePassword(int id)
 		{
 			return View();
 		}
 
-		// POST: User/ChangePassword/5
 		[HttpPost]
 		public async Task<ActionResult> ChangePassword(int id, ChangePasswordAdminViewModel model)
 		{
@@ -95,8 +92,6 @@ namespace TrainingPortal.Controllers
 			return View(model);
 		}
 
-		//
-		// GET: /User/ChangeProfile/5
 		public async Task<ActionResult> ChangeProfile(int id)
 		{
 			ApplicationUser applicationUser = await ApplicationUserManager.FindByIdAsync(id.ToString());
@@ -104,8 +99,6 @@ namespace TrainingPortal.Controllers
 			return View(applicationUser);
 		}
 
-		//
-		// POST: /User/ChangeProfile/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> ChangeProfile(ApplicationUser user)
@@ -123,8 +116,6 @@ namespace TrainingPortal.Controllers
 			return View(user);
 		}
 
-		//
-		// GET: /User/ChangeProfile/5
 		public async Task<ActionResult> ChangeRole(int id)
 		{
 			ApplicationUser applicationUser = await ApplicationUserManager.FindByIdAsync(id.ToString());
@@ -148,7 +139,6 @@ namespace TrainingPortal.Controllers
 			ApplicationUserManager.RemoveFromRole(id.ToString(), roleName);
 		}
 
-		// GET: User/Delete/5
 		public async Task<ActionResult> Delete(int id)
 		{
 			ApplicationUser user = await ApplicationUserManager.FindByIdAsync(id.ToString());
@@ -156,7 +146,6 @@ namespace TrainingPortal.Controllers
 			return View(user);
 		}
 
-		// POST: User/Delete/5
 		[HttpPost]
 		public ActionResult Delete(ApplicationUser user)
 		{

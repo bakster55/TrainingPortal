@@ -11,7 +11,7 @@
 	<div class="col-md-3 navigation">
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active">
-				<a href="#" onclick ="onCategoryClicked(this);">All</a>
+				<a href="#" onclick="onCategoryClicked(this);">All</a>
 			</li>
 			@foreach (var item in ViewBag.Categories)
 			{
@@ -34,9 +34,12 @@
 			@Html.DropDownList("audienceId", new SelectList(audienceList, "Id", "Name"), new { @class = "form-control" })
 			<button class="btn btn-primary" onclick="onSearchClicked();">Search</button>
 		</div>
-		<p class="col-md-4">
-			@Html.ActionLink("Create New", "Create")
-		</p>
+		@if (User.IsInRole("admin") || User.IsInRole("editor"))
+		{
+			<p class="col-md-4">
+				@Html.ActionLink("Create New", "Create")
+			</p>
+		}
 		<div class="courses">
 			@Html.Partial("Partials/Index", Model)
 		</div>

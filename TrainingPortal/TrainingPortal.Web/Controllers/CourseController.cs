@@ -78,6 +78,7 @@ namespace TrainingPortal.Controllers
 			return View(course);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Create()
 		{
 			CategoryRepository categoryRepository = new CategoryRepository();
@@ -91,6 +92,7 @@ namespace TrainingPortal.Controllers
 			return View();
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Create(Course course)
 		{
@@ -106,6 +108,7 @@ namespace TrainingPortal.Controllers
 			}
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Edit(int id)
 		{
 			CategoryRepository categoryRepository = new CategoryRepository();
@@ -121,6 +124,7 @@ namespace TrainingPortal.Controllers
 			return View(course);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Edit(int id, Course course)
 		{
@@ -136,6 +140,7 @@ namespace TrainingPortal.Controllers
 			}
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		public ActionResult Delete(int id)
 		{
 			Course course = courseRepository.Get(id.ToString());
@@ -143,6 +148,7 @@ namespace TrainingPortal.Controllers
 			return View(course);
 		}
 
+		[Authorize(Roles = "admin, editor")]
 		[HttpPost]
 		public ActionResult Delete(int id, Course course)
 		{

@@ -6,6 +6,7 @@ using TrainingPortal.Models;
 
 namespace TrainingPortal.Controllers
 {
+	[Authorize(Roles = "admin, editor")]
 	public class CategoryController : Controller
 	{
 		private CategoryRepository categoryRepository;
