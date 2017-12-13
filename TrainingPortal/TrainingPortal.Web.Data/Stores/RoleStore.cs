@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
+using TrainingPortal.Data.Models;
 using TrainingPortal.Data.Repositories;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Data.Stores
 {
 	public partial class RoleStore : IRoleStore<Role, string>
 	{

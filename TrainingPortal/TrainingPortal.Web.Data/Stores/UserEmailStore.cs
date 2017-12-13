@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Threading.Tasks;
-using TrainingPortal.Data.Repositories;
+using TrainingPortal.Data.Models;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Data.Stores
 {
 	public partial class UserStore : IUserEmailStore<ApplicationUser>
 	{

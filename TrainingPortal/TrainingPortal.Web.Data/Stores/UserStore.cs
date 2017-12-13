@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using System;
+using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
-using System.Data.SqlClient;
-using System.Data;
-using System.Configuration;
+using TrainingPortal.Data.Models;
 using TrainingPortal.Data.Repositories;
-using TrainingPortal.Web.Data.UserService;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Data.Stores
 {
 	public partial class UserStore : IUserStore<ApplicationUser>
 	{
-		private static string _connectionString = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
 		private UserRepository userRepository;
 
 		public UserStore()

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using TrainingPortal.Web.Data.UserService;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Data.Models
 {
 	public class ApplicationUser : IUser
 	{

@@ -132,9 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="TrainingPortal.DataBase.publish.xml" />
-    <None Include="Initialization.sql" />
+    <None Include="FullDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TrainingPortal.DataBase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

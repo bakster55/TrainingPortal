@@ -5,7 +5,7 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using TrainingPortal.Web.Data.RoleService;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Data.Models
 {
 	public class Role : IRole
 	{

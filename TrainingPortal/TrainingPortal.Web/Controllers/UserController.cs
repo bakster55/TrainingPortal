@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TrainingPortal.Data.Models;
+using TrainingPortal.Data.Stores;
 using TrainingPortal.Models;
 
 namespace TrainingPortal.Controllers

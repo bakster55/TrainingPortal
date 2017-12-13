@@ -9,6 +9,8 @@ using System.Security.Claims;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity.Owin;
+using TrainingPortal.Data.Models;
+using TrainingPortal.Data.Stores;
 
 namespace TrainingPortal.Models
 {

@@ -1,15 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
-using System.Data.SqlClient;
-using System.Data;
-using System.Configuration;
+using TrainingPortal.Data.Models;
 using TrainingPortal.Data.Repositories;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Data.Stores
 {
 	public partial class UserStore : IUserRoleStore<ApplicationUser>
 	{
