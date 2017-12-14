@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
-using TrainingPortal.Data.Models;
+using TrainingPortal.Models;
 
-namespace TrainingPortal.Data.Stores
+namespace TrainingPortal.Models.Stores
 {
 	public partial class UserStore : IUserPasswordStore<ApplicationUser>
 	{

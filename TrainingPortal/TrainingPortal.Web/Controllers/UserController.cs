@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using TrainingPortal.Data.Models;
-using TrainingPortal.Data.Stores;
+using TrainingPortal.Models.Stores;
 using TrainingPortal.Models;
+using TrainingPortal.Web.Data.RoleService;
+using TrainingPortal.Data.Repositories;
+using TrainingPortal.App_Start;
 
 namespace TrainingPortal.Controllers
 {
@@ -80,11 +82,15 @@ namespace TrainingPortal.Controllers
 			}
 
 			ApplicationUser user = await ApplicationUserManager.FindByIdAsync(id.ToString());
-			var userStore = new UserStore();
-			string passwordHash = ApplicationUserManager.PasswordHasher.HashPassword(model.NewPassword);
-			await userStore.SetPasswordHashAsync(user, passwordHash);
+			//var userStore = new UserStore();
+			//string passwordHash = ApplicationUserManager.PasswordHasher.HashPassword(model.NewPassword);
+			//await userStore.SetPasswordHashAsync(user, passwordHash);
 
-			var result = ApplicationUserManager.Update(user);
+			var userId = User.Identity.GetUserId();
+			var token = await ApplicationUserManager.GeneratePasswordResetTokenAsync(user.Id);
+			var result = await ApplicationUserManager.ResetPasswordAsync(user.Id, token, model.NewPassword);
+
+			//var result = ApplicationUserManager.Update(user);
 			if (result.Succeeded)
 			{
 				return RedirectToAction("Details", user);
@@ -122,7 +128,8 @@ namespace TrainingPortal.Controllers
 		{
 			ApplicationUser applicationUser = await ApplicationUserManager.FindByIdAsync(id.ToString());
 
-			RoleManager<Role> roleManager = new RoleManager<Role>(new RoleStore());
+			RoleRepository roleRepository = (RoleRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IRoleService));
+			RoleManager<Role> roleManager = new RoleManager<Role>(new RoleStore(roleRepository));
 			ViewBag.Roles  = roleManager.Roles.Select(r => r.Name).ToList();
 			ViewBag.UserRoles = ApplicationUserManager.GetRoles(id.ToString());
 

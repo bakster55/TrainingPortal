@@ -5,3 +5,5 @@
 3) Поменять адреса в TrainingPortal.Web/Web.config.
 4) Запустить TrainingPortal.Service через Visual Studion или IIS.
 5) Запустить TrainingPortal.Web через Visual Studion или IIS.
+
+Аккаунт администратора: UserName: admin Password: 1234567q

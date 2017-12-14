@@ -3,29 +3,30 @@ using System.Linq;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
 using TrainingPortal.Models;
+using TrainingPortal.Web.Data.AudienceService;
 
 namespace TrainingPortal.Controllers
 {
 	[Authorize(Roles = "admin, editor")]
 	public class AudienceController : Controller
 	{
-		private AudienceRepository audienceRepository;
+		private IAudienceService _audienceRepository;
 
-		public AudienceController()
+		public AudienceController(IAudienceService audienceRepository)
 		{
-			audienceRepository = new AudienceRepository();
+			_audienceRepository = audienceRepository;
 		}
 
 		public ActionResult Index()
 		{
-			List<Audience> audienceList = audienceRepository.GetList().Select(audience => (Audience)audience).ToList();
+			List<Audience> audienceList = _audienceRepository.GetList().Select(audience => (Audience)audience).ToList();
 
 			return View(audienceList);
 		}
 
 		public ActionResult Details(string id)
 		{
-			Audience audience = audienceRepository.Get(id);
+			Audience audience = _audienceRepository.Get(id);
 
 			return View(audience);
 		}
@@ -40,7 +41,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				audienceRepository.Create(audience);
+				_audienceRepository.Create(audience);
 
 				return RedirectToAction("Index");
 			}
@@ -52,7 +53,7 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Edit(int id)
 		{
-			Audience audience = audienceRepository.Get(id.ToString());
+			Audience audience = _audienceRepository.Get(id.ToString());
 
 			return View(audience);
 		}
@@ -62,7 +63,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				audienceRepository.Update(audience);
+				_audienceRepository.Update(audience);
 
 				return RedirectToAction("Index");
 			}
@@ -74,7 +75,7 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Delete(int id)
 		{
-			Audience audience = audienceRepository.Get(id.ToString());
+			Audience audience = _audienceRepository.Get(id.ToString());
 
 			return View(audience);
 		}
@@ -84,7 +85,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				audienceRepository.Delete(id.ToString());
+				_audienceRepository.Delete(id.ToString());
 
 				return RedirectToAction("Index");
 			}

@@ -3,29 +3,30 @@ using System.Linq;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
 using TrainingPortal.Models;
+using TrainingPortal.Web.Data.CategoryService;
 
 namespace TrainingPortal.Controllers
 {
 	[Authorize(Roles = "admin, editor")]
 	public class CategoryController : Controller
 	{
-		private CategoryRepository categoryRepository;
+		private ICategoryService _categoryRepository;
 
-		public CategoryController()
+		public CategoryController(ICategoryService categoryRepository)
 		{
-			categoryRepository = new CategoryRepository();
+			_categoryRepository = categoryRepository;
 		}
 
 		public ActionResult Index()
 		{
-			List<Category> categories = categoryRepository.GetList().Select(category => (Category)category).ToList();
+			List<Category> categories = _categoryRepository.GetList().Select(category => (Category)category).ToList();
 
 			return View(categories);
 		}
 
 		public ActionResult Details(int id)
 		{
-			Category category = categoryRepository.Get(id.ToString());
+			Category category = _categoryRepository.Get(id.ToString());
 
 			return View(category);
 		}
@@ -40,7 +41,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				categoryRepository.Create(category);
+				_categoryRepository.Create(category);
 
 				return RedirectToAction("Index");
 			}
@@ -52,7 +53,7 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Edit(int id)
 		{
-			Category category = categoryRepository.Get(id.ToString());
+			Category category = _categoryRepository.Get(id.ToString());
 
 			return View(category);
 		}
@@ -62,7 +63,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				categoryRepository.Update(category);
+				_categoryRepository.Update(category);
 
 				return RedirectToAction("Index");
 			}
@@ -74,7 +75,7 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Delete(int id)
 		{
-			Category category = categoryRepository.Get(id.ToString());
+			Category category = _categoryRepository.Get(id.ToString());
 
 			return View(category);
 		}
@@ -84,7 +85,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				categoryRepository.Delete(id.ToString());
+				_categoryRepository.Delete(id.ToString());
 
 				return RedirectToAction("Index");
 			}

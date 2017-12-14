@@ -4,24 +4,26 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using TrainingPortal.Data.Models;
+using TrainingPortal.Models;
 using TrainingPortal.Data.Repositories;
+using TrainingPortal.Web.Data.UserService;
+using TrainingPortal.Web.Data.UserRoleService;
 
-namespace TrainingPortal.Data.Stores
+namespace TrainingPortal.Models.Stores
 {
 	public partial class UserStore : IUserStore<ApplicationUser>
 	{
-		private UserRepository userRepository;
+		private IUserService _userRepository;
 
-		public UserStore()
+		public UserStore(IUserService userRepository, IUserRoleService userRoleRepository)
 		{
-			userRepository = new UserRepository();
-			userRoleRepository = new UserRoleRepository();
+			_userRepository = userRepository;
+			_userRoleRepository = userRoleRepository;
 		}
 
 		public Task CreateAsync(ApplicationUser user)
 		{
-			string id = userRepository.Create(user);
+			string id = _userRepository.Create(user);
 			user.Id = id;
 
 			return Task.FromResult(0);
@@ -29,7 +31,7 @@ namespace TrainingPortal.Data.Stores
 
 		public Task DeleteAsync(ApplicationUser user)
 		{
-			userRepository.Delete(user.Id);
+			_userRepository.Delete(user.Id);
 
 			return Task.FromResult(0);
 		}
@@ -41,21 +43,21 @@ namespace TrainingPortal.Data.Stores
 
 		public Task<ApplicationUser> FindByIdAsync(string userId)
 		{
-			ApplicationUser applicationUser = userRepository.Get(userId);
+			ApplicationUser applicationUser = _userRepository.Get(userId, null, null);
 
 			return Task.FromResult(applicationUser);
 		}
 
 		public Task<ApplicationUser> FindByNameAsync(string userName)
 		{
-			ApplicationUser applicationUser = userRepository.Get(name: userName);
+			ApplicationUser applicationUser = _userRepository.Get(null, null, userName);
 
 			return Task.FromResult(applicationUser);
 		}
 
 		public Task UpdateAsync(ApplicationUser user)
 		{
-			userRepository.Update(user);
+			_userRepository.Update(user);
 
 			return Task.FromResult(0);
 		}
@@ -67,7 +69,7 @@ namespace TrainingPortal.Data.Stores
 		{
 			get
 			{
-				return userRepository.GetList().Select(u => (ApplicationUser)u).AsQueryable();
+				return _userRepository.GetList().Select(u => (ApplicationUser)u).AsQueryable();
 			}
 		}
 	}

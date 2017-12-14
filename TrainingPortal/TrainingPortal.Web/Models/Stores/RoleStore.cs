@@ -1,23 +1,24 @@
 ﻿using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Threading.Tasks;
-using TrainingPortal.Data.Models;
+using TrainingPortal.Models;
 using TrainingPortal.Data.Repositories;
+using TrainingPortal.Web.Data.RoleService;
 
-namespace TrainingPortal.Data.Stores
+namespace TrainingPortal.Models.Stores
 {
 	public partial class RoleStore : IRoleStore<Role, string>
 	{
-		private RoleRepository roleRepository;
+		private IRoleService _roleRepository;
 
-		public RoleStore()
+		public RoleStore(IRoleService roleRepository)
 		{
-			roleRepository = new RoleRepository();
+			_roleRepository = roleRepository;
 		}
 
 		public Task CreateAsync(Role role)
 		{
-			string id = roleRepository.Create(role);
+			string id = _roleRepository.Create(role);
 			role.Id = id;
 
 			return Task.FromResult(0);
@@ -25,7 +26,7 @@ namespace TrainingPortal.Data.Stores
 
 		public Task DeleteAsync(Role role)
 		{
-			roleRepository.Delete(role.Id);
+			_roleRepository.Delete(role.Id);
 
 			return Task.FromResult(0);
 		}
@@ -37,21 +38,21 @@ namespace TrainingPortal.Data.Stores
 
 		public Task<Role> FindByIdAsync(string roleId)
 		{
-			Role role = roleRepository.Get(roleId);
+			Role role = _roleRepository.Get(roleId, null);
 
 			return Task.FromResult(role);
 		}
 
 		public Task<Role> FindByNameAsync(string roleName)
 		{
-			Role role = roleRepository.Get(name: roleName);
+			Role role = _roleRepository.Get(null, roleName);
 
 			return Task.FromResult(role);
 		}
 
 		public Task UpdateAsync(Role role)
 		{
-			roleRepository.Update(role);
+			_roleRepository.Update(role);
 
 			return Task.FromResult(0);
 		}
@@ -61,7 +62,7 @@ namespace TrainingPortal.Data.Stores
 	{
 		public IQueryable<Role> Roles
 		{
-			get { return roleRepository.GetList().Select(r => (Role)r).AsQueryable(); }
+			get { return _roleRepository.GetList().Select(r => (Role)r).AsQueryable(); }
 		}
 	}
 }

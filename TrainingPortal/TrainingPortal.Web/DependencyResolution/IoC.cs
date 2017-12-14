@@ -19,7 +19,9 @@
 namespace TrainingPortal.DependencyResolution
 {
 	using StructureMap;
+	using TrainingPortal.Data.Repositories;
 	using TrainingPortal.Models;
+	using TrainingPortal.Web.Data.AudienceService;
 
 	public static class IoC
 	{
@@ -27,8 +29,7 @@ namespace TrainingPortal.DependencyResolution
 		{
 			return new Container(c =>
 			{
-				//c.AddRegistry<DefaultRegistry>();
-				//c.For<IApiService>().Use<ApiService>();
+				c.AddRegistry<DefaultRegistry>();
 			});
 		}
 	}

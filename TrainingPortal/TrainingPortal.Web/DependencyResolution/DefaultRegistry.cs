@@ -15,23 +15,48 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace TrainingPortal.DependencyResolution {
-    using StructureMap.Configuration.DSL;
-    using StructureMap.Graph;
-	
-    public class DefaultRegistry : Registry {
-        #region Constructors and Destructors
+namespace TrainingPortal.DependencyResolution
+{
+	using StructureMap.Configuration.DSL;
+	using StructureMap.Graph;
+	using TrainingPortal.Data.Repositories;
+	using TrainingPortal.Web.Data.AudienceService;
+	using TrainingPortal.Web.Data.CategoryService;
+	using TrainingPortal.Web.Data.CertificateService;
+	using TrainingPortal.Web.Data.CourseService;
+	using TrainingPortal.Web.Data.LessonService;
+	using TrainingPortal.Web.Data.TestOptionService;
+	using TrainingPortal.Web.Data.TestService;
+	using TrainingPortal.Web.Data.RoleService;
+	using TrainingPortal.Web.Data.UserRoleService;
+	using TrainingPortal.Web.Data.UserService;
 
-        public DefaultRegistry() {
-            Scan(
-                scan => {
-                    scan.TheCallingAssembly();
-                    scan.WithDefaultConventions();
-					scan.With(new ControllerConvention());
-                });
-            //For<IExample>().Use<Example>();
-        }
+	public class DefaultRegistry : Registry
+	{
+		#region Constructors and Destructors
 
-        #endregion
-    }
+		public DefaultRegistry()
+		{
+			Scan(
+					scan =>
+					{
+						scan.TheCallingAssembly();
+						scan.WithDefaultConventions();
+						scan.With(new ControllerConvention());
+					});
+
+			For<IAudienceService>().Use<AudienceRepository>();
+			For<ICategoryService>().Use<CategoryRepository>();
+			For<ICertificateService>().Use<CertificateRepository>();
+			For<ICourseService>().Use<CourseRepository>();
+			For<ILessonService>().Use<LessonRepository>();
+			For<IRoleService>().Use<RoleRepository>();
+			For<ITestOptionService>().Use<TestOptionRepository>();
+			For<ITestService>().Use<TestRepository>();
+			For<IUserService>().Use<UserRepository>();
+			For<IUserRoleService>().Use<UserRoleRepository>();
+		}
+
+		#endregion
+	}
 }

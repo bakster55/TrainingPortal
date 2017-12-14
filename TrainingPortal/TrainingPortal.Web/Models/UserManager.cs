@@ -9,8 +9,12 @@ using System.Security.Claims;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity.Owin;
-using TrainingPortal.Data.Models;
-using TrainingPortal.Data.Stores;
+using TrainingPortal.Models;
+using TrainingPortal.Models.Stores;
+using TrainingPortal.Web.Data.UserService;
+using TrainingPortal.Data.Repositories;
+using TrainingPortal.App_Start;
+using TrainingPortal.Web.Data.UserRoleService;
 
 namespace TrainingPortal.Models
 {
@@ -24,7 +28,10 @@ namespace TrainingPortal.Models
 
 		public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
 		{
-			var manager = new ApplicationUserManager(new UserStore());
+			UserRepository userRepository = (UserRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IUserService));
+			UserRoleRepository userRoleRepository = (UserRoleRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IUserRoleService));
+
+			var manager = new ApplicationUserManager(new UserStore(userRepository, userRoleRepository));
 			// Configure validation logic for usernames
 			manager.UserValidator = new UserValidator<ApplicationUser>(manager)
 			{
@@ -54,27 +61,7 @@ namespace TrainingPortal.Models
 						new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
 			}
 
-			//InitializeDataBase(manager);
-
 			return manager;
-		}
-
-		public static void InitializeDataBase(ApplicationUserManager manager)
-		{
-			try
-			{
-				RoleManager<Role> roleManager = new RoleManager<Role>(new RoleStore());
-				roleManager.Create(new Role() { Name = "admin" });
-				roleManager.Create(new Role() { Name = "editor" });
-
-				ApplicationUser user = new ApplicationUser() { Email = "a@a.com", UserName = "admin" };
-				manager.CreateAsync(user, "admin123").Wait();
-				manager.AddToRole(user.Id, "admin");
-			}
-			catch (Exception e)
-			{
-
-			}
 		}
 	}
 

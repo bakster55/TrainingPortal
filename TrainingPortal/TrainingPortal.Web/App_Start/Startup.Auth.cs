@@ -4,7 +4,6 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System;
-using TrainingPortal.Data.Models;
 using TrainingPortal.Models;
 
 namespace TrainingPortal

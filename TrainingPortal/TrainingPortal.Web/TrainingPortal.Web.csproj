@@ -175,8 +175,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Audience.cs" />
     <Compile Include="Models\Certificate.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Stores\RoleStore.cs" />
+    <Compile Include="Models\Stores\UserEmailStore.cs" />
+    <Compile Include="Models\Stores\UserPasswordStore.cs" />
+    <Compile Include="Models\Stores\UserRoleStore.cs" />
+    <Compile Include="Models\Stores\UserStore.cs" />
     <Compile Include="Models\TestOption.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />

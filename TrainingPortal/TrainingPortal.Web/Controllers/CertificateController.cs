@@ -4,29 +4,30 @@ using System.Linq;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
 using TrainingPortal.Models;
+using TrainingPortal.Web.Data.CertificateService;
 
 namespace TrainingPortal.Controllers
 {
 	[Authorize]
 	public class CertificateController : Controller
 	{
-		private CertificateRepository certificateRepository;
+		private ICertificateService _certificateRepository;
 
-		public CertificateController()
+		public CertificateController(ICertificateService certificateRepository)
 		{
-			certificateRepository = new CertificateRepository();
+			_certificateRepository = certificateRepository;
 		}
 
 		public ActionResult Details(string courseId)
 		{
-			Certificate certificate = certificateRepository.Get(User.Identity.GetUserId(), courseId);
+			Certificate certificate = _certificateRepository.Get(User.Identity.GetUserId(), courseId);
 
 			return View(certificate);
 		}
 
 		public ActionResult Delete(string courseId)
 		{
-			Certificate certificate = certificateRepository.Get(User.Identity.GetUserId(), courseId);
+			Certificate certificate = _certificateRepository.Get(User.Identity.GetUserId(), courseId);
 
 			return View(certificate);
 		}
@@ -36,7 +37,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				certificateRepository.Delete(id);
+				_certificateRepository.Delete(id);
 
 				return RedirectToAction("Index");
 			}

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
 using TrainingPortal.Models;
+using TrainingPortal.Web.Data.TestOptionService;
 
 
 namespace TrainingPortal.Controllers
@@ -10,23 +11,23 @@ namespace TrainingPortal.Controllers
 	[Authorize(Roles = "admin, editor")]
 	public class TestOptionController : Controller
 	{
-		private TestOptionRepository testOptionRepository;
+		private ITestOptionService _testOptionRepository;
 
-		public TestOptionController()
+		public TestOptionController(ITestOptionService testOptionRepository)
 		{
-			testOptionRepository = new TestOptionRepository();
+			_testOptionRepository = testOptionRepository;
 		}
 
 		public ActionResult Index(string testId)
 		{
-			List<TestOption> options = testOptionRepository.GetList(testId).Select(to => (TestOption)to).ToList();
+			List<TestOption> options = _testOptionRepository.GetList(testId).Select(to => (TestOption)to).ToList();
 
 			return View(options);
 		}
 
 		public ActionResult Details(string id)
 		{
-			TestOption option = testOptionRepository.Get(id);
+			TestOption option = _testOptionRepository.Get(id);
 
 			return View(option);
 		}
@@ -41,7 +42,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				testOptionRepository.Create(option, testId);
+				_testOptionRepository.Create(option, testId);
 
 				return RedirectToAction("Index", new { testId = testId });
 			}
@@ -53,7 +54,7 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Edit(string id)
 		{
-			TestOption option = testOptionRepository.Get(id);
+			TestOption option = _testOptionRepository.Get(id);
 
 			return View(option);
 		}
@@ -63,7 +64,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				testOptionRepository.Update(option);
+				_testOptionRepository.Update(option);
 
 				return RedirectToAction("Index", new { testId = testId });
 			}
@@ -75,7 +76,7 @@ namespace TrainingPortal.Controllers
 
 		public ActionResult Delete(string id)
 		{
-			TestOption option = testOptionRepository.Get(id);
+			TestOption option = _testOptionRepository.Get(id);
 
 			return View(option);
 		}
@@ -85,7 +86,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				testOptionRepository.Delete(option.Id);
+				_testOptionRepository.Delete(option.Id);
 
 				return RedirectToAction("Index", new { testId = testId });
 			}

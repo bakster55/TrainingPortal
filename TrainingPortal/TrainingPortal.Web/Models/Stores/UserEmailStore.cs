@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Threading.Tasks;
-using TrainingPortal.Data.Models;
+using TrainingPortal.Models;
 
-namespace TrainingPortal.Data.Stores
+namespace TrainingPortal.Models.Stores
 {
 	public partial class UserStore : IUserEmailStore<ApplicationUser>
 	{
 		public Task<ApplicationUser> FindByEmailAsync(string email)
 		{
-			ApplicationUser applicationUser = userRepository.Get(email: email);
+			ApplicationUser applicationUser = _userRepository.Get(null, email, null);
 
 			return Task.FromResult(applicationUser);
 		}
