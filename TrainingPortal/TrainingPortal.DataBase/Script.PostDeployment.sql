@@ -49,3 +49,138 @@ INSERT INTO [Course] Values
 		(SELECT TOP 1 Id FROM [Category] WHERE [Name] = 'Html'), 
 		(SELECT TOP 1 Id FROM [Audience] WHERE [Name] = 'Advanced')
 	)
+
+DECLARE @categoryId INT;
+SET @categoryId = (SELECT TOP 1 Id FROM [Category] WHERE [Name] = 'C#');
+
+DECLARE @courseId INT;
+SET @courseId = (SELECT TOP 1 Id FROM [Course] WHERE [CategoryId] = @categoryId);
+
+INSERT INTO [Lesson] Values
+	(
+		@courseId, 
+		'Lesson one',
+		'Lesson one content.'
+	), 
+	(
+		@courseId, 
+		'Lesson two',
+		'Lesson two content.'
+	), 
+	(
+		@courseId, 
+		'Lesson three',
+		'Lesson three content.'
+	), 
+	(
+		@courseId, 
+		'Lesson four',
+		'Lesson four content.'
+	)
+
+INSERT INTO [Test] Values
+	(
+		@courseId, 
+		'C# class can inherit multiple ________'
+	)
+
+INSERT INTO [TestOption] Values
+	(
+		IDENT_CURRENT('Test'), 
+		'Class',
+		0
+	),
+		(
+		IDENT_CURRENT('Test'), 
+		'Interface',
+		1
+	),
+	(
+		IDENT_CURRENT('Test'), 
+		'Abstract class',
+		0
+	),
+	(
+		IDENT_CURRENT('Test'), 
+		'Static class',
+		0
+	)
+
+INSERT INTO [Test] Values
+	(
+		@courseId, 
+		'Which of the followings are value types in C#?'
+	)
+
+INSERT INTO [TestOption] Values
+	(
+		IDENT_CURRENT('Test'), 
+		'Int32',
+		1
+	),
+		(
+		IDENT_CURRENT('Test'), 
+		'Double',
+		1
+	),
+	(
+		IDENT_CURRENT('Test'), 
+		'Decimal',
+		1
+	),
+	(
+		IDENT_CURRENT('Test'), 
+		'String',
+		0
+	)
+
+INSERT INTO [Test] Values
+	(
+		@courseId, 
+		'Which of the following is a reference type in C#?'
+	)
+
+INSERT INTO [TestOption] Values
+	(
+		IDENT_CURRENT('Test'), 
+		'String',
+		1
+	),
+		(
+		IDENT_CURRENT('Test'), 
+		'Long',
+		0
+	),
+	(
+		IDENT_CURRENT('Test'), 
+		'Boolean',
+		0
+	),
+	(
+		IDENT_CURRENT('Test'), 
+		'Decimal',
+		0
+	)
+
+INSERT INTO [Test] Values
+	(
+		@courseId, 
+		'What is Nullable type?'
+	)
+
+INSERT INTO [TestOption] Values
+	(
+		IDENT_CURRENT('Test'), 
+		'It allows assignment of null to reference type.',
+		1
+	),
+		(
+		IDENT_CURRENT('Test'), 
+		'It allows assignment of null to value type.',
+		0
+	),
+	(
+		IDENT_CURRENT('Test'), 
+		'It allows assignment of null to static class.',
+		0
+	)

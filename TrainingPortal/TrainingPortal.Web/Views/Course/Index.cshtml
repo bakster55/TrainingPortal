@@ -34,7 +34,7 @@
 			@Html.DropDownList("audienceId", new SelectList(audienceList, "Id", "Name"), new { @class = "form-control" })
 			<button class="btn btn-primary" onclick="onSearchClicked();">Search</button>
 		</div>
-		@if (User.IsInRole("admin") || User.IsInRole("editor"))
+		@if (User.Identity.IsAuthenticated && (User.IsInRole("admin") || User.IsInRole("editor")))
 		{
 			<p class="col-md-4">
 				@Html.ActionLink("Create New", "Create")
@@ -45,8 +45,6 @@
 		</div>
 	</div>
 </div>
-
-<script src="~/Scripts/jquery-1.10.2.js"></script>
 
 <script>
 	var searchParams = {

@@ -6,7 +6,8 @@
 	<title>@ViewBag.Title - My ASP.NET Application</title>
 	<link rel="stylesheet" href="~/Content/Site.css" />
 	<link href="~/Content/bootstrap.css" rel="stylesheet" />
-
+	<script src="~/Scripts/jquery-1.10.2.js"></script>
+	<script src="~/Scripts/jquery.printElement.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,7 +23,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li>@Html.ActionLink("Courses", "Index", "Course")</li>
-					@if (User.IsInRole("admin") || User.IsInRole("editor"))
+					@if (User.Identity.IsAuthenticated && (User.IsInRole("admin") || User.IsInRole("editor")))
 					{
 						<li>@Html.ActionLink("Users", "Index", "User")</li>
 						<li>@Html.ActionLink("Categories", "Index", "Category")</li>

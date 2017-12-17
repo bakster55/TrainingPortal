@@ -56,7 +56,7 @@
 
 		<hr />
 
-		@if (User.IsInRole("admin") || User.IsInRole("editor"))
+		@if (User.Identity.IsAuthenticated && (User.IsInRole("admin") || User.IsInRole("editor")))
 		{
 			<dt>Lessons:</dt>
 			<dd>
@@ -71,7 +71,7 @@
 	</dl>
 </div>
 <p>
-	@if (User.IsInRole("admin") || User.IsInRole("editor"))
+	@if (User.Identity.IsAuthenticated && (User.IsInRole("admin") || User.IsInRole("editor")))
 	{
 		@Html.ActionLink("Edit", "Edit", new { id = Model.Id })
 		@:|

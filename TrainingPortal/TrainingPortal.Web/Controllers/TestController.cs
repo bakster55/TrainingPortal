@@ -93,7 +93,7 @@ namespace TrainingPortal.Controllers
 
 				_certificateRepository.Create(new Certificate
 				{
-					Id = Guid.NewGuid(),
+					Id = Guid.NewGuid().ToString(),
 					UserId = User.Identity.GetUserId(),
 					CourseId = courseId,
 					Result = (100 * count / tests.Count)

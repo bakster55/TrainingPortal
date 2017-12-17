@@ -26,8 +26,14 @@
 			@Html.DisplayFor(model => model.Result)
 		</dd>
 
+		<dt>
+		</dt>
+		<dd>
+			@Html.ActionLink("Для печати", "Index", "Certificate", new { courseId = Request.Params["courseId"] }, new { @class = "btn btn-primary", @style = "margin-top:20px;" })
+		@Html.ActionLink("Удалить", "Delete", "Certificate", new { Id = Model.Id, courseId = Request.Params["courseId"] }, new { @class = "btn btn-primary", @style = "margin-top:20px;" })
+		</dd>
 	</dl>
-	<div class="col-md-offset-1">
-		<img src="~/Content/certificate.jpg" width="600" height="400" />
+	<div class="certificate col-md-offset-1">
+		@Html.Partial("Partials/Index", Model)
 	</div>
 </div>

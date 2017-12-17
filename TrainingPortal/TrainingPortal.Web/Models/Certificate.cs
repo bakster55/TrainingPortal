@@ -5,7 +5,7 @@ namespace TrainingPortal.Models
 {
 	public class Certificate
 	{
-		public Guid Id { get; set; }
+		public string Id { get; set; }
 
 		public string UserId { get; set; }
 
@@ -19,7 +19,7 @@ namespace TrainingPortal.Models
 			{
 				return new Certificate()
 				{
-					Id = certificate.Id,
+					Id = certificate.Id.ToString(),
 					CourseId = certificate.CourseId,
 					UserId = certificate.UserId,
 					Result = certificate.Result,
@@ -35,7 +35,7 @@ namespace TrainingPortal.Models
 			{
 				return new CertificateDto()
 				{
-					Id = certificate.Id,
+					Id = Guid.Parse(certificate.Id),
 					CourseId = certificate.CourseId,
 					UserId = certificate.UserId,
 					Result = certificate.Result,

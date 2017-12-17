@@ -38,7 +38,7 @@ namespace TrainingPortal.Service
 				{
 					sqlCommand.CommandType = CommandType.StoredProcedure;
 
-					sqlCommand.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
+					sqlCommand.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = Guid.Parse(id);
 
 					sqlConnection.Open();
 					sqlCommand.ExecuteNonQuery();

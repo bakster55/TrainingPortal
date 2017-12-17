@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -18,28 +19,56 @@ namespace TrainingPortal.Controllers
 			_certificateRepository = certificateRepository;
 		}
 
+		public ActionResult Index(string courseId)
+		{
+			Certificate certificate = _certificateRepository.Get(User.Identity.GetUserId(), courseId);
+
+			if (certificate != null)
+			{
+				return PartialView("Partials/Index", certificate);
+			}
+			else
+			{
+				return RedirectToAction("Details", "Course", new { Id = courseId });
+			}
+		}
+
 		public ActionResult Details(string courseId)
 		{
 			Certificate certificate = _certificateRepository.Get(User.Identity.GetUserId(), courseId);
 
-			return View(certificate);
+			if (certificate != null)
+			{
+				return View(certificate);
+			}
+			else
+			{
+				return RedirectToAction("Details", "Course", new { Id = courseId });
+			}
 		}
 
 		public ActionResult Delete(string courseId)
 		{
 			Certificate certificate = _certificateRepository.Get(User.Identity.GetUserId(), courseId);
 
-			return View(certificate);
+			if (certificate != null)
+			{
+				return View(certificate);
+			}
+			else
+			{
+				return RedirectToAction("Details", "Course", new { Id = courseId });
+			}
 		}
 
 		[HttpPost]
-		public ActionResult Delete(string id, Certificate certificate)
+		public ActionResult Delete(string courseId, Certificate certificate)
 		{
 			try
 			{
-				_certificateRepository.Delete(id);
+				_certificateRepository.Delete(certificate.Id);
 
-				return RedirectToAction("Index");
+				return RedirectToAction("Details", "Course", new { Id = courseId });
 			}
 			catch
 			{

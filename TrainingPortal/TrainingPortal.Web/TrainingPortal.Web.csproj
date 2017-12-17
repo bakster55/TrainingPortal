@@ -139,6 +139,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\certificate.jpg" />
+    <Content Include="Content\Certificate.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
@@ -146,6 +147,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.printElement.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -250,6 +252,8 @@
     <Content Include="Views\Audience\Edit.cshtml" />
     <Content Include="Views\Audience\Index.cshtml" />
     <Content Include="Views\Course\Partials\Index.cshtml" />
+    <Content Include="Views\Certificate\Index.cshtml" />
+    <Content Include="Views\Certificate\Partials\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,17 @@
+﻿.certificate-container {
+	display: block;
+	position: relative;
+	width: 600px;
+	height: 400px;
+}
+
+	.certificate-container > img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.certificate-container > .certificate-text {
+		position: absolute;
+		top: 31%;
+		left: 36%;
+	}
