@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNet.Identity;
-using System.Threading.Tasks;
-using System.Security.Claims;
-
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Microsoft.AspNet.Identity.Owin;
-using TrainingPortal.Models;
-using TrainingPortal.Models.Stores;
-using TrainingPortal.Web.Data.UserService;
-using TrainingPortal.Data.Repositories;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using TrainingPortal.App_Start;
+using TrainingPortal.Data.Repositories;
+using TrainingPortal.Models.Stores;
 using TrainingPortal.Web.Data.UserRoleService;
+using TrainingPortal.Web.Data.UserService;
 
 namespace TrainingPortal.Models
 {

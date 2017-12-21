@@ -18,7 +18,6 @@ namespace TrainingPortal.Models
 				{
 					Id = test.Id,
 					Question = test.Question,
-					//Options = test.Options.Cast<TestOption>().ToList(),
 				};
 			}
 
@@ -33,7 +32,6 @@ namespace TrainingPortal.Models
 				{
 					Id = test.Id,
 					Question = test.Question,
-					//Options = test.Options.Cast<TestOptionDto>().ToArray(),
 				};
 			}
 

@@ -395,7 +395,7 @@ PRINT N'Creating unnamed constraint on [dbo].[Certificate]...';
 
 GO
 ALTER TABLE [dbo].[Certificate]
-    ADD FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]);
+    ADD FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -404,7 +404,7 @@ PRINT N'Creating unnamed constraint on [dbo].[Certificate]...';
 
 GO
 ALTER TABLE [dbo].[Certificate]
-    ADD FOREIGN KEY ([CourseId]) REFERENCES [dbo].[Course] ([Id]);
+    ADD FOREIGN KEY ([CourseId]) REFERENCES [dbo].[Course] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -413,7 +413,7 @@ PRINT N'Creating unnamed constraint on [dbo].[Course]...';
 
 GO
 ALTER TABLE [dbo].[Course]
-    ADD FOREIGN KEY ([CategoryId]) REFERENCES [dbo].[Category] ([Id]);
+    ADD FOREIGN KEY ([CategoryId]) REFERENCES [dbo].[Category] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -422,7 +422,7 @@ PRINT N'Creating unnamed constraint on [dbo].[Course]...';
 
 GO
 ALTER TABLE [dbo].[Course]
-    ADD FOREIGN KEY ([AudienceId]) REFERENCES [dbo].[Audience] ([Id]);
+    ADD FOREIGN KEY ([AudienceId]) REFERENCES [dbo].[Audience] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -431,7 +431,7 @@ PRINT N'Creating unnamed constraint on [dbo].[CourseForUser]...';
 
 GO
 ALTER TABLE [dbo].[CourseForUser]
-    ADD FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]);
+    ADD FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -440,7 +440,7 @@ PRINT N'Creating unnamed constraint on [dbo].[CourseForUser]...';
 
 GO
 ALTER TABLE [dbo].[CourseForUser]
-    ADD FOREIGN KEY ([CourseId]) REFERENCES [dbo].[Course] ([Id]);
+    ADD FOREIGN KEY ([CourseId]) REFERENCES [dbo].[Course] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -449,7 +449,7 @@ PRINT N'Creating unnamed constraint on [dbo].[Lesson]...';
 
 GO
 ALTER TABLE [dbo].[Lesson]
-    ADD FOREIGN KEY ([CourseId]) REFERENCES [dbo].[Course] ([Id]);
+    ADD FOREIGN KEY ([CourseId]) REFERENCES [dbo].[Course] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -458,7 +458,7 @@ PRINT N'Creating unnamed constraint on [dbo].[Test]...';
 
 GO
 ALTER TABLE [dbo].[Test]
-    ADD FOREIGN KEY ([CourseId]) REFERENCES [dbo].[Course] ([Id]);
+    ADD FOREIGN KEY ([CourseId]) REFERENCES [dbo].[Course] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -467,7 +467,7 @@ PRINT N'Creating unnamed constraint on [dbo].[TestOption]...';
 
 GO
 ALTER TABLE [dbo].[TestOption]
-    ADD FOREIGN KEY ([TestId]) REFERENCES [dbo].[Test] ([Id]);
+    ADD FOREIGN KEY ([TestId]) REFERENCES [dbo].[Test] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -476,7 +476,7 @@ PRINT N'Creating unnamed constraint on [dbo].[UserRole]...';
 
 GO
 ALTER TABLE [dbo].[UserRole]
-    ADD FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]);
+    ADD FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]) ON DELETE CASCADE;
 
 
 GO
@@ -485,7 +485,7 @@ PRINT N'Creating unnamed constraint on [dbo].[UserRole]...';
 
 GO
 ALTER TABLE [dbo].[UserRole]
-    ADD FOREIGN KEY ([RoleId]) REFERENCES [dbo].[Role] ([Id]);
+    ADD FOREIGN KEY ([RoleId]) REFERENCES [dbo].[Role] ([Id]) ON DELETE CASCADE;
 
 
 GO

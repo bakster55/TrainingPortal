@@ -5,54 +5,49 @@ using System.Linq;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
 using TrainingPortal.Models;
-using TrainingPortal.Web.Data.TestService;
-using TrainingPortal.Web.Data.TestOptionService;
 using TrainingPortal.Web.Data.CertificateService;
+using TrainingPortal.Web.Models.Services;
 
 namespace TrainingPortal.Controllers
 {
 	public class TestController : Controller
 	{
-		private ITestService _testRepository;
-		private ITestOptionService _testOptionRepository;
+		private ITestService _testService;
 		private ICertificateService _certificateRepository;
 
 		public TestController(
 			ITestService testRepository,
-			ITestOptionService testOptionRepository,
 			ICertificateService certificateRepository)
 		{
-			_testRepository = testRepository;
-			_testOptionRepository = testOptionRepository;
+			_testService = testRepository;
 			_certificateRepository = certificateRepository;
 		}
 
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Index(string courseId)
 		{
-			List<Test> tests = _testRepository.GetList(courseId).Select(test => (Test)test).ToList();
+			List<Test> tests = _testService.GetList(courseId).Select(test => (Test)test).ToList();
 
 			return View(tests);
 		}
 
+		[Authorize]
 		public ActionResult WriteTest(string courseId)
 		{
-			List<Test> tests = _testRepository.GetList(courseId).Select(test => (Test)test).ToList();
-
-			for (int i = 0; i < tests.Count; i++)
-			{
-				Test test = tests[i];
-
-				test.Options = _testOptionRepository.GetList(test.Id).Select(to =>
+			List<Test> tests = _testService.GetList(courseId).Select(test =>
 				{
-					to.IsChecked = false;
-					return (TestOption)to;
+					test.Options.ForEach((to) =>
+					{
+						to.IsChecked = false;
+					});
+
+					return test;
 				}).ToList();
-			}
 
 			return View(tests);
 		}
 
+		[Authorize]
 		[HttpPost]
 		public ActionResult WriteTest(List<Test> tests, string courseId)
 		{
@@ -60,36 +55,7 @@ namespace TrainingPortal.Controllers
 
 			if (certificate == null)
 			{
-				List<Test> testsAnswers = _testRepository.GetList(courseId).Select(test => (Test)test).ToList();
-
-				int count = 0;
-
-				for (int i = 0; i < tests.Count; i++)
-				{
-					bool result = true;
-					Test testAnswers = testsAnswers[i];
-					testAnswers.Options = _testOptionRepository.GetList(testAnswers.Id).Select(to => (TestOption)to).ToList();
-					Test test = tests[i];
-
-					if (testAnswers.Options != null)
-					{
-						for (int j = 0; j < testAnswers.Options.Count; j++)
-						{
-							TestOption option = testAnswers.Options[j];
-
-							if (testAnswers.Options[j].IsChecked != test.Options[j].IsChecked)
-							{
-								result = false;
-								break;
-							}
-						}
-					}
-
-					if (result)
-					{
-						count++;
-					}
-				}
+				int count = _testService.GetTrueAnswersCount(tests, courseId);
 
 				_certificateRepository.Create(new Certificate
 				{
@@ -109,7 +75,7 @@ namespace TrainingPortal.Controllers
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Details(string id)
 		{
-			Test test = _testRepository.Get(id);
+			Test test = _testService.Get(id);
 
 			return View(test);
 		}
@@ -126,7 +92,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				_testRepository.Create(test, courseId);
+				_testService.Create(test, courseId);
 
 				return RedirectToAction("Index", new { courseId = courseId });
 			}
@@ -139,7 +105,7 @@ namespace TrainingPortal.Controllers
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Edit(string id)
 		{
-			Test test = _testRepository.Get(id);
+			Test test = _testService.Get(id);
 
 			return View(test);
 		}
@@ -150,7 +116,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				_testRepository.Update(test);
+				_testService.Update(test);
 
 				return RedirectToAction("Index", new { courseId = courseId });
 			}
@@ -163,7 +129,7 @@ namespace TrainingPortal.Controllers
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Delete(string id)
 		{
-			Test test = _testRepository.Get(id);
+			Test test = _testService.Get(id);
 
 			return View(test);
 		}
@@ -174,7 +140,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				_testRepository.Delete(test.Id);
+				_testService.Delete(test.Id);
 
 				return RedirectToAction("Index", new { courseId = courseId });
 			}

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
@@ -24,14 +25,28 @@ namespace TrainingPortal.Controllers
 			return View(lessons);
 		}
 
-		public ActionResult TakeCourse(string courseId, string lessonId = null)
+		public ActionResult TakeCourse(string courseId, string lessonId)
 		{
 			List<Lesson> lessons = _lessonRepository.GetList(courseId).Select(l => (Lesson)l).ToList();
 			ViewBag.Lessons = lessons;
 
 			try
 			{
-				Lesson lesson = lessons.Find(l => l.Id == lessonId);
+				Lesson lesson = null;
+
+				if (lessons != null && lessons.Count > 0)
+				{
+					if (!String.IsNullOrEmpty(lessonId))
+					{
+						lesson = lessons.Find(l => l.Id == lessonId);
+					}
+
+					if (lesson == null)
+					{
+						lesson = lessons[0];
+					}
+				}
+
 				return View(lesson);
 			}
 			catch

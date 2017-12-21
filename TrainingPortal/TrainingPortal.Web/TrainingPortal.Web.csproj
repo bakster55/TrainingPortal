@@ -177,21 +177,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Audience.cs" />
-    <Compile Include="Models\Certificate.cs" />
-    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Entities\ApplicationUser.cs" />
+    <Compile Include="Models\Entities\Audience.cs" />
+    <Compile Include="Models\Entities\Certificate.cs" />
+    <Compile Include="Models\Entities\Role.cs" />
+    <Compile Include="Models\Services\ITestService.cs" />
+    <Compile Include="Models\Services\TestService.cs" />
     <Compile Include="Models\Stores\RoleStore.cs" />
     <Compile Include="Models\Stores\UserEmailStore.cs" />
     <Compile Include="Models\Stores\UserPasswordStore.cs" />
     <Compile Include="Models\Stores\UserRoleStore.cs" />
     <Compile Include="Models\Stores\UserStore.cs" />
-    <Compile Include="Models\TestOption.cs" />
+    <Compile Include="Models\Entities\TestOption.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Test.cs" />
-    <Compile Include="Models\Lesson.cs" />
+    <Compile Include="Models\Entities\Category.cs" />
+    <Compile Include="Models\Entities\Course.cs" />
+    <Compile Include="Models\Entities\Test.cs" />
+    <Compile Include="Models\Entities\Lesson.cs" />
     <Compile Include="Models\ViewModels\ManageViewModel.cs" />
     <Compile Include="Models\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
