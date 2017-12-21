@@ -11,5 +11,7 @@ namespace TrainingPortal.Service.Dto
 		public string CourseId { get; set; }
 
 		public int Result { get; set; }
+
+		public DateTime Date { get; set; }
 	}
 }

@@ -14,7 +14,10 @@ namespace TrainingPortal.Data.Repositories
 
 		~CategoryRepository()
 		{
-			categoryServiceClient.Close();
+			if (categoryServiceClient != null)
+			{
+				categoryServiceClient.Close();
+			}
 		}
 
 		public void Create(CategoryDto category)

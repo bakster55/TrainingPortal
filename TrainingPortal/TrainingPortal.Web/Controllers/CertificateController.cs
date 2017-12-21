@@ -16,6 +16,11 @@ namespace TrainingPortal.Controllers
 
 		public CertificateController(ICertificateService certificateRepository)
 		{
+			if (certificateRepository == null)
+			{
+				throw new ArgumentNullException("certificateRepository");
+			}
+
 			_certificateRepository = certificateRepository;
 		}
 

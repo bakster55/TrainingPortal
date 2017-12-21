@@ -23,6 +23,7 @@ namespace TrainingPortal.Service
 					sqlCommand.Parameters.Add("@courseId", SqlDbType.Int).Value = certificate.CourseId;
 					sqlCommand.Parameters.Add("@userId", SqlDbType.Int).Value = certificate.UserId;
 					sqlCommand.Parameters.Add("@result", SqlDbType.Int).Value = certificate.Result;
+					sqlCommand.Parameters.Add("@date", SqlDbType.Date).Value = certificate.Date;
 
 					sqlConnection.Open();
 					sqlCommand.ExecuteNonQuery();
@@ -67,8 +68,9 @@ namespace TrainingPortal.Service
 						{
 							Guid id = sqlDataReader.GetGuid(sqlDataReader.GetOrdinal("id"));
 							int result = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("result"));
+							DateTime date = sqlDataReader.GetDateTime(sqlDataReader.GetOrdinal("date"));
 
-							certificate = new CertificateDto() { Id = id, UserId = userId, CourseId = courseId, Result = result };
+							certificate = new CertificateDto() { Id = id, UserId = userId, CourseId = courseId, Result = result, Date = date };
 						}
 
 						return certificate;

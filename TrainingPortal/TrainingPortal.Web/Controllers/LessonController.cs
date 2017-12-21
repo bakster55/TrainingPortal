@@ -14,20 +14,25 @@ namespace TrainingPortal.Controllers
 
 		public LessonController(ILessonService lessonRepository)
 		{
+			if (lessonRepository == null)
+			{
+				throw new ArgumentNullException("lessonRepository");
+			}
+
 			_lessonRepository = lessonRepository;
 		}
 
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Index(string courseId)
 		{
-			List<Lesson> lessons = _lessonRepository.GetList(courseId).Select(lesson => (Lesson)lesson).ToList();
+			List<Lesson> lessons = _lessonRepository.GetList(courseId)?.Select(lesson => (Lesson)lesson).ToList();
 
 			return View(lessons);
 		}
 
 		public ActionResult TakeCourse(string courseId, string lessonId)
 		{
-			List<Lesson> lessons = _lessonRepository.GetList(courseId).Select(l => (Lesson)l).ToList();
+			List<Lesson> lessons = _lessonRepository.GetList(courseId)?.Select(l => (Lesson)l).ToList();
 			ViewBag.Lessons = lessons;
 
 			try

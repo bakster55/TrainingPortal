@@ -14,7 +14,10 @@ namespace TrainingPortal.Data.Repositories
 
 		~CertificateRepository()
 		{
-			certificateServiceClient.Close();
+			if (certificateServiceClient != null)
+			{
+				certificateServiceClient.Close();
+			}
 		}
 
 		public void Create(CertificateDto certificate)

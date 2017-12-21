@@ -19,6 +19,16 @@ namespace TrainingPortal.Controllers
 			ITestService testRepository,
 			ICertificateService certificateRepository)
 		{
+			if (testRepository == null)
+			{
+				throw new ArgumentNullException("testRepository");
+			}
+
+			if (certificateRepository == null)
+			{
+				throw new ArgumentNullException("certificateRepository");
+			}
+
 			_testService = testRepository;
 			_certificateRepository = certificateRepository;
 		}
@@ -26,7 +36,7 @@ namespace TrainingPortal.Controllers
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Index(string courseId)
 		{
-			List<Test> tests = _testService.GetList(courseId).Select(test => (Test)test).ToList();
+			List<Test> tests = _testService.GetList(courseId)?.Select(test => (Test)test).ToList();
 
 			return View(tests);
 		}
@@ -34,9 +44,9 @@ namespace TrainingPortal.Controllers
 		[Authorize]
 		public ActionResult WriteTest(string courseId)
 		{
-			List<Test> tests = _testService.GetList(courseId).Select(test =>
+			List<Test> tests = _testService.GetList(courseId)?.Select(test =>
 				{
-					test.Options.ForEach((to) =>
+					test?.Options?.ForEach((to) =>
 					{
 						to.IsChecked = false;
 					});
@@ -60,9 +70,10 @@ namespace TrainingPortal.Controllers
 				_certificateRepository.Create(new Certificate
 				{
 					Id = Guid.NewGuid().ToString(),
+					Date = DateTime.Now.Date,
 					UserId = User.Identity.GetUserId(),
 					CourseId = courseId,
-					Result = (100 * count / tests.Count)
+					Result = (int)Math.Floor((double)100 * count / tests.Count)
 				});
 			}
 

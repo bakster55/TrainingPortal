@@ -14,7 +14,10 @@ namespace TrainingPortal.Data.Repositories
 
 		~AudienceRepository()
 		{
-			audienceServiceClient.Close();
+			if (audienceServiceClient != null)
+			{
+				audienceServiceClient.Close();
+			}
 		}
 
 		public void Create(AudienceDto audience)

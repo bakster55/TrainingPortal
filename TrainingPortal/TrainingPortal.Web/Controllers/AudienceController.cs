@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
 using TrainingPortal.Models;
 using TrainingPortal.Web.Data.AudienceService;
+using System;
 
 namespace TrainingPortal.Controllers
 {
@@ -14,12 +15,17 @@ namespace TrainingPortal.Controllers
 
 		public AudienceController(IAudienceService audienceRepository)
 		{
+			if (audienceRepository == null)
+			{
+				throw new ArgumentNullException("audienceRepository");
+			}
+
 			_audienceRepository = audienceRepository;
 		}
 
 		public ActionResult Index()
 		{
-			List<Audience> audienceList = _audienceRepository.GetList().Select(audience => (Audience)audience).ToList();
+			List<Audience> audienceList = _audienceRepository.GetList()?.Select(audience => (Audience)audience).ToList();
 
 			return View(audienceList);
 		}

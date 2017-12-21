@@ -23,7 +23,7 @@ namespace TrainingPortal.Tests
 		}
 
 		[TestMethod]
-		public void GetTrueAnswersCount_PassTwoFalse_ZeroReturned()
+		public void GetTrueAnswersCount_PassTwoFalseOfTwo_ZeroReturned()
 		{
 			_testRepository
 				.Setup(e => e.GetList(It.IsAny<string>()))
@@ -46,19 +46,6 @@ namespace TrainingPortal.Tests
 							new TestOptionDto { Id = "5", Name = "B", IsChecked = true},
 					};
 				});
-
-			//_certificateRepository
-			//	.Setup(e => e.Get(It.IsAny<string>(), It.IsAny<string>()))
-			//	.Returns((CertificateDto certificate) =>
-			//	{
-			//		return null;
-			//	});
-			//_certificateRepository
-			//	.Setup(e => e.Create(It.IsAny<CertificateDto>()))
-			//	.Callback((CertificateDto certificate) =>
-			//	{
-			//		Assert.IsTrue(certificate.Result == 2);
-			//	});
 
 			var testService = new TestService(_testRepository.Object, _testOptionRepository.Object);
 
@@ -84,6 +71,65 @@ namespace TrainingPortal.Tests
 			int actualResult = testService.GetTrueAnswersCount(tests, "12");
 
 			Assert.IsTrue(actualResult == 0);
+		}
+
+		[TestMethod]
+		public void GetTrueAnswersCount_PassTwoTrueOfThree_TwoReturned()
+		{
+			_testRepository
+				.Setup(e => e.GetList(It.IsAny<string>()))
+				.Returns((string courseId) =>
+				{
+					return new TestDto[]
+					{
+							new TestDto { Id = "1", Question = "A"},
+							new TestDto { Id = "2", Question = "B"},
+							new TestDto { Id = "3", Question = "C"},
+					};
+				});
+
+			_testOptionRepository
+				.Setup(e => e.GetList(It.IsAny<string>()))
+				.Returns((string courseId) =>
+				{
+					return new TestOptionDto[]
+					{
+							new TestOptionDto { Id = "1", Name = "A", IsChecked = true},
+							new TestOptionDto { Id = "2", Name = "B", IsChecked = false},
+					};
+				});
+
+			var testService = new TestService(_testRepository.Object, _testOptionRepository.Object);
+
+			var tests = new Test[]
+				{
+						new Test
+						{
+							Options = new TestOption[]
+							{
+									new TestOption { Id = "1", Name = "A", IsChecked = true},
+									new TestOption { Id = "2", Name = "B", IsChecked = false},
+							}.ToList()
+						},
+						new Test {
+							Options = new TestOption[]
+							{
+									new TestOption { Id = "1", Name = "A", IsChecked = false},
+									new TestOption { Id = "2", Name = "B", IsChecked = false},
+							}.ToList()
+						},
+						new Test {
+							Options = new TestOption[]
+							{
+									new TestOption { Id = "1", Name = "A", IsChecked = true},
+									new TestOption { Id = "2", Name = "B", IsChecked = false},
+							}.ToList()
+						}
+				}.ToList();
+
+			int actualResult = testService.GetTrueAnswersCount(tests, "12");
+
+			Assert.IsTrue(actualResult == 2);
 		}
 	}
 }

@@ -26,6 +26,9 @@ namespace TrainingPortal.Web.Data.CertificateService {
         private string CourseIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -53,6 +56,19 @@ namespace TrainingPortal.Web.Data.CertificateService {
                 if ((object.ReferenceEquals(this.CourseIdField, value) != true)) {
                     this.CourseIdField = value;
                     this.RaisePropertyChanged("CourseId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
                 }
             }
         }

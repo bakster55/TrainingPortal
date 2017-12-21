@@ -268,6 +268,7 @@ CREATE TABLE [dbo].[Certificate] (
     [UserId]   INT              NOT NULL,
     [Result]   INT              NOT NULL,
     [CourseId] INT              NOT NULL,
+    [Date]     DATE             NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
@@ -517,9 +518,10 @@ CREATE PROCEDURE [dbo].[AddCertificate]
 	@id UNIQUEIDENTIFIER,
 	@userId INT,
 	@result INT,
-	@courseId INT
+	@courseId INT,
+	@date DATE
 AS
-	INSERT INTO [Certificate] VALUES(@id, @userId, @result, @courseId)
+	INSERT INTO [Certificate] VALUES(@id, @userId, @result, @courseId, @date)
 RETURN 0
 GO
 PRINT N'Creating [dbo].[AddCourse]...';

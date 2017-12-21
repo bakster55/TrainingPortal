@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
@@ -14,12 +15,17 @@ namespace TrainingPortal.Controllers
 
 		public CategoryController(ICategoryService categoryRepository)
 		{
+			if (categoryRepository == null)
+			{
+				throw new ArgumentNullException("categoryRepository");
+			}
+
 			_categoryRepository = categoryRepository;
 		}
 
 		public ActionResult Index()
 		{
-			List<Category> categories = _categoryRepository.GetList().Select(category => (Category)category).ToList();
+			List<Category> categories = _categoryRepository.GetList()?.Select(category => (Category)category).ToList();
 
 			return View(categories);
 		}

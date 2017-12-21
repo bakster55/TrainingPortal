@@ -14,7 +14,10 @@ namespace TrainingPortal.Data.Repositories
 
 		~UserRoleRepository()
 		{
-			userRoleServiceClient.Close();
+			if (userRoleServiceClient != null)
+			{
+				userRoleServiceClient.Close();
+			}
 		}
 
 		public void Create(string userId, string roleName)

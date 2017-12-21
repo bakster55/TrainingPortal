@@ -8,37 +8,62 @@ using TrainingPortal.Web.Data.AudienceService;
 using TrainingPortal.Web.Data.CourseService;
 using TrainingPortal.Web.Data.CategoryService;
 using TrainingPortal.Web.Data.CertificateService;
+using System;
 
 namespace TrainingPortal.Controllers
 {
 	public class CourseController : Controller
 	{
-		private CourseRepository _courseRepository;
-		private CategoryRepository _categoryRepository;
-		private CertificateRepository _certificateRepository;
+		private ICourseService _courseRepository;
+		private ICategoryService _categoryRepository;
+		private ICertificateService _certificateRepository;
 		private IAudienceService _audienceRepository;
 
-		public CourseController(IAudienceService audienceRepository)
+		public CourseController(
+			ICourseService courseRepository, 
+			ICategoryService categoryRepository, 
+			ICertificateService certificateRepository, 
+			IAudienceService audienceRepository)
 		{
-			_courseRepository = new CourseRepository();
-			_categoryRepository = new CategoryRepository();
+			if (courseRepository == null)
+			{
+				throw new ArgumentNullException("courseRepository");
+			}
+
+			if (categoryRepository == null)
+			{
+				throw new ArgumentNullException("categoryRepository");
+			}
+
+			if (certificateRepository == null)
+			{
+				throw new ArgumentNullException("certificateRepository");
+			}
+
+			if (audienceRepository == null)
+			{
+				throw new ArgumentNullException("audienceRepository");
+			}
+
+			_courseRepository = courseRepository;
+			_categoryRepository = categoryRepository;
 			_audienceRepository = audienceRepository;
-			_certificateRepository = new CertificateRepository();
+			_certificateRepository = certificateRepository;
 		}
 
 		public ActionResult Index(string categoryId)
 		{
-			List<Course> courses = _courseRepository.GetList().Select(course => (Course)course).ToList();
+			List<Course> courses = _courseRepository.GetList()?.Select(course => (Course)course).ToList();
 
-			if (!string.IsNullOrEmpty(categoryId))
+			if (!string.IsNullOrEmpty(categoryId) && courses != null)
 			{
 				courses = courses.Where(c => c.Category.Id == categoryId).ToList(); ;
 			}
 
-			List<Category> categories = _categoryRepository.GetList().Select(course => (Category)course).ToList();
+			List<Category> categories = _categoryRepository.GetList()?.Select(course => (Category)course).ToList();
 			ViewBag.Categories = categories;
 
-			List<Audience> audienceList = _audienceRepository.GetList().Select(audience => (Audience)audience).ToList();
+			List<Audience> audienceList = _audienceRepository.GetList()?.Select(audience => (Audience)audience).ToList();
 			ViewBag.AudienceList = audienceList;
 
 			return View(courses);
@@ -46,19 +71,19 @@ namespace TrainingPortal.Controllers
 
 		public PartialViewResult List(string categoryId, string audienceId, string courseName)
 		{
-			List<Course> courses = _courseRepository.GetList().Select(course => (Course)course).ToList();
+			List<Course> courses = _courseRepository.GetList()?.Select(course => (Course)course).ToList();
 
-			if (!string.IsNullOrEmpty(categoryId))
+			if (!string.IsNullOrEmpty(categoryId) && courses != null)
 			{
 				courses = courses.Where(c => c.Category == null ? false : c.Category.Id == categoryId).ToList(); ;
 			}
 
-			if (!string.IsNullOrEmpty(audienceId))
+			if (!string.IsNullOrEmpty(audienceId) && courses != null)
 			{
 				courses = courses.Where(c => c.Audience == null ? false : c.Audience.Id == audienceId).ToList(); ;
 			}
 
-			if (!string.IsNullOrEmpty(courseName))
+			if (!string.IsNullOrEmpty(courseName) && courses != null)
 			{
 				courses = courses.Where(c => c.Name.ToLower().StartsWith(courseName.ToLower())).ToList(); ;
 			}
@@ -87,10 +112,10 @@ namespace TrainingPortal.Controllers
 		{
 			CategoryRepository categoryRepository = new CategoryRepository();
 
-			var categories = categoryRepository.GetList().Select(category => (Category)category);
+			var categories = categoryRepository.GetList()?.Select(category => (Category)category);
 			ViewBag.Categories = categories;
 
-			List<Audience> audienceList = _audienceRepository.GetList().Select(audience => (Audience)audience).ToList();
+			List<Audience> audienceList = _audienceRepository.GetList()?.Select(audience => (Audience)audience).ToList();
 			ViewBag.AudienceList = audienceList;
 
 			return View();
@@ -117,10 +142,10 @@ namespace TrainingPortal.Controllers
 		{
 			CategoryRepository categoryRepository = new CategoryRepository();
 
-			var categories = categoryRepository.GetList().Select(category => (Category)category);
+			var categories = categoryRepository.GetList()?.Select(category => (Category)category);
 			ViewBag.Categories = categories;
 
-			List<Audience> audienceList = _audienceRepository.GetList().Select(audience => (Audience)audience).ToList();
+			List<Audience> audienceList = _audienceRepository.GetList()?.Select(audience => (Audience)audience).ToList();
 			ViewBag.AudienceList = audienceList;
 
 			Course course = _courseRepository.Get(id.ToString());

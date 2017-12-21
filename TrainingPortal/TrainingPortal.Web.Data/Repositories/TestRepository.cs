@@ -14,7 +14,10 @@ namespace TrainingPortal.Data.Repositories
 
 		~TestRepository()
 		{
-			testServiceClient.Close();
+			if (testServiceClient != null)
+			{
+				testServiceClient.Close();
+			}
 		}
 
 		public void Create(TestDto test, string courseId)

@@ -14,7 +14,10 @@ namespace TrainingPortal.Data.Repositories
 
 		~UserRepository()
 		{
-			userServiceClient.Close();
+			if (userServiceClient != null)
+			{
+				userServiceClient.Close();
+			}
 		}
 
 		public string Create(UserDto user)

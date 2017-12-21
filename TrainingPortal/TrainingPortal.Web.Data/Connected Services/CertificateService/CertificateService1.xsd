@@ -4,6 +4,7 @@
   <xs:complexType name="CertificateDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="CourseId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Result" type="xs:int" />
       <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />

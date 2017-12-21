@@ -14,7 +14,10 @@ namespace TrainingPortal.Data.Repositories
 
 		~LessonRepository()
 		{
-			lessonServiceClient.Close();
+			if (lessonServiceClient != null)
+			{
+				lessonServiceClient.Close();
+			}
 		}
 
 		public void Create(LessonDto lesson, string courseId)

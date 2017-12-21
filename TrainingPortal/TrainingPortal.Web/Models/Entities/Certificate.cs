@@ -13,6 +13,8 @@ namespace TrainingPortal.Models
 
 		public string CourseId { get; set; }
 
+		public DateTime Date { get; set; }
+
 		public static implicit operator Certificate(CertificateDto certificate)
 		{
 			if (certificate != null)
@@ -23,6 +25,7 @@ namespace TrainingPortal.Models
 					CourseId = certificate.CourseId,
 					UserId = certificate.UserId,
 					Result = certificate.Result,
+					Date = certificate.Date
 				};
 			}
 
@@ -39,6 +42,7 @@ namespace TrainingPortal.Models
 					CourseId = certificate.CourseId,
 					UserId = certificate.UserId,
 					Result = certificate.Result,
+					Date = certificate.Date
 				};
 			}
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using TrainingPortal.Data.Repositories;
@@ -15,12 +16,17 @@ namespace TrainingPortal.Controllers
 
 		public TestOptionController(ITestOptionService testOptionRepository)
 		{
+			if (testOptionRepository == null)
+			{
+				throw new ArgumentNullException("testOptionRepository");
+			}
+
 			_testOptionRepository = testOptionRepository;
 		}
 
 		public ActionResult Index(string testId)
 		{
-			List<TestOption> options = _testOptionRepository.GetList(testId).Select(to => (TestOption)to).ToList();
+			List<TestOption> options = _testOptionRepository.GetList(testId)?.Select(to => (TestOption)to).ToList();
 
 			return View(options);
 		}
