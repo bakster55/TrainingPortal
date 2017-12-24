@@ -10,190 +10,190 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/log4net.dll">
-      <publishTime>03/08/2017 19:26:22</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>04/03/2015 17:07:22</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
-      <publishTime>04/03/2015 17:07:22</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
-      <publishTime>05/05/2017 09:59:26</publishTime>
+      <publishTime>10/16/2017 14:14:32</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
-      <publishTime>04/05/2017 11:53:36</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
-      <publishTime>04/05/2017 11:53:40</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
-      <publishTime>04/05/2017 11:53:42</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.dll">
-      <publishTime>04/05/2017 11:53:42</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
-      <publishTime>01/13/2014 16:11:12</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
-      <publishTime>05/05/2014 11:25:44</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.ServiceLocation.pdb">
-      <publishTime>05/05/2014 11:25:44</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>07/25/2012 11:48:56</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>11/20/2012 22:45:56</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/Owin.dll">
-      <publishTime>11/13/2012 12:19:34</publishTime>
+      <publishTime>12/14/2017 19:07:54</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe.config">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/csc.rsp">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe.config">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/csi.rsp">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.AppContext.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Console.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.Process.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Compression.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.DriveInfo.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Pipes.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.AccessControl.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Claims.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Threading.Thread.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.ValueTuple.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>12/13/2017 22:09:38</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.AspNet.Identity.Core.resources.dll">
       <publishTime>04/03/2015 17:09:50</publishTime>
@@ -220,40 +220,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:40</publishTime>
     </File>
     <File Include="bin/StructureMap.dll">
-      <publishTime>08/26/2014 10:50:24</publishTime>
+      <publishTime>12/14/2017 19:07:54</publishTime>
     </File>
     <File Include="bin/StructureMap.Net4.dll">
-      <publishTime>08/26/2014 10:50:24</publishTime>
+      <publishTime>12/14/2017 19:07:54</publishTime>
     </File>
     <File Include="bin/StructureMap.Net4.pdb">
-      <publishTime>08/26/2014 10:50:24</publishTime>
+      <publishTime>12/14/2017 19:07:54</publishTime>
     </File>
     <File Include="bin/StructureMap.pdb">
-      <publishTime>08/26/2014 10:50:24</publishTime>
+      <publishTime>12/14/2017 19:07:54</publishTime>
     </File>
     <File Include="bin/StructureMap.Web.dll">
-      <publishTime>08/11/2014 07:40:22</publishTime>
+      <publishTime>12/14/2017 19:07:54</publishTime>
     </File>
     <File Include="bin/StructureMap.Web.pdb">
-      <publishTime>08/11/2014 07:40:22</publishTime>
+      <publishTime>12/14/2017 19:07:54</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>01/28/2015 04:04:30</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>01/28/2015 04:02:18</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>01/28/2015 04:02:32</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.Deployment.dll">
-      <publishTime>01/28/2015 04:04:30</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.dll">
-      <publishTime>01/28/2015 04:04:30</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.Razor.dll">
-      <publishTime>01/28/2015 04:04:30</publishTime>
+      <publishTime>12/14/2017 19:07:53</publishTime>
     </File>
     <File Include="bin/TrainingPortal.Business.dll">
       <publishTime>11/27/2017 18:39:48</publishTime>
@@ -276,170 +276,230 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/TrainingPortal.pdb">
       <publishTime>11/27/2017 18:39:59</publishTime>
     </File>
+    <File Include="bin/TrainingPortal.Web.Data.dll">
+      <publishTime>12/21/2017 19:16:57</publishTime>
+    </File>
+    <File Include="bin/TrainingPortal.Web.Data.dll.config">
+      <publishTime>12/21/2017 18:58:06</publishTime>
+    </File>
+    <File Include="bin/TrainingPortal.Web.Data.pdb">
+      <publishTime>12/21/2017 19:16:57</publishTime>
+    </File>
+    <File Include="bin/TrainingPortal.Web.dll">
+      <publishTime>12/21/2017 21:11:44</publishTime>
+    </File>
+    <File Include="bin/TrainingPortal.Web.pdb">
+      <publishTime>12/21/2017 21:11:44</publishTime>
+    </File>
     <File Include="bin/WebActivatorEx.dll">
-      <publishTime>03/10/2014 11:33:46</publishTime>
+      <publishTime>12/14/2017 19:07:54</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>11/15/2017 19:11:53</publishTime>
+      <publishTime>12/14/2017 19:07:55</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>11/15/2017 19:11:53</publishTime>
+      <publishTime>12/14/2017 19:07:55</publishTime>
+    </File>
+    <File Include="Content/Certificate.css">
+      <publishTime>12/17/2017 16:17:35</publishTime>
+    </File>
+    <File Include="Content/certificate.jpg">
+      <publishTime>12/14/2017 19:07:55</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>11/26/2017 13:09:34</publishTime>
+      <publishTime>12/17/2017 16:17:51</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>11/14/2017 15:04:29</publishTime>
+      <publishTime>12/14/2017 19:07:55</publishTime>
     </File>
     <File Include="Log.config">
-      <publishTime>11/16/2017 16:22:14</publishTime>
+      <publishTime>12/14/2017 19:07:55</publishTime>
     </File>
     <File Include="Logs/Errors.log">
-      <publishTime>11/20/2017 10:32:35</publishTime>
+      <publishTime>12/14/2017 19:07:55</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
-      <publishTime>11/19/2017 12:59:54</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.js">
-      <publishTime>11/19/2017 12:59:54</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.map">
-      <publishTime>11/19/2017 12:59:54</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery.printElement.js">
+      <publishTime>12/17/2017 15:53:35</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>11/19/2017 13:00:12</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>11/19/2017 13:00:12</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>11/19/2017 13:00:13</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>11/19/2017 13:00:13</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Account/ChangePassword.cshtml">
-      <publishTime>11/27/2017 08:21:51</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Account/ChangeProfile.cshtml">
-      <publishTime>11/27/2017 08:22:18</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Account/Index.cshtml">
-      <publishTime>11/27/2017 08:22:32</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>11/27/2017 08:22:45</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>11/27/2017 08:22:51</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Audience/Create.cshtml">
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Audience/Delete.cshtml">
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Audience/Details.cshtml">
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Audience/Edit.cshtml">
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Audience/Index.cshtml">
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Category/Create.cshtml">
-      <publishTime>11/27/2017 08:23:15</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Category/Delete.cshtml">
-      <publishTime>11/27/2017 08:23:21</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Category/Details.cshtml">
-      <publishTime>11/27/2017 08:23:27</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Category/Edit.cshtml">
-      <publishTime>11/27/2017 08:23:34</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Category/Index.cshtml">
-      <publishTime>11/27/2017 08:23:50</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Certificate/Delete.cshtml">
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Certificate/Details.cshtml">
+      <publishTime>12/21/2017 17:27:34</publishTime>
+    </File>
+    <File Include="Views/Certificate/Index.cshtml">
+      <publishTime>12/17/2017 16:15:14</publishTime>
+    </File>
+    <File Include="Views/Certificate/Partials/Index.cshtml">
+      <publishTime>12/21/2017 17:26:22</publishTime>
     </File>
     <File Include="Views/Course/Create.cshtml">
-      <publishTime>11/23/2017 16:07:33</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Course/Delete.cshtml">
-      <publishTime>11/23/2017 12:11:15</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Course/Details.cshtml">
-      <publishTime>11/26/2017 10:47:48</publishTime>
+      <publishTime>12/17/2017 14:28:25</publishTime>
     </File>
     <File Include="Views/Course/Edit.cshtml">
-      <publishTime>11/23/2017 16:08:50</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Course/Index.cshtml">
-      <publishTime>11/27/2017 08:24:05</publishTime>
+      <publishTime>12/17/2017 15:54:15</publishTime>
+    </File>
+    <File Include="Views/Course/Partials/Index.cshtml">
+      <publishTime>12/17/2017 14:27:55</publishTime>
     </File>
     <File Include="Views/Lesson/Create.cshtml">
-      <publishTime>11/25/2017 18:23:16</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Lesson/Delete.cshtml">
-      <publishTime>11/25/2017 18:11:28</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Lesson/Details.cshtml">
-      <publishTime>11/25/2017 18:11:28</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Lesson/Edit.cshtml">
-      <publishTime>11/25/2017 18:18:08</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Lesson/Index.cshtml">
-      <publishTime>11/27/2017 08:24:35</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Lesson/TakeCourse.cshtml">
+      <publishTime>12/20/2017 15:51:13</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/23/2017 12:06:47</publishTime>
+      <publishTime>12/17/2017 15:54:07</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>11/20/2017 10:43:06</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Test/Create.cshtml">
-      <publishTime>11/26/2017 19:20:25</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Test/Delete.cshtml">
-      <publishTime>11/26/2017 19:20:41</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Test/Details.cshtml">
-      <publishTime>11/26/2017 19:33:03</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Test/Edit.cshtml">
-      <publishTime>11/26/2017 19:21:20</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/Test/Index.cshtml">
-      <publishTime>11/27/2017 08:24:55</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
+    </File>
+    <File Include="Views/Test/WriteTest.cshtml">
+      <publishTime>12/21/2017 16:52:08</publishTime>
     </File>
     <File Include="Views/TestOption/Create.cshtml">
-      <publishTime>11/26/2017 19:39:24</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/TestOption/Delete.cshtml">
-      <publishTime>11/26/2017 19:39:36</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/TestOption/Details.cshtml">
-      <publishTime>11/26/2017 19:39:55</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/TestOption/Edit.cshtml">
-      <publishTime>11/26/2017 19:40:10</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/TestOption/Index.cshtml">
-      <publishTime>11/27/2017 08:25:12</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/User/ChangePassword.cshtml">
-      <publishTime>11/20/2017 13:49:50</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/User/ChangeProfile.cshtml">
-      <publishTime>11/20/2017 14:01:44</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/User/ChangeRole.cshtml">
-      <publishTime>11/20/2017 16:07:33</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/User/Delete.cshtml">
-      <publishTime>11/20/2017 13:31:33</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/User/Details.cshtml">
-      <publishTime>11/20/2017 14:58:46</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/User/Index.cshtml">
-      <publishTime>11/27/2017 08:25:24</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/web.config">
-      <publishTime>11/15/2017 20:27:46</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>11/15/2017 19:10:19</publishTime>
+      <publishTime>12/14/2017 19:07:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/27/2017 18:40:00</publishTime>
+      <publishTime>12/21/2017 21:11:45</publishTime>
     </File>
   </ItemGroup>
 </Project>
