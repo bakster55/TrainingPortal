@@ -7,15 +7,17 @@
 *.suo
 *.user
 *.sln.docstates
+*.jfm
+*.dbmdl
 
 # Build results
 
-[Dd]ebug/
-[Rr]elease/
+**/[Dd]ebug/
+**/[Rr]elease/
 x64/
 build/
-[Bb]in/
-[Oo]bj/
+**/[Bb]in/*
+**/[Oo]bj/*
 
 # NuGet Packages
 *.nupkg
@@ -77,29 +79,6 @@ ipch/
 # ReSharper is a .NET coding add-in
 _ReSharper*/
 *.[Rr]e[Ss]harper
-
-# TeamCity is a build add-in
-_TeamCity*
-
-# DotCover is a Code Coverage Tool
-*.dotCover
-
-# NCrunch
-*.ncrunch*
-.*crunch*.local.xml
-
-# Installshield output folder
-[Ee]xpress/
-
-# DocProject is a documentation generator add-in
-DocProject/buildhelp/
-DocProject/Help/*.HxT
-DocProject/Help/*.HxC
-DocProject/Help/*.hhc
-DocProject/Help/*.hhk
-DocProject/Help/*.hhp
-DocProject/Help/Html2
-DocProject/Help/html
 
 # Click-Once directory
 publish/
@@ -191,18 +170,6 @@ $RECYCLE.BIN/
 # VS 2015+
 *.vc.vc.opendb
 *.vc.db
-
-# Rider
-.idea/
-
-# Output folder used by Webpack or other FE stuff
-**/node_modules/*
-**/wwwroot/*
-
-# SpecFlow specific
-*.feature.cs
-*.feature.xlsx.*
-*.Specs_*.html
 
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
