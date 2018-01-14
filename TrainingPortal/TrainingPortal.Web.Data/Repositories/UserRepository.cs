@@ -1,8 +1,12 @@
 ﻿using TrainingPortal.Web.Data.UserService;
+using TrainingPortal.Web.Business.Models;
+using TrainingPortal.Web.Data.Converters;
+using TrainingPortal.Data.Interfaces;
+using System.Linq;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class UserRepository : IUserService
+	public class UserRepository : IUserRepository
 	{
 		private UserServiceClient userServiceClient;
 
@@ -20,9 +24,9 @@ namespace TrainingPortal.Data.Repositories
 			}
 		}
 
-		public string Create(UserDto user)
+		public string Create(ApplicationUser user)
 		{
-			string id = userServiceClient.Create(user);
+			string id = userServiceClient.Create(user.Convert());
 
 			return id;
 		}
@@ -32,23 +36,23 @@ namespace TrainingPortal.Data.Repositories
 			userServiceClient.Delete(id);
 		}
 
-		public UserDto Get(string id = null, string email = null, string name = null)
+		public ApplicationUser Get(string id = null, string email = null, string name = null)
 		{
 			UserDto user = userServiceClient.Get(id, email, name);
 
-			return user;
+			return user.Convert();
 		}
 
-		public UserDto[] GetList()
+		public ApplicationUser[] GetList()
 		{
 			UserDto[] users = userServiceClient.GetList();
 
-			return users;
+			return users.Select((au) => au.Convert()).ToArray();
 		}
 
-		public void Update(UserDto user)
+		public void Update(ApplicationUser user)
 		{
-			userServiceClient.Update(user);
+			userServiceClient.Update(user.Convert());
 		}
 	}
 }

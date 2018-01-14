@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
-using TrainingPortal.Models;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Models.Stores
 {

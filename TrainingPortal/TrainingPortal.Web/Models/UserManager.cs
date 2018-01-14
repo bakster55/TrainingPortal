@@ -10,6 +10,8 @@ using TrainingPortal.Data.Repositories;
 using TrainingPortal.Models.Stores;
 using TrainingPortal.Web.Data.UserRoleService;
 using TrainingPortal.Web.Data.UserService;
+using TrainingPortal.Web.Business.Models;
+using TrainingPortal.Data.Interfaces;
 
 namespace TrainingPortal.Models
 {
@@ -23,8 +25,8 @@ namespace TrainingPortal.Models
 
 		public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
 		{
-			UserRepository userRepository = (UserRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IUserService));
-			UserRoleRepository userRoleRepository = (UserRoleRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IUserRoleService));
+			UserRepository userRepository = (UserRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IUserRepository));
+			UserRoleRepository userRoleRepository = (UserRoleRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IUserRoleRepository));
 
 			var manager = new ApplicationUserManager(new UserStore(userRepository, userRoleRepository));
 			// Configure validation logic for usernames

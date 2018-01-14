@@ -2,61 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TrainingPortal.Models;
+using TrainingPortal.Web.Business.Models;
 using TrainingPortal.Web.Data.TestService;
 using TrainingPortal.Web.Data.TestOptionService;
+using TrainingPortal.Data.Interfaces;
 
 namespace TrainingPortal.Web.Models.Services
 {
 	public class TestService : ITestService
 	{
-		private TrainingPortal.Web.Data.TestService.ITestService _testRepository;
-		private ITestOptionService _testOptionRepository;
+		private ITestRepository _testRepository;
 
 		public TestService(
-			TrainingPortal.Web.Data.TestService.ITestService testRepository,
-			ITestOptionService testOptionRepository
+			ITestRepository testRepository
 			)
 		{
 			_testRepository = testRepository;
-			_testOptionRepository = testOptionRepository;
-		}
-
-		public void Create(Test test, string courseId)
-		{
-			_testRepository.Create(test, courseId);
-		}
-
-		public void Delete(string id)
-		{
-			_testRepository.Delete(id);
-		}
-
-		public Test Get(string id)
-		{
-			Test test = _testRepository.Get(id);
-			test.Options = _testOptionRepository.GetList(id).Select((to) => (TestOption)to).ToList();
-
-			return test;
-		}
-
-		public IList<Test> GetList(string courseId)
-		{
-			List<Test> tests = _testRepository.GetList(courseId).Select((t) =>
-			{
-				Test test = (Test)t;
-				test.Options = _testOptionRepository.GetList(test.Id).Select((to) => (TestOption)to).ToList();
-
-				return test;
-			}
-			).ToList();
-
-			return tests;
 		}
 
 		public int GetTrueAnswersCount(List<Test> tests, string courseId)
 		{
-			List<Test> testsAnswers = _testRepository.GetList(courseId).Select(test => (Test)test).ToList();
+			List<Test> testsAnswers = _testRepository.GetList(courseId).ToList();
 
 			int count = 0;
 
@@ -64,7 +30,6 @@ namespace TrainingPortal.Web.Models.Services
 			{
 				bool result = true;
 				Test testAnswers = testsAnswers[i];
-				testAnswers.Options = _testOptionRepository.GetList(testAnswers.Id).Select(to => (TestOption)to).ToList();
 				Test test = tests[i];
 
 				if (testAnswers.Options != null)

@@ -178,10 +178,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\ApplicationUser.cs" />
-    <Compile Include="Models\Entities\Audience.cs" />
-    <Compile Include="Models\Entities\Certificate.cs" />
-    <Compile Include="Models\Entities\Role.cs" />
     <Compile Include="Models\Services\ITestService.cs" />
     <Compile Include="Models\Services\TestService.cs" />
     <Compile Include="Models\Stores\RoleStore.cs" />
@@ -189,12 +185,7 @@
     <Compile Include="Models\Stores\UserPasswordStore.cs" />
     <Compile Include="Models\Stores\UserRoleStore.cs" />
     <Compile Include="Models\Stores\UserStore.cs" />
-    <Compile Include="Models\Entities\TestOption.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
-    <Compile Include="Models\Entities\Category.cs" />
-    <Compile Include="Models\Entities\Course.cs" />
-    <Compile Include="Models\Entities\Test.cs" />
-    <Compile Include="Models\Entities\Lesson.cs" />
     <Compile Include="Models\ViewModels\ManageViewModel.cs" />
     <Compile Include="Models\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -268,13 +259,13 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TrainingPortal.Business\TrainingPortal.Business.csproj">
+    <ProjectReference Include="..\TrainingPortal.Web.Business\TrainingPortal.Web.Business.csproj">
       <Project>{9ac9a607-d9a6-4e91-ba6f-6eb53fac601f}</Project>
-      <Name>TrainingPortal.Business</Name>
+      <Name>TrainingPortal.Web.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\TrainingPortal.Web.Data\TrainingPortal.Web.Data.csproj">
       <Project>{a6b5c4ee-e435-4573-8c14-50f4088cc871}</Project>
-      <Name>TrainingPortal.Data</Name>
+      <Name>TrainingPortal.Web.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

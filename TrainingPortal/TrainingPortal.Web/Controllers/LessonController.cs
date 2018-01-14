@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using TrainingPortal.Data.Repositories;
-using TrainingPortal.Models;
-using TrainingPortal.Web.Data.LessonService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Controllers
 {
 	public class LessonController : Controller
 	{
-		private ILessonService _lessonRepository;
+		private ILessonRepository _lessonRepository;
 
-		public LessonController(ILessonService lessonRepository)
+		public LessonController(ILessonRepository lessonRepository)
 		{
 			if (lessonRepository == null)
 			{

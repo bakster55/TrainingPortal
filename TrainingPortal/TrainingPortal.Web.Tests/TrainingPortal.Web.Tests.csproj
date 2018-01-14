@@ -72,6 +72,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TrainingPortal.Web.Business\TrainingPortal.Web.Business.csproj">
+      <Project>{9ac9a607-d9a6-4e91-ba6f-6eb53fac601f}</Project>
+      <Name>TrainingPortal.Web.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrainingPortal.Web.Data\TrainingPortal.Web.Data.csproj">
       <Project>{A6B5C4EE-E435-4573-8C14-50F4088CC871}</Project>
       <Name>TrainingPortal.Web.Data</Name>

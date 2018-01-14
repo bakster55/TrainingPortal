@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Threading.Tasks;
-using TrainingPortal.Models;
-using TrainingPortal.Data.Repositories;
-using TrainingPortal.Web.Data.RoleService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Models.Stores
 {
 	public partial class RoleStore : IRoleStore<Role, string>
 	{
-		private IRoleService _roleRepository;
+		private IRoleRepository _roleRepository;
 
-		public RoleStore(IRoleService roleRepository)
+		public RoleStore(IRoleRepository roleRepository)
 		{
 			_roleRepository = roleRepository;
 		}

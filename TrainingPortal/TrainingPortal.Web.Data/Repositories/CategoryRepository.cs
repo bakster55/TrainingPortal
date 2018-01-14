@@ -1,8 +1,12 @@
 ﻿using TrainingPortal.Web.Data.CategoryService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
+using System.Linq;
+using TrainingPortal.Web.Data.Converters;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class CategoryRepository : ICategoryService
+	public class CategoryRepository : ICategoryRepository
 	{
 		private CategoryServiceClient categoryServiceClient;
 
@@ -20,9 +24,9 @@ namespace TrainingPortal.Data.Repositories
 			}
 		}
 
-		public void Create(CategoryDto category)
+		public void Create(Category category)
 		{
-			categoryServiceClient.Create(category);
+			categoryServiceClient.Create(category.Convert());
 		}
 
 		public void Delete(string id)
@@ -30,23 +34,23 @@ namespace TrainingPortal.Data.Repositories
 			categoryServiceClient.Delete(id);
 		}
 
-		public CategoryDto Get(string id)
+		public Category Get(string id)
 		{
 			CategoryDto category = categoryServiceClient.Get(id);
 
-			return category;
+			return category.Convert();
 		}
 
-		public CategoryDto[] GetList()
+		public Category[] GetList()
 		{
 			CategoryDto[] categories = categoryServiceClient.GetList();
 
-			return categories;
+			return categories.Select((c) => c.Convert()).ToArray();
 		}
 
-		public void Update(CategoryDto category)
+		public void Update(Category category)
 		{
-			categoryServiceClient.Update(category);
+			categoryServiceClient.Update(category.Convert());
 		}
 	}
 }

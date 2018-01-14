@@ -32,12 +32,8 @@ namespace TrainingPortal.Service
 							string id = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("Id")).ToString();
 							string name = sqlDataReader.GetString(sqlDataReader.GetOrdinal("Name"));
 							string description = sqlDataReader.GetString(sqlDataReader.GetOrdinal("Description"));
-
-							string categoryId = sqlDataReader.IsDBNull(5) ? null : sqlDataReader.GetInt32(5).ToString();
-							string categoryName = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetString(6);
-
-							string audienceId = sqlDataReader.IsDBNull(7) ? null : sqlDataReader.GetInt32(7).ToString();
-							string audienceName = sqlDataReader.IsDBNull(8) ? null : sqlDataReader.GetString(8);
+							string categoryId = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("CategoryId")).ToString();
+							string audienceId = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("AudienceId")).ToString();
 
 							courses.Add(
 								new CourseDto()
@@ -45,8 +41,8 @@ namespace TrainingPortal.Service
 									Id = id.ToString(),
 									Description = description,
 									Name = name,
-									Category = categoryId == null ? null : new CategoryDto { Id = categoryId, Name = categoryName },
-									Audience = audienceId == null ? null : new AudienceDto { Id = audienceId, Name = audienceName }
+									CategoryId = categoryId,
+									AudienceId = audienceId
 								});
 						}
 
@@ -78,20 +74,16 @@ namespace TrainingPortal.Service
 						{
 							string name = sqlDataReader.GetString(sqlDataReader.GetOrdinal("Name"));
 							string description = sqlDataReader.GetString(sqlDataReader.GetOrdinal("Description"));
-
-							string categoryId = sqlDataReader.IsDBNull(5) ? null : sqlDataReader.GetInt32(5).ToString();
-							string categoryName = sqlDataReader.IsDBNull(6) ? null : sqlDataReader.GetString(6);
-
-							string audienceId = sqlDataReader.IsDBNull(7) ? null : sqlDataReader.GetInt32(7).ToString();
-							string audienceName = sqlDataReader.IsDBNull(8) ? null : sqlDataReader.GetString(8);
+							string categoryId = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("CategoryId")).ToString();
+							string audienceId = sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("AudienceId")).ToString();
 
 							course = new CourseDto()
 							{
 								Id = id.ToString(),
 								Description = description,
 								Name = name,
-								Category = categoryId == null ? null : new CategoryDto { Id = categoryId, Name = categoryName },
-								Audience = audienceId == null ? null : new AudienceDto { Id = audienceId, Name = audienceName }
+								CategoryId = categoryId,
+								AudienceId = audienceId
 							};
 						}
 
@@ -114,8 +106,8 @@ namespace TrainingPortal.Service
 					sqlCommand.Parameters.Add("@id", SqlDbType.Int).Value = course.Id;
 					sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 50).Value = course.Name;
 					sqlCommand.Parameters.Add("@description", SqlDbType.NVarChar, -1).Value = course.Description;
-					sqlCommand.Parameters.Add("@categoryId", SqlDbType.Int).Value = course.Category.Id;
-					sqlCommand.Parameters.Add("@audienceId", SqlDbType.Int).Value = course.Audience.Id;
+					sqlCommand.Parameters.Add("@categoryId", SqlDbType.Int).Value = course.CategoryId;
+					sqlCommand.Parameters.Add("@audienceId", SqlDbType.Int).Value = course.AudienceId;
 
 					sqlConnection.Open();
 					sqlCommand.ExecuteNonQuery();
@@ -133,8 +125,8 @@ namespace TrainingPortal.Service
 
 					sqlCommand.Parameters.Add("@name", SqlDbType.NVarChar, 50).Value = course.Name;
 					sqlCommand.Parameters.Add("@description", SqlDbType.NVarChar, -1).Value = course.Description;
-					sqlCommand.Parameters.Add("@categoryId", SqlDbType.Int).Value = course.Category.Id;
-					sqlCommand.Parameters.Add("@audienceId", SqlDbType.Int).Value = course.Audience.Id;
+					sqlCommand.Parameters.Add("@categoryId", SqlDbType.Int).Value = course.CategoryId;
+					sqlCommand.Parameters.Add("@audienceId", SqlDbType.Int).Value = course.AudienceId;
 
 					sqlConnection.Open();
 					sqlCommand.ExecuteNonQuery();

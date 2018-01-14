@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TrainingPortal.Models;
+using TrainingPortal.Web.Business.Models;
 
 namespace CodeSystem.Controllers
 {

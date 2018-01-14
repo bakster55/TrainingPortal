@@ -4,16 +4,13 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using TrainingPortal.Web.Data.RoleService;
+using TrainingPortal.Web.Business.Models;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Web.Data.Converters
 {
-	public class Role : IRole
+	public static partial class Converter
 	{
-		public string Id { get; set; }
-
-		public string Name { get; set; }
-
-		public static implicit operator Role(RoleDto role)
+		public static Role Convert(this RoleDto role)
 		{
 			if (role != null)
 			{
@@ -27,7 +24,7 @@ namespace TrainingPortal.Models
 			return null;
 		}
 
-		public static implicit operator RoleDto(Role role)
+		public static RoleDto Convert(this Role role)
 		{
 			if (role != null)
 			{

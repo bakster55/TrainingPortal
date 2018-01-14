@@ -1,14 +1,11 @@
 ﻿using System.Collections.Generic;
 using TrainingPortal.Web.Data.TestService;
+using TrainingPortal.Web.Business.Models;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Web.Data.Converters
 {
-	public class TestOption
+	public static partial class Converter
 	{
-		public string Id { get; set; }
-		public bool IsChecked { get; set; }
-		public string Name { get; set; }
-
 		//From TestService
 		//public static implicit operator TestOption(TrainingPortal.Client.TestService.TestOptionDto option)
 		//{
@@ -41,7 +38,7 @@ namespace TrainingPortal.Models
 		//}
 
 		//From TestOptionService
-		public static implicit operator TestOption(TrainingPortal.Web.Data.TestOptionService.TestOptionDto option)
+		public static TestOption Convert(this TrainingPortal.Web.Data.TestOptionService.TestOptionDto option)
 		{
 			if (option != null)
 			{
@@ -56,7 +53,7 @@ namespace TrainingPortal.Models
 			return null;
 		}
 
-		public static implicit operator TrainingPortal.Web.Data.TestOptionService.TestOptionDto(TestOption option)
+		public static TrainingPortal.Web.Data.TestOptionService.TestOptionDto Convert(this TestOption option)
 		{
 			if (option != null)
 			{

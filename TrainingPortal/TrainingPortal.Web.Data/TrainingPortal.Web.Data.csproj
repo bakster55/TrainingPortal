@@ -99,9 +99,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ApplicationUser.cs" />
+    <Compile Include="Converters\Audience.cs" />
+    <Compile Include="Converters\Category.cs" />
+    <Compile Include="Converters\Certificate.cs" />
+    <Compile Include="Converters\Course.cs" />
+    <Compile Include="Converters\Lesson.cs" />
+    <Compile Include="Converters\Role.cs" />
+    <Compile Include="Converters\Test.cs" />
+    <Compile Include="Converters\TestOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AudienceRepository.cs" />
     <Compile Include="Repositories\CertificateRepository.cs" />
+    <Compile Include="Interfaces\IAudienceRepository.cs" />
+    <Compile Include="Interfaces\ICategoryRepository.cs" />
+    <Compile Include="Interfaces\ICertificateRepository.cs" />
+    <Compile Include="Interfaces\ICourseRepository.cs" />
+    <Compile Include="Interfaces\ILessonRepository.cs" />
+    <Compile Include="Interfaces\IRoleRepository.cs" />
+    <Compile Include="Interfaces\ITestOptionRepository.cs" />
+    <Compile Include="Interfaces\ITestRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Interfaces\IUserRoleRepository.cs" />
     <Compile Include="Repositories\TestRepository.cs" />
     <Compile Include="Repositories\TestOptionRepository.cs" />
     <Compile Include="Repositories\LessonRepository.cs" />
@@ -394,7 +413,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\TrainingPortal.Web.Business\TrainingPortal.Web.Business.csproj">
+      <Project>{9ac9a607-d9a6-4e91-ba6f-6eb53fac601f}</Project>
+      <Name>TrainingPortal.Web.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\TestService\TestService.disco" />
@@ -411,5 +433,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

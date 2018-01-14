@@ -1,13 +1,20 @@
 ﻿using TrainingPortal.Web.Data.TestService;
+using TrainingPortal.Data.Interfaces;
+using System.Linq;
+using TrainingPortal.Web.Business.Models;
+using TrainingPortal.Web.Data.Converters;
+using System.Collections.Generic;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class TestRepository : ITestService
+	public class TestRepository : ITestRepository
 	{
 		private TestServiceClient testServiceClient;
+		private ITestOptionRepository _testOptionRepository;
 
-		public TestRepository()
+		public TestRepository(ITestOptionRepository testOptionRepository)
 		{
+			_testOptionRepository = testOptionRepository;
 			testServiceClient = new TestServiceClient();
 			testServiceClient.Open();
 		}
@@ -20,9 +27,9 @@ namespace TrainingPortal.Data.Repositories
 			}
 		}
 
-		public void Create(TestDto test, string courseId)
+		public void Create(Test test, string courseId)
 		{
-			testServiceClient.Create(test, courseId);
+			testServiceClient.Create(test.Convert(), courseId);
 		}
 
 		public void Delete(string id)
@@ -30,23 +37,30 @@ namespace TrainingPortal.Data.Repositories
 			testServiceClient.Delete(id);
 		}
 
-		public TestDto Get(string id)
+		public Test Get(string id)
 		{
-			TestDto test = testServiceClient.Get(id);
+			List<TestOption> testOptions = _testOptionRepository.GetList(id).ToList();
+			Test test = testServiceClient.Get(id).Convert(testOptions);
 
 			return test;
 		}
 
-		public TestDto[] GetList(string courseId)
+		public Test[] GetList(string courseId)
 		{
-			TestDto[] tests = testServiceClient.GetList(courseId);
+			Test[] tests = testServiceClient.GetList(courseId).Select((t) =>
+			{
+				List<TestOption> testOptions = _testOptionRepository.GetList(t.Id).ToList();
+				Test test = t.Convert(testOptions);
+
+				return test;
+			}).ToArray();
 
 			return tests;
 		}
 
-		public void Update(TestDto test)
+		public void Update(Test test)
 		{
-			testServiceClient.Update(test);
+			testServiceClient.Update(test.Convert());
 		}
 	}
 }

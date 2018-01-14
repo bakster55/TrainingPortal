@@ -1,8 +1,12 @@
 ﻿using TrainingPortal.Web.Data.RoleService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
+using System.Linq;
+using TrainingPortal.Web.Data.Converters;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class RoleRepository : IRoleService
+	public class RoleRepository : IRoleRepository
 	{
 		private RoleServiceClient roleServiceClient;
 
@@ -20,9 +24,9 @@ namespace TrainingPortal.Data.Repositories
 			}
 		}
 
-		public string Create(RoleDto role)
+		public string Create(Role role)
 		{
-			string id = roleServiceClient.Create(role);
+			string id = roleServiceClient.Create(role.Convert());
 
 			return id;
 		}
@@ -32,23 +36,23 @@ namespace TrainingPortal.Data.Repositories
 			roleServiceClient.Delete(id);
 		}
 
-		public RoleDto Get(string id = null, string name = null)
+		public Role Get(string id = null, string name = null)
 		{
 			RoleDto role = roleServiceClient.Get(id, name);
 
-			return role;
+			return role.Convert();
 		}
 
-		public RoleDto[] GetList()
+		public Role[] GetList()
 		{
 			RoleDto[] roles = roleServiceClient.GetList();
 
-			return roles;
+			return roles.Select((r) => r.Convert()).ToArray();
 		}
 
-		public void Update(RoleDto role)
+		public void Update(Role role)
 		{
-			roleServiceClient.Update(role);
+			roleServiceClient.Update(role.Convert());
 		}
 	}
 }

@@ -5,7 +5,7 @@
 		public string Id { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }
-		public CategoryDto Category { get; set; }
-		public AudienceDto Audience { get; set; }
+		public string CategoryId { get; set; }
+		public string AudienceId { get; set; }
 	}
 }

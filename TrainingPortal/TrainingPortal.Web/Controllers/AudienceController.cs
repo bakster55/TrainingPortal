@@ -1,19 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using TrainingPortal.Data.Repositories;
-using TrainingPortal.Models;
-using TrainingPortal.Web.Data.AudienceService;
-using System;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Controllers
 {
 	[Authorize(Roles = "admin, editor")]
 	public class AudienceController : Controller
 	{
-		private IAudienceService _audienceRepository;
+		private IAudienceRepository _audienceRepository;
 
-		public AudienceController(IAudienceService audienceRepository)
+		public AudienceController(IAudienceRepository audienceRepository)
 		{
 			if (audienceRepository == null)
 			{

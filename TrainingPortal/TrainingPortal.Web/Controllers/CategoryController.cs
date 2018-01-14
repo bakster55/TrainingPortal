@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using TrainingPortal.Data.Repositories;
-using TrainingPortal.Models;
-using TrainingPortal.Web.Data.CategoryService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Controllers
 {
 	[Authorize(Roles = "admin, editor")]
 	public class CategoryController : Controller
 	{
-		private ICategoryService _categoryRepository;
+		private ICategoryRepository _categoryRepository;
 
-		public CategoryController(ICategoryService categoryRepository)
+		public CategoryController(ICategoryRepository categoryRepository)
 		{
 			if (categoryRepository == null)
 			{

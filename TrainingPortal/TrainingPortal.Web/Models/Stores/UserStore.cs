@@ -8,14 +8,16 @@ using TrainingPortal.Models;
 using TrainingPortal.Data.Repositories;
 using TrainingPortal.Web.Data.UserService;
 using TrainingPortal.Web.Data.UserRoleService;
+using TrainingPortal.Web.Business.Models;
+using TrainingPortal.Data.Interfaces;
 
 namespace TrainingPortal.Models.Stores
 {
 	public partial class UserStore : IUserStore<ApplicationUser>
 	{
-		private IUserService _userRepository;
+		private IUserRepository _userRepository;
 
-		public UserStore(IUserService userRepository, IUserRoleService userRoleRepository)
+		public UserStore(IUserRepository userRepository, IUserRoleRepository userRoleRepository)
 		{
 			_userRepository = userRepository;
 			_userRoleRepository = userRoleRepository;

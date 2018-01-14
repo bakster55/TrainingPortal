@@ -1,8 +1,12 @@
 ﻿using TrainingPortal.Web.Data.TestOptionService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
+using System.Linq;
+using TrainingPortal.Web.Data.Converters;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class TestOptionRepository : ITestOptionService
+	public class TestOptionRepository : ITestOptionRepository
 	{
 		private TestOptionServiceClient testOptionServiceClient;
 
@@ -20,9 +24,9 @@ namespace TrainingPortal.Data.Repositories
 			}
 		}
 
-		public void Create(TestOptionDto test, string testId)
+		public void Create(TestOption test, string testId)
 		{
-			testOptionServiceClient.Create(test, testId);
+			testOptionServiceClient.Create(test.Convert(), testId);
 		}
 
 		public void Delete(string id)
@@ -30,23 +34,23 @@ namespace TrainingPortal.Data.Repositories
 			testOptionServiceClient.Delete(id);
 		}
 
-		public TestOptionDto Get(string id)
+		public TestOption Get(string id)
 		{
 			TestOptionDto option = testOptionServiceClient.Get(id);
 
-			return option;
+			return option.Convert();
 		}
 
-		public TestOptionDto[] GetList(string testId)
+		public TestOption[] GetList(string testId)
 		{
 			TestOptionDto[] options = testOptionServiceClient.GetList(testId);
 
-			return options;
+			return options.Select((c) => c.Convert()).ToArray(); ;
 		}
 
-		public void Update(TestOptionDto option)
+		public void Update(TestOption option)
 		{
-			testOptionServiceClient.Update(option);
+			testOptionServiceClient.Update(option.Convert());
 		}
 	}
 }

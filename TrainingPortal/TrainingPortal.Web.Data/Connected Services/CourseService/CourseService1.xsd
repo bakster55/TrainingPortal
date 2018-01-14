@@ -8,26 +8,12 @@
   <xs:element name="ArrayOfCourseDto" nillable="true" type="tns:ArrayOfCourseDto" />
   <xs:complexType name="CourseDto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Audience" nillable="true" type="tns:AudienceDto" />
-      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:CategoryDto" />
+      <xs:element minOccurs="0" name="AudienceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CourseDto" nillable="true" type="tns:CourseDto" />
-  <xs:complexType name="AudienceDto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="AudienceDto" nillable="true" type="tns:AudienceDto" />
-  <xs:complexType name="CategoryDto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CategoryDto" nillable="true" type="tns:CategoryDto" />
 </xs:schema>

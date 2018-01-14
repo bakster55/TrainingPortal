@@ -1,13 +1,24 @@
 ﻿using TrainingPortal.Web.Data.CourseService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
+using TrainingPortal.Web.Data.Converters;
+using System.Linq;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class CourseRepository : ICourseService
+	public class CourseRepository : ICourseRepository
 	{
 		private CourseServiceClient courseServiceClient;
+		private ICategoryRepository _categoryRepository;
+		private IAudienceRepository _audienceRepository;
 
-		public CourseRepository()
+		public CourseRepository(
+			ICategoryRepository categoryRepository,
+			IAudienceRepository audienceRepository
+			)
 		{
+			_categoryRepository = categoryRepository;
+			_audienceRepository = audienceRepository;
 			courseServiceClient = new CourseServiceClient();
 			courseServiceClient.Open();
 		}
@@ -20,9 +31,9 @@ namespace TrainingPortal.Data.Repositories
 			}
 		}
 
-		public void Create(CourseDto course)
+		public void Create(Course course)
 		{
-			courseServiceClient.Create(course);
+			courseServiceClient.Create(course.Convert());
 		}
 
 		public void Delete(string id)
@@ -30,23 +41,32 @@ namespace TrainingPortal.Data.Repositories
 			courseServiceClient.Delete(id);
 		}
 
-		public CourseDto Get(string id)
+		public Course Get(string id)
 		{
 			CourseDto course = courseServiceClient.Get(id);
+			Audience audience = _audienceRepository.Get(course.AudienceId);
+			Category category = _categoryRepository.Get(course.CategoryId);
 
-			return course;
+			return course.Convert(audience, category);
 		}
 
-		public CourseDto[] GetList()
+		public Course[] GetList()
 		{
-			CourseDto[] categories = courseServiceClient.GetList();
+			Course[] courses = courseServiceClient.GetList().Select((c) =>
+			{
+				Audience audience = _audienceRepository.Get(c.AudienceId);
+				Category category = _categoryRepository.Get(c.CategoryId);
 
-			return categories;
+				Course course = c.Convert(audience, category);
+				return course;
+			}).ToArray();
+
+			return courses;
 		}
 
-		public void Update(CourseDto course)
+		public void Update(Course course)
 		{
-			courseServiceClient.Update(course);
+			courseServiceClient.Update(course.Convert());
 		}
 	}
 }

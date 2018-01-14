@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using TrainingPortal.Data.Repositories;
-using TrainingPortal.Models;
-using TrainingPortal.Web.Data.TestOptionService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
 
 
 namespace TrainingPortal.Controllers
@@ -12,9 +11,9 @@ namespace TrainingPortal.Controllers
 	[Authorize(Roles = "admin, editor")]
 	public class TestOptionController : Controller
 	{
-		private ITestOptionService _testOptionRepository;
+		private ITestOptionRepository _testOptionRepository;
 
-		public TestOptionController(ITestOptionService testOptionRepository)
+		public TestOptionController(ITestOptionRepository testOptionRepository)
 		{
 			if (testOptionRepository == null)
 			{

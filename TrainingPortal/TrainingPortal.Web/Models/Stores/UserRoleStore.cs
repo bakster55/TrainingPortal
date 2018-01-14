@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TrainingPortal.Models;
-using TrainingPortal.Data.Repositories;
-using TrainingPortal.Web.Data.UserRoleService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Models.Stores
 {
 	public partial class UserStore : IUserRoleStore<ApplicationUser>
 	{
-		private IUserRoleService _userRoleRepository;
+		private IUserRoleRepository _userRoleRepository;
 
 		public Task AddToRoleAsync(ApplicationUser user, string roleName)
 		{

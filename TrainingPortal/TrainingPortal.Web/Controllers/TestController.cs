@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using TrainingPortal.Data.Repositories;
-using TrainingPortal.Models;
-using TrainingPortal.Web.Data.CertificateService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
 using TrainingPortal.Web.Models.Services;
 
 namespace TrainingPortal.Controllers
@@ -13,12 +12,19 @@ namespace TrainingPortal.Controllers
 	public class TestController : Controller
 	{
 		private ITestService _testService;
-		private ICertificateService _certificateRepository;
+		private ITestRepository _testRepository;
+		private ICertificateRepository _certificateRepository;
 
 		public TestController(
-			ITestService testRepository,
-			ICertificateService certificateRepository)
+			ITestService testService,
+			ITestRepository testRepository,
+			ICertificateRepository certificateRepository)
 		{
+			if (testService == null)
+			{
+				throw new ArgumentNullException("testService");
+			}
+
 			if (testRepository == null)
 			{
 				throw new ArgumentNullException("testRepository");
@@ -29,14 +35,15 @@ namespace TrainingPortal.Controllers
 				throw new ArgumentNullException("certificateRepository");
 			}
 
-			_testService = testRepository;
+			_testService = testService;
+			_testRepository = testRepository;
 			_certificateRepository = certificateRepository;
 		}
 
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Index(string courseId)
 		{
-			List<Test> tests = _testService.GetList(courseId)?.Select(test => (Test)test).ToList();
+			List<Test> tests = _testRepository.GetList(courseId)?.Select(test => (Test)test).ToList();
 
 			return View(tests);
 		}
@@ -44,7 +51,7 @@ namespace TrainingPortal.Controllers
 		[Authorize]
 		public ActionResult WriteTest(string courseId)
 		{
-			List<Test> tests = _testService.GetList(courseId)?.Select(test =>
+			List<Test> tests = _testRepository.GetList(courseId)?.Select(test =>
 				{
 					test?.Options?.ForEach((to) =>
 					{
@@ -86,7 +93,7 @@ namespace TrainingPortal.Controllers
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Details(string id)
 		{
-			Test test = _testService.Get(id);
+			Test test = _testRepository.Get(id);
 
 			return View(test);
 		}
@@ -103,7 +110,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				_testService.Create(test, courseId);
+				_testRepository.Create(test, courseId);
 
 				return RedirectToAction("Index", new { courseId = courseId });
 			}
@@ -116,7 +123,7 @@ namespace TrainingPortal.Controllers
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Edit(string id)
 		{
-			Test test = _testService.Get(id);
+			Test test = _testRepository.Get(id);
 
 			return View(test);
 		}
@@ -127,7 +134,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				_testService.Update(test);
+				_testRepository.Update(test);
 
 				return RedirectToAction("Index", new { courseId = courseId });
 			}
@@ -140,7 +147,7 @@ namespace TrainingPortal.Controllers
 		[Authorize(Roles = "admin, editor")]
 		public ActionResult Delete(string id)
 		{
-			Test test = _testService.Get(id);
+			Test test = _testRepository.Get(id);
 
 			return View(test);
 		}
@@ -151,7 +158,7 @@ namespace TrainingPortal.Controllers
 		{
 			try
 			{
-				_testService.Delete(test.Id);
+				_testRepository.Delete(test.Id);
 
 				return RedirectToAction("Index", new { courseId = courseId });
 			}

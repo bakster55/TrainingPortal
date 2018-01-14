@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Web", "TrainingPortal.Web\TrainingPortal.Web.csproj", "{1DA6D227-7952-4ED2-91E7-A9D119DB2A1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Tests", "TrainingPortal.Tests\TrainingPortal.Tests.csproj", "{E0315609-9822-43D1-9F57-C25A61FB639C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Web.Tests", "TrainingPortal.Web.Tests\TrainingPortal.Web.Tests.csproj", "{E0315609-9822-43D1-9F57-C25A61FB639C}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TrainingPortal.DataBase", "TrainingPortal.DataBase\TrainingPortal.DataBase.sqlproj", "{AEB1B41D-B559-45C8-A1EC-A4C57D4428B3}"
 EndProject
@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Web.Data", "
 		{729B55DA-D8FB-4A2F-B30D-593E75E9D0F9} = {729B55DA-D8FB-4A2F-B30D-593E75E9D0F9}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Business", "TrainingPortal.Business\TrainingPortal.Business.csproj", "{9AC9A607-D9A6-4E91-BA6F-6EB53FAC601F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingPortal.Web.Business", "TrainingPortal.Web.Business\TrainingPortal.Web.Business.csproj", "{9AC9A607-D9A6-4E91-BA6F-6EB53FAC601F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

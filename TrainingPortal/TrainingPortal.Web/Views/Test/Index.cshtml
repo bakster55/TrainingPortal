@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrainingPortal.Models.Test>
+﻿@model IEnumerable<TrainingPortal.Web.Business.Models.Test>
 
 @{
     ViewBag.Title = "Tests";
@@ -31,3 +31,9 @@
 }
 
 </table>
+
+<hr>
+
+<p>
+	@Html.ActionLink("Back to course", "Details", "Course", new { id = Request.Params["courseId"] }, null)
+</p>

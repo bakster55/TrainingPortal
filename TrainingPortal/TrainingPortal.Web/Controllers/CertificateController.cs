@@ -1,20 +1,17 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using TrainingPortal.Data.Repositories;
-using TrainingPortal.Models;
-using TrainingPortal.Web.Data.CertificateService;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Controllers
 {
 	[Authorize]
 	public class CertificateController : Controller
 	{
-		private ICertificateService _certificateRepository;
+		private ICertificateRepository _certificateRepository;
 
-		public CertificateController(ICertificateService certificateRepository)
+		public CertificateController(ICertificateRepository certificateRepository)
 		{
 			if (certificateRepository == null)
 			{

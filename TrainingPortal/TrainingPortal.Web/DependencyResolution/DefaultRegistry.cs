@@ -20,16 +20,9 @@ namespace TrainingPortal.DependencyResolution
 	using StructureMap.Configuration.DSL;
 	using StructureMap.Graph;
 	using TrainingPortal.Data.Repositories;
-	using TrainingPortal.Web.Data.AudienceService;
-	using TrainingPortal.Web.Data.CategoryService;
-	using TrainingPortal.Web.Data.CertificateService;
-	using TrainingPortal.Web.Data.CourseService;
-	using TrainingPortal.Web.Data.LessonService;
-	using TrainingPortal.Web.Data.TestOptionService;
-	using TrainingPortal.Web.Data.TestService;
-	using TrainingPortal.Web.Data.RoleService;
-	using TrainingPortal.Web.Data.UserRoleService;
-	using TrainingPortal.Web.Data.UserService;
+	using TrainingPortal.Data.Interfaces;
+	using log4net;
+	using TrainingPortal.Web.Models.Services;
 
 	public class DefaultRegistry : Registry
 	{
@@ -45,16 +38,19 @@ namespace TrainingPortal.DependencyResolution
 						scan.With(new ControllerConvention());
 					});
 
-			For<IAudienceService>().Use<AudienceRepository>();
-			For<ICategoryService>().Use<CategoryRepository>();
-			For<ICertificateService>().Use<CertificateRepository>();
-			For<ICourseService>().Use<CourseRepository>();
-			For<ILessonService>().Use<LessonRepository>();
-			For<IRoleService>().Use<RoleRepository>();
-			For<ITestOptionService>().Use<TestOptionRepository>();
-			For<ITestService>().Use<TestRepository>();
-			For<IUserService>().Use<UserRepository>();
-			For<IUserRoleService>().Use<UserRoleRepository>();
+			For<ILog>().Use(LogManager.GetLogger("Logger"));
+			For<IAudienceRepository>().Use<AudienceRepository>();
+			For<ICategoryRepository>().Use<CategoryRepository>();
+			For<ICertificateRepository>().Use<CertificateRepository>();
+			For<ICourseRepository>().Use<CourseRepository>();
+			For<ILessonRepository>().Use<LessonRepository>();
+			For<IRoleRepository>().Use<RoleRepository>();
+			For<ITestOptionRepository>().Use<TestOptionRepository>();
+			For<ITestRepository>().Use<TestRepository>();
+			For<IUserRepository>().Use<UserRepository>();
+			For<IUserRoleRepository>().Use<UserRoleRepository>();
+
+			For<ITestService>().Use<TestService>();
 		}
 
 		#endregion

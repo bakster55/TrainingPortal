@@ -1,5 +1,5 @@
-﻿@model IReadOnlyList<TrainingPortal.Models.Test>
-@using TrainingPortal.Models
+﻿@model IReadOnlyList<TrainingPortal.Web.Business.Models.Test>
+@using TrainingPortal.Web.Business.Models
 
 @{
 	ViewBag.Title = "Write test";
@@ -7,7 +7,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@if (Model != null && Model.Count > 0)
+@if (Model != null && Model.Count > 0 && Model[0].Options != null && Model[0].Options.Count > 0)
 {
 	using (Html.BeginForm())
 	{
@@ -21,7 +21,7 @@
 					{
 						Test test = Model[i];
 
-						if (test.Options.Count > 1)
+						if (test.Options.Count > 0)
 						{
 								<li>
 									@test.Question

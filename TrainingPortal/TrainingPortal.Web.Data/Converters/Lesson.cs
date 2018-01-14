@@ -1,14 +1,11 @@
 ﻿using TrainingPortal.Web.Data.LessonService;
+using TrainingPortal.Web.Business.Models;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Web.Data.Converters
 {
-	public class Lesson
+	public static partial class Converter
 	{
-		public string Id { get; set; }
-		public string Name { get; set; }
-		public string Content { get; set; }
-
-		public static implicit operator Lesson(LessonDto lesson)
+		public static Lesson Convert(this LessonDto lesson)
 		{
 			if (lesson != null)
 			{
@@ -23,7 +20,7 @@ namespace TrainingPortal.Models
 			return null;
 		}
 
-		public static implicit operator LessonDto(Lesson lesson)
+		public static LessonDto Convert(this Lesson lesson)
 		{
 			if (lesson != null)
 			{

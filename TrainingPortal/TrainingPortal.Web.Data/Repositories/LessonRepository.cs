@@ -1,8 +1,12 @@
 ﻿using TrainingPortal.Web.Data.LessonService;
+using TrainingPortal.Data.Interfaces;
+using System.Linq;
+using TrainingPortal.Web.Data.Converters;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class LessonRepository : ILessonService
+	public class LessonRepository : ILessonRepository
 	{
 		private LessonServiceClient lessonServiceClient;
 
@@ -20,9 +24,9 @@ namespace TrainingPortal.Data.Repositories
 			}
 		}
 
-		public void Create(LessonDto lesson, string courseId)
+		public void Create(Lesson lesson, string courseId)
 		{
-			lessonServiceClient.Create(lesson, courseId);
+			lessonServiceClient.Create(lesson.Convert(), courseId);
 		}
 
 		public void Delete(string id)
@@ -30,23 +34,23 @@ namespace TrainingPortal.Data.Repositories
 			lessonServiceClient.Delete(id);
 		}
 
-		public LessonDto Get(string id)
+		public Lesson Get(string id)
 		{
 			LessonDto lesson = lessonServiceClient.Get(id);
 
-			return lesson;
+			return lesson.Convert();
 		}
 
-		public LessonDto[] GetList(string courseId)
+		public Lesson[] GetList(string courseId)
 		{
 			LessonDto[] lessons = lessonServiceClient.GetList(courseId);
 
-			return lessons;
+			return lessons.Select((l) => l.Convert()).ToArray();
 		}
 
-		public void Update(LessonDto lesson)
+		public void Update(Lesson lesson)
 		{
-			lessonServiceClient.Update(lesson);
+			lessonServiceClient.Update(lesson.Convert());
 		}
 	}
 }

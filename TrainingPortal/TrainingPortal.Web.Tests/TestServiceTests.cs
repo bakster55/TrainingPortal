@@ -2,7 +2,9 @@
 using Moq;
 using System.Linq;
 using TrainingPortal.Controllers;
+using TrainingPortal.Data.Interfaces;
 using TrainingPortal.Models;
+using TrainingPortal.Web.Business.Models;
 using TrainingPortal.Web.Data.TestOptionService;
 using TrainingPortal.Web.Data.TestService;
 using TrainingPortal.Web.Models.Services;
@@ -12,14 +14,12 @@ namespace TrainingPortal.Tests
 	[TestClass]
 	public class TestServiceTests
 	{
-		private Mock<TrainingPortal.Web.Data.TestService.ITestService> _testRepository;
-		private Mock<ITestOptionService> _testOptionRepository;
+		private Mock<ITestRepository> _testRepository;
 
 		[TestInitialize]
 		public void TestInitialize()
 		{
-			_testRepository = new Mock<TrainingPortal.Web.Data.TestService.ITestService>();
-			_testOptionRepository = new Mock<ITestOptionService>();
+			_testRepository = new Mock<ITestRepository>();
 		}
 
 		[TestMethod]
@@ -29,25 +29,30 @@ namespace TrainingPortal.Tests
 				.Setup(e => e.GetList(It.IsAny<string>()))
 				.Returns((string courseId) =>
 				{
-					return new TestDto[]
+					return new Test[]
 					{
-							new TestDto { Id = "6", Question = "A"},
-							new TestDto { Id = "8", Question = "B"},
+							new Test {
+								Id = "6",
+								Question = "A",
+								Options = new TestOption[]
+								{
+													new TestOption { Id = "3", Name = "A", IsChecked = true},
+													new TestOption { Id = "5", Name = "B", IsChecked = true},
+								}.ToList()
+							},
+							new Test {
+								Id = "8",
+								Question = "B",
+								Options = new TestOption[]
+								{
+													new TestOption { Id = "3", Name = "A", IsChecked = true},
+													new TestOption { Id = "5", Name = "B", IsChecked = true},
+								}.ToList()
+							},
 					};
 				});
 
-			_testOptionRepository
-				.Setup(e => e.GetList(It.IsAny<string>()))
-				.Returns((string courseId) =>
-				{
-					return new TestOptionDto[]
-					{
-							new TestOptionDto { Id = "3", Name = "A", IsChecked = true},
-							new TestOptionDto { Id = "5", Name = "B", IsChecked = true},
-					};
-				});
-
-			var testService = new TestService(_testRepository.Object, _testOptionRepository.Object);
+			var testService = new TestService(_testRepository.Object);
 
 			var tests = new Test[]
 				{
@@ -80,26 +85,39 @@ namespace TrainingPortal.Tests
 				.Setup(e => e.GetList(It.IsAny<string>()))
 				.Returns((string courseId) =>
 				{
-					return new TestDto[]
+					return new Test[]
 					{
-							new TestDto { Id = "1", Question = "A"},
-							new TestDto { Id = "2", Question = "B"},
-							new TestDto { Id = "3", Question = "C"},
+							new Test {
+								Id = "1",
+								Question = "A",
+								Options = new TestOption[]
+								{
+								new TestOption { Id = "1", Name = "A", IsChecked = true},
+								new TestOption { Id = "2", Name = "B", IsChecked = false},
+								}.ToList()
+							},
+							new Test {
+								Id = "2",
+								Question = "B",
+								Options = new TestOption[]
+								{
+								new TestOption { Id = "1", Name = "A", IsChecked = true},
+								new TestOption { Id = "2", Name = "B", IsChecked = false},
+								}.ToList()
+							},
+							new Test {
+								Id = "3",
+								Question = "C",
+								Options = new TestOption[]
+								{
+								new TestOption { Id = "1", Name = "A", IsChecked = true},
+								new TestOption { Id = "2", Name = "B", IsChecked = false},
+								}.ToList()
+							},
 					};
 				});
 
-			_testOptionRepository
-				.Setup(e => e.GetList(It.IsAny<string>()))
-				.Returns((string courseId) =>
-				{
-					return new TestOptionDto[]
-					{
-							new TestOptionDto { Id = "1", Name = "A", IsChecked = true},
-							new TestOptionDto { Id = "2", Name = "B", IsChecked = false},
-					};
-				});
-
-			var testService = new TestService(_testRepository.Object, _testOptionRepository.Object);
+			var testService = new TestService(_testRepository.Object);
 
 			var tests = new Test[]
 				{

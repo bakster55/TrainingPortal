@@ -1,8 +1,12 @@
-﻿using TrainingPortal.Web.Data.AudienceService;
+﻿using System.Linq;
+using TrainingPortal.Data.Interfaces;
+using TrainingPortal.Web.Business.Models;
+using TrainingPortal.Web.Data.AudienceService;
+using TrainingPortal.Web.Data.Converters;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class AudienceRepository : IAudienceService
+	public class AudienceRepository : IAudienceRepository
 	{
 		private AudienceServiceClient audienceServiceClient;
 
@@ -20,9 +24,9 @@ namespace TrainingPortal.Data.Repositories
 			}
 		}
 
-		public void Create(AudienceDto audience)
+		public void Create(Audience audience)
 		{
-			audienceServiceClient.Create(audience);
+			audienceServiceClient.Create(audience.Convert());
 		}
 
 		public void Delete(string id)
@@ -30,23 +34,23 @@ namespace TrainingPortal.Data.Repositories
 			audienceServiceClient.Delete(id);
 		}
 
-		public AudienceDto Get(string id)
+		public Audience Get(string id)
 		{
 			AudienceDto audience = audienceServiceClient.Get(id);
 
-			return audience;
+			return audience.Convert();
 		}
 
-		public AudienceDto[] GetList()
+		public Audience[] GetList()
 		{
 			AudienceDto[] audienceList = audienceServiceClient.GetList();
 
-			return audienceList;
+			return audienceList.Select((a) => a.Convert()).ToArray();
 		}
 
-		public void Update(AudienceDto audience)
+		public void Update(Audience audience)
 		{
-			audienceServiceClient.Update(audience);
+			audienceServiceClient.Update(audience.Convert());
 		}
 	}
 }

@@ -11,6 +11,8 @@ using TrainingPortal.Models;
 using TrainingPortal.Web.Data.RoleService;
 using TrainingPortal.Data.Repositories;
 using TrainingPortal.App_Start;
+using TrainingPortal.Web.Business.Models;
+using TrainingPortal.Data.Interfaces;
 
 namespace TrainingPortal.Controllers
 {
@@ -128,7 +130,7 @@ namespace TrainingPortal.Controllers
 		{
 			ApplicationUser applicationUser = await ApplicationUserManager.FindByIdAsync(id.ToString());
 
-			RoleRepository roleRepository = (RoleRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IRoleService));
+			RoleRepository roleRepository = (RoleRepository)StructuremapMvc.StructureMapDependencyScope.Container.GetInstance(typeof(IRoleRepository));
 			RoleManager<Role> roleManager = new RoleManager<Role>(new RoleStore(roleRepository));
 			ViewBag.Roles  = roleManager.Roles.Select(r => r.Name).ToList();
 			ViewBag.UserRoles = ApplicationUserManager.GetRoles(id.ToString());

@@ -1,30 +1,30 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using log4net;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using TrainingPortal.Data.Interfaces;
 using TrainingPortal.Data.Repositories;
-using TrainingPortal.Models;
-using TrainingPortal.Web.Data.AudienceService;
-using TrainingPortal.Web.Data.CourseService;
-using TrainingPortal.Web.Data.CategoryService;
-using TrainingPortal.Web.Data.CertificateService;
-using System;
+using TrainingPortal.Web.Business.Models;
 
 namespace TrainingPortal.Controllers
 {
 	public class CourseController : Controller
 	{
-		private ICourseService _courseRepository;
-		private ICategoryService _categoryRepository;
-		private ICertificateService _certificateRepository;
-		private IAudienceService _audienceRepository;
+		private ICourseRepository _courseRepository;
+		private ICategoryRepository _categoryRepository;
+		private ICertificateRepository _certificateRepository;
+		private IAudienceRepository _audienceRepository;
+		private ILog logger = LogManager.GetLogger("Logger");
 
 		public CourseController(
-			ICourseService courseRepository, 
-			ICategoryService categoryRepository, 
-			ICertificateService certificateRepository, 
-			IAudienceService audienceRepository)
+			ICourseRepository courseRepository,
+			ICategoryRepository categoryRepository,
+			ICertificateRepository certificateRepository,
+			IAudienceRepository audienceRepository)
 		{
+			logger.Error("Error");
 			if (courseRepository == null)
 			{
 				throw new ArgumentNullException("courseRepository");
@@ -75,17 +75,17 @@ namespace TrainingPortal.Controllers
 
 			if (!string.IsNullOrEmpty(categoryId) && courses != null)
 			{
-				courses = courses.Where(c => c.Category == null ? false : c.Category.Id == categoryId).ToList(); ;
+				courses = courses.Where(c => c.Category == null ? false : c.Category.Id == categoryId).ToList();
 			}
 
 			if (!string.IsNullOrEmpty(audienceId) && courses != null)
 			{
-				courses = courses.Where(c => c.Audience == null ? false : c.Audience.Id == audienceId).ToList(); ;
+				courses = courses.Where(c => c.Audience == null ? false : c.Audience.Id == audienceId).ToList();
 			}
 
 			if (!string.IsNullOrEmpty(courseName) && courses != null)
 			{
-				courses = courses.Where(c => c.Name.ToLower().StartsWith(courseName.ToLower())).ToList(); ;
+				courses = courses.Where(c => c.Name.ToLower().StartsWith(courseName.ToLower())).ToList();
 			}
 
 			return PartialView("Partials/Index", courses);

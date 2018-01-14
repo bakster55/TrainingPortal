@@ -1,8 +1,9 @@
 ﻿using TrainingPortal.Web.Data.UserRoleService;
+using TrainingPortal.Data.Interfaces;
 
 namespace TrainingPortal.Data.Repositories
 {
-	public class UserRoleRepository : IUserRoleService
+	public class UserRoleRepository : IUserRoleRepository
 	{
 		private UserRoleServiceClient userRoleServiceClient;
 

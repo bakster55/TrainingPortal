@@ -1,21 +1,12 @@
 ﻿using System;
 using TrainingPortal.Web.Data.CertificateService;
+using TrainingPortal.Web.Business.Models;
 
-namespace TrainingPortal.Models
+namespace TrainingPortal.Web.Data.Converters
 {
-	public class Certificate
+	public static partial class Converter
 	{
-		public string Id { get; set; }
-
-		public string UserId { get; set; }
-
-		public int Result { get; set; }
-
-		public string CourseId { get; set; }
-
-		public DateTime Date { get; set; }
-
-		public static implicit operator Certificate(CertificateDto certificate)
+		public static Certificate Convert(this CertificateDto certificate)
 		{
 			if (certificate != null)
 			{
@@ -32,7 +23,7 @@ namespace TrainingPortal.Models
 			return null;
 		}
 
-		public static implicit operator CertificateDto(Certificate certificate)
+		public static CertificateDto Convert(this Certificate certificate)
 		{
 			if (certificate != null)
 			{
